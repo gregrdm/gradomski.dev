@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sqTile Launcher — Privacy Policy</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    max-width: 760px; margin: 0 auto; padding: 2rem 1.25rem 4rem;
+    font: 16px/1.65 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1a1a1a; background: #fff;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { color: #e6e6e6; background: #141414; }
+    a { color: #7db6ff; }
+    code { background: #2a2a2a; }
+    .tldr { background: #1e1e1e; border-color: #333; }
+  }
+  h1 { font-size: 1.9rem; margin-bottom: .25rem; }
+  h2 { font-size: 1.25rem; margin-top: 2.25rem; border-bottom: 1px solid rgba(128,128,128,.25); padding-bottom: .3rem; }
+  h3 { font-size: 1.05rem; margin-top: 1.5rem; }
+  .meta { color: #888; font-size: .9rem; margin-bottom: 1.5rem; }
+  a { color: #0b66d0; }
+  code { background: #f2f2f2; padding: .1em .35em; border-radius: 4px; font-size: .9em; }
+  ul { padding-left: 1.25rem; }
+  li { margin: .35rem 0; }
+  .tldr { background: #f6f8fa; border: 1px solid #e2e2e2; border-radius: 10px; padding: 1rem 1.25rem; margin: 1.5rem 0; }
+  table { border-collapse: collapse; width: 100%; margin: .75rem 0; font-size: .95rem; }
+  th, td { border: 1px solid rgba(128,128,128,.3); padding: .5rem .6rem; text-align: left; vertical-align: top; }
+  footer { margin-top: 3rem; color: #888; font-size: .85rem; }
+</style>
+</head>
+<body>
+
+<h1>Privacy Policy — sqTile Launcher</h1>
+<p class="meta">Last updated: 11 July 2026</p>
+
+<div class="tldr">
+  <strong>In short.</strong> sqTile is a local-first home-screen launcher.
+  Your apps, layout, calendar, notifications, to-dos, reminders and habits are
+  processed <strong>on your device</strong> and are not uploaded to us. We do
+  not run ads, we do not sell or share your data, and there is no account or
+  sign-in. A few optional features talk to third parties (weather, in-app
+  purchase, crash reporting) — those are described below.
+</div>
+
+<h2>1. Who we are</h2>
+<p>
+  This app (“sqTile Launcher”, the “App”) is provided by
+  <strong>Grzegorz Radomski TECH</strong> (the “data controller”, “we”, “us”).
+</p>
+<ul>
+  <li>Registered address: ul. Pawia 10B/1, 08-825 Adamowizna, Poland</li>
+  <li>Tax ID (NIP): 862-162-41-84</li>
+  <li>Contact: <a href="mailto:contact@gradomski.dev">contact@gradomski.dev</a></li>
+</ul>
+
+<h2>2. Our approach: local-first</h2>
+<p>
+  sqTile is designed so that your personal content stays on your device. The
+  App has <strong>no backend server of ours</strong> — we operate no servers
+  that receive your launcher content. The data the App works with is stored in
+  the App’s private on-device storage and is removed when you delete the data
+  in the App or uninstall it.
+</p>
+
+<h2>3. Data processed on your device only</h2>
+<p>The following never leaves your device through the App and is not sent to us:</p>
+<ul>
+  <li><strong>Installed apps.</strong> The App reads the list of launchable apps on your device to display and open them.</li>
+  <li><strong>Home layout &amp; settings.</strong> Your tiles, dock, and preferences are stored locally.</li>
+  <li><strong>Calendar events.</strong> With your permission, upcoming events are shown on the dashboard. They are read for display only and are not copied off the device.</li>
+  <li><strong>Notifications.</strong> If you grant notification access, the App reads notifications solely to show unread-count badges on tiles. Notification content is not stored or transmitted.</li>
+  <li><strong>To-dos, reminders and habits.</strong> Anything you create in the App is stored in a local database and used to schedule on-device reminders.</li>
+  <li><strong>Backup files.</strong> If you export a backup, the file is written to a location you choose and stays under your control; importing reads a file you select. We never receive it.</li>
+</ul>
+
+<h2>4. Data shared with third parties (only when you use those features)</h2>
+<p>The App does not include advertising or analytics SDKs that track you across apps. The only outbound connections are:</p>
+
+<table>
+  <tr><th>Feature</th><th>What is sent</th><th>To whom</th><th>Their policy</th></tr>
+  <tr>
+    <td><strong>Weather tile</strong> (optional)</td>
+    <td>The city name you type when searching, and the latitude/longitude of the city you select, to retrieve a forecast. No device GPS location is used and no identifier about you is attached.</td>
+    <td>Open-Meteo</td>
+    <td><a href="https://open-meteo.com/en/terms" rel="noopener">open-meteo.com/en/terms</a></td>
+  </tr>
+  <tr>
+    <td><strong>Pro unlock</strong> (optional purchase)</td>
+    <td>The purchase is handled by Google Play Billing. We receive only whether you own the Pro product — we do not receive or store your payment details.</td>
+    <td>Google Play</td>
+    <td><a href="https://policies.google.com/privacy" rel="noopener">policies.google.com/privacy</a></td>
+  </tr>
+  <tr>
+    <td><strong>Crash reporting</strong></td>
+    <td>If the App crashes, a diagnostic report (device model, OS version, app version, the state at the time of the crash, and a Crashlytics-generated installation identifier) is sent so we can fix bugs. It does not include your launcher content, calendar, or notifications.</td>
+    <td>Google Firebase Crashlytics</td>
+    <td><a href="https://firebase.google.com/support/privacy" rel="noopener">firebase.google.com/support/privacy</a></td>
+  </tr>
+</table>
+
+<h2>5. Permissions we request and why</h2>
+<ul>
+  <li><strong>Query installed apps</strong> — to list and launch your apps (core launcher function).</li>
+  <li><strong>Internet</strong> — to fetch the optional weather forecast and to send crash reports.</li>
+  <li><strong>Calendar (read)</strong> — to show upcoming events on the dashboard. Optional; the App works without it.</li>
+  <li><strong>Notification access</strong> — to display unread-count badges. Optional; you can leave it off.</li>
+  <li><strong>Alarms &amp; exact scheduling</strong> — to fire the reminders you create at the right time.</li>
+  <li><strong>Run after restart</strong> — to re-schedule your pending reminders after the device reboots.</li>
+  <li><strong>Post notifications</strong> — to show your reminders as notifications.</li>
+</ul>
+
+<h2>6. Data retention</h2>
+<p>
+  On-device data persists until you delete it in the App or uninstall the App.
+  Crash reports held by Google Firebase are retained according to Google’s
+  retention schedule (typically up to 90 days for detailed reports). Purchase
+  records are held by Google Play.
+</p>
+
+<h2>7. Children</h2>
+<p>
+  The App is not directed at children under 13 (or the equivalent minimum age
+  in your country) and we do not knowingly collect data from them.
+</p>
+
+<h2>8. Your rights</h2>
+<p>
+  Because your content lives on your device, you can access and erase it
+  directly in the App (delete tiles/items) or by uninstalling. Under the GDPR
+  and similar laws you may also have the right to access, rectify, erase, or
+  restrict processing of personal data, and to lodge a complaint with your data
+  protection authority (in Poland, the President of the Personal Data
+  Protection Office, UODO). For requests relating to crash reports or purchases,
+  contact us and we will help, and you may also use Google’s own controls. To
+  reach us: <a href="mailto:contact@gradomski.dev">contact@gradomski.dev</a>.
+</p>
+
+<h2>9. Changes to this policy</h2>
+<p>
+  We may update this policy as the App evolves. Material changes will be
+  reflected here with a new “Last updated” date.
+</p>
+
+<h2>10. Contact</h2>
+<p>
+  Questions about privacy? Email
+  <a href="mailto:contact@gradomski.dev">contact@gradomski.dev</a>.
+</p>
+
+<footer>
+  © 2026 Grzegorz Radomski TECH. sqTile Launcher.
+</footer>
+
+</body>
+</html>
