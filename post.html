@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Post — gradomski.dev</title>
+<meta name="description" content="A post from the gradomski.dev changelog.">
+<link rel="icon" href="assets/img/favicon.svg">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>
+  try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "dark"; } catch (e) {}
+</script>
+</head>
+<body data-page="post">
+
+<div id="site-header"></div>
+
+<main id="main">
+  <article class="wrap wrap--narrow">
+    <header class="post-header" id="post-header">
+      <p class="loading">Loading…</p>
+    </header>
+    <div class="prose" id="post-body"></div>
+    <nav class="post-nav">
+      <a href="blog.html">← All posts</a>
+      <a href="index.html#newsletter">Get these by email →</a>
+    </nav>
+  </article>
+  <div style="height:var(--section-y)"></div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/post.js"></script>
+</body>
+</html>

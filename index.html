@@ -1,28 +1,279 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>gradomski.dev</title>
-    <style>
-        body {
-            background-color: #212121;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        h1 {
-            font-size: 2rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>gradomski.dev — sqTile Launcher</title>
+<meta name="description" content="sqTile Launcher — a local-first Android home screen built around square tiles. Calendar, reminders, habits and notification badges, all on device.">
+<meta property="og:title" content="sqTile Launcher — a local-first home screen">
+<meta property="og:description" content="A square-tile Android launcher that keeps your calendar, reminders and habits on your device. No accounts, no ads, no tracking.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.gradomski.dev/">
+<meta property="og:image" content="https://www.gradomski.dev/assets/img/og-cover.svg">
+<link rel="icon" href="assets/img/favicon.svg">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>
+  // Applied before first paint so the theme never flashes. Dark is the default.
+  try {
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "dark";
+  } catch (e) {}
+</script>
 </head>
-<body>
-    <h1>Development in progress...</h1>
+<body data-page="index">
+
+<div id="site-header"></div>
+
+<main id="main">
+
+  <!-- ============ Hero ============ -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <span class="eyebrow">Currently building</span>
+      <h1>Your home screen, <em>squared away</em>.</h1>
+      <p class="lead">
+        sqTile is a local-first Android launcher built around square tiles. Your calendar,
+        reminders, habits and unread badges live on one calm grid — and every bit of it
+        stays on your device.
+      </p>
+      <div class="btn-row" style="margin-top:2rem">
+        <!-- Keep in sync with SITE.storeUrl in assets/js/site.js -->
+        <a class="btn btn--primary" href="https://play.google.com/store/apps/details?id=dev.gradomski.sqtilelauncher" rel="noopener">Get it on Google Play</a>
+        <a class="btn btn--ghost" href="#backlog">See what's next</a>
+        <a class="btn btn--ghost" href="#newsletter">Get release notes</a>
+      </div>
+      <!-- Remove this line once the listing is public -->
+      <p class="form-note" style="margin-top:1rem">
+        In closed testing right now — the Play Store page opens for registered testers only.
+        Public release is a couple of weeks away; <a href="#newsletter">subscribe</a> and
+        I'll email you when it's live.
+      </p>
+      <div class="hero-meta">
+        <span><strong>Local-first</strong> — no backend, no account</span>
+        <span><strong>No ads</strong>, no tracking SDKs</span>
+        <span><strong>Android</strong> 8.0 and newer</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Screenshots ============ -->
+  <section class="section" style="padding-top:0" aria-label="Screenshots">
+    <div class="wrap">
+      <!-- Same promo shots as the Play Store listing; each already carries its own caption. -->
+      <div class="shots">
+        <figure class="shot">
+          <img src="assets/img/screens/01_home.png" width="1080" height="1920"
+               alt="Home screen of live Metro tiles showing the clock, weather, to-do count and habit streak alongside app tiles" loading="lazy">
+        </figure>
+        <figure class="shot">
+          <img src="assets/img/screens/02_dashboard.png" width="1080" height="1920"
+               alt="Dashboard with the day's weather forecast, calendar events, to-dos, habit streaks and reminders" loading="lazy">
+        </figure>
+        <figure class="shot">
+          <img src="assets/img/screens/03_edit.png" width="1080" height="1920"
+               alt="Edit mode with numbered rows, drag handles and a reshapeable dock" loading="lazy">
+        </figure>
+        <figure class="shot">
+          <img src="assets/img/screens/04_customize.png" width="1080" height="1920"
+               alt="Settings screen with the accent colour palette, black or white background and five tile icon styles" loading="lazy">
+        </figure>
+        <figure class="shot">
+          <img src="assets/img/screens/05_applist.png" width="1080" height="1920"
+               alt="App list with alphabet jump navigation and monochrome icons" loading="lazy">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Features ============ -->
+  <section class="section section--alt" id="project">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">The project</span>
+        <h2>A launcher that does the small things properly.</h2>
+        <p>
+          Most launchers are either a wall of icons or a subscription with a dashboard.
+          sqTile sits in between: a tidy grid that actually tells you something, and nothing
+          that phones home.
+        </p>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <span class="feature-num">01</span>
+          <h3>Square tiles, real information</h3>
+          <p>
+            Every tile is a square you can resize and recolour. Apps, shortcuts, weather,
+            your next event, a habit streak — laid out on one predictable grid.
+          </p>
+        </div>
+        <div class="feature">
+          <span class="feature-num">02</span>
+          <h3>Badges that come from your notifications</h3>
+          <p>
+            Grant notification access and tiles show unread counts. Notification content is
+            read for the badge and never stored or transmitted.
+          </p>
+        </div>
+        <div class="feature">
+          <span class="feature-num">03</span>
+          <h3>To-dos, reminders and habits built in</h3>
+          <p>
+            Capture something from the home screen and it schedules an on-device reminder.
+            No second app, no sync service, no sign-up.
+          </p>
+        </div>
+        <div class="feature">
+          <span class="feature-num">04</span>
+          <h3>Local-first by architecture</h3>
+          <p>
+            There is no server of mine to send your data to. Layout, tasks and settings live
+            in the app's private storage; back them up to a file you control.
+          </p>
+        </div>
+        <div class="feature">
+          <span class="feature-num">05</span>
+          <h3>Every dependency has to earn its place</h3>
+          <p>
+            Libraries get picked for what they cost in download size and RAM, not for
+            convenience. A launcher runs all day — it has no business being the heaviest
+            thing on your phone.
+          </p>
+        </div>
+        <div class="feature">
+          <span class="feature-num">06</span>
+          <h3>Benchmarked every release</h3>
+          <p>
+            Each build is measured before it ships. If a number moves the wrong way, the
+            next thing I work on is finding what slowed it down — not the next feature.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Target ============ -->
+  <section class="section" id="target">
+    <div class="wrap">
+      <div class="frame">
+        <span class="eyebrow">Who it's for</span>
+        <h2 class="mt-0">Built for people who want their phone to be quiet.</h2>
+        <p class="muted" style="max-width:640px">
+          sqTile is not trying to be every launcher for everyone. It's aimed at a specific kind
+          of user — and everything on the backlog is judged against that.
+        </p>
+        <div class="target-grid">
+          <div class="target-item">
+            <h4>The intentional phone user</h4>
+            <p>Wants a home screen that shows what matters today, not 40 icons and a news feed.</p>
+          </div>
+          <div class="target-item">
+            <h4>The privacy-minded</h4>
+            <p>Reads permission lists. Prefers on-device processing and no account over convenience.</p>
+          </div>
+          <div class="target-item">
+            <h4>Tinkerers &amp; customisers</h4>
+            <p>Enjoys arranging a grid until it's exactly right, and wants export/import to keep it.</p>
+          </div>
+          <div class="target-item">
+            <h4>Light task-manager users</h4>
+            <p>Needs to-dos, reminders and habits close at hand — without adopting a whole system.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Backlog ============ -->
+  <section class="section section--alt" id="backlog">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Backlog</span>
+        <h2>Just landed, and what's next.</h2>
+        <p>
+          Shipped in small updates rather than big releases. Keep the app updated — or
+          <a href="#newsletter">subscribe</a> and I'll tell you when each of these lands.
+        </p>
+      </div>
+
+      <!-- Edit these as the roadmap moves.
+           chip--done = shipped, chip--now = in development, chip--next = up next,
+           plain chip = exploring. -->
+      <div class="backlog">
+        <div class="backlog-item">
+          <span class="chip chip--done">Shipped</span>
+          <h3>Parallax wallpaper behind the tiles</h3>
+          <p>Your wallpaper shifts as you scroll, so the grid sits on top of it instead of hiding it.</p>
+        </div>
+        <div class="backlog-item">
+          <span class="chip chip--done">Shipped</span>
+          <h3>Rotating gallery tile</h3>
+          <p>A tile that cycles through your photos with a slow Ken Burns pan and zoom.</p>
+        </div>
+        <div class="backlog-item">
+          <span class="chip chip--done">Shipped</span>
+          <h3>Custom colour picker</h3>
+          <p>Add up to ten colours of your own on top of the built-in accents — the grid is yours to match.</p>
+        </div>
+        <div class="backlog-item">
+          <span class="chip chip--now">In dev</span>
+          <h3>Tile folders</h3>
+          <p>Group related apps into a single tile that expands in place, without leaving the grid.</p>
+        </div>
+        <div class="backlog-item">
+          <span class="chip">Exploring</span>
+          <h3>Multiple home pages</h3>
+          <p>Swipe between separate grids — one for work, one for downtime, one for everything else.</p>
+        </div>
+        <div class="backlog-item">
+          <span class="chip">Exploring</span>
+          <h3>Home screen widget for habits</h3>
+          <p>A streak view that stays visible on any launcher, not just sqTile.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Reviews ============ -->
+  <!--
+    HIDDEN FOR NOW — the quotes below are placeholders. To bring this section back:
+    replace them with real Play Store reviews, delete this comment wrapper, and
+    the section will render again where it stands.
+
+  <section class="section" id="reviews">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">From users</span>
+        <h2>What people say.</h2>
+      </div>
+      <div class="reviews">
+        <div class="review">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>Finally a launcher where the home screen tells me something. The calendar tile alone replaced two widgets.</blockquote>
+          <cite>Play Store review</cite>
+        </div>
+        <div class="review">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>No account, no ads, and the permission list is short and explained. That's rare enough that I paid for Pro immediately.</blockquote>
+          <cite>Play Store review</cite>
+        </div>
+        <div class="review">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>Spent an evening arranging tiles and my phone finally feels calm. Export/import meant I kept it all on my new device.</blockquote>
+          <cite>Play Store review</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+  -->
+
+  <!-- ============ Newsletter ============ -->
+  <!-- Rendered by renderNewsletter() in assets/js/site.js, shared with blog.html -->
+  <div id="newsletter-mount"></div>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/site.js"></script>
 </body>
 </html>
