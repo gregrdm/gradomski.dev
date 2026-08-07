@@ -10,8 +10,8 @@ const SITE = {
   author: "Grzegorz Radomski",
   company: "Grzegorz Radomski TECH",
   email: "contact@gradomski.dev",
-  // Live listing. In closed testing until roughly early August 2026 — until then the
-  // page only opens for registered testers.
+  // Live listing, public since 2 August 2026 (1.3.4 was the first build on the
+  // production channel).
   storeUrl: "https://play.google.com/store/apps/details?id=dev.gradomski.sqtilelauncher",
   storeLabel: "Get sqTile",
   // Newsletter: paste the form's POST endpoint from your provider here and the form

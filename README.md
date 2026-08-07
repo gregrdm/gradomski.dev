@@ -17,7 +17,9 @@ assets/
   js/site.js            header/footer, theme toggle, SITE config
   js/blog.js            post list
   js/post.js            single post (markdown + syntax highlighting)
-  img/                  screenshots, covers, avatar (placeholders for now)
+  img/screens/          landing-page shots, copied from sqTile/docs/store-screenshots/
+  img/blog/             post covers
+  img/                  favicon, og cover, avatar
 sqTile/privacy-policy.html
 ```
 
@@ -67,6 +69,9 @@ Fenced code blocks are highlighted by highlight.js — tag the language for best
   (`:root[data-theme="dark"]` and `:root[data-theme="light"]`).
 - **Backlog** — the `.backlog-item` blocks in `index.html`. Chip classes: `chip--done`
   (shipped), `chip--now` (in development), `chip--next` (up next), plain `chip` (exploring).
+  Shipped items use the version they landed in as the chip label (`1.4.0`) rather than the
+  word "shipped" — it dates the item and shows the release cadence. Keep it in sync with
+  `sqTile/docs/to_release_*.md`, which is the source of truth for what each version did.
 - **Target, features** — plain HTML sections in `index.html`, each marked with a comment.
 - **Newsletter** — `renderNewsletter()` in `assets/js/site.js`, rendered into any page that
   has `<div id="newsletter-mount"></div>`. Currently on `index.html` and `blog.html`.
@@ -107,8 +112,6 @@ sync if you change provider.
 
 - Reviews — the section in `index.html` is commented out; it holds placeholder quotes.
   Swap in real Play Store reviews and remove the comment wrapper to bring it back.
-- The closed-testing note under the hero buttons in `index.html`, once the Play Store
-  listing is public.
 
 ## Theme
 

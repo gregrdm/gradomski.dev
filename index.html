@@ -32,8 +32,8 @@
       <h1>Your home screen, <em>squared away</em>.</h1>
       <p class="lead">
         sqTile is a local-first Android launcher built around square tiles. Your calendar,
-        reminders, habits and unread badges live on one calm grid — and every bit of it
-        stays on your device.
+        reminders, habits and unread badges live on one calm grid — and none of it goes to
+        a server of mine.
       </p>
       <div class="btn-row" style="margin-top:2rem">
         <!-- Keep in sync with SITE.storeUrl in assets/js/site.js -->
@@ -41,15 +41,10 @@
         <a class="btn btn--ghost" href="#backlog">See what's next</a>
         <a class="btn btn--ghost" href="#newsletter">Get release notes</a>
       </div>
-      <!-- Remove this line once the listing is public -->
-      <p class="form-note" style="margin-top:1rem">
-        In closed testing right now — the Play Store page opens for registered testers only.
-        Public release is a couple of weeks away; <a href="#newsletter">subscribe</a> and
-        I'll email you when it's live.
-      </p>
       <div class="hero-meta">
         <span><strong>Local-first</strong> — no backend, no account</span>
         <span><strong>No ads</strong>, no tracking SDKs</span>
+        <span><strong>Free</strong>, with a one-time Pro unlock</span>
         <span><strong>Android</strong> 8.0 and newer</span>
       </div>
     </div>
@@ -58,27 +53,40 @@
   <!-- ============ Screenshots ============ -->
   <section class="section" style="padding-top:0" aria-label="Screenshots">
     <div class="wrap">
-      <!-- Same promo shots as the Play Store listing; each already carries its own caption. -->
+      <!-- Same promo shots as the Play Store listing; each already carries its own caption.
+           Source set: sqTile/docs/store-screenshots/, downscaled to 810px wide. -->
       <div class="shots">
         <figure class="shot">
-          <img src="assets/img/screens/01_home.png" width="1080" height="1920"
-               alt="Home screen of live Metro tiles showing the clock, weather, to-do count and habit streak alongside app tiles" loading="lazy">
+          <img src="assets/img/screens/01_home.png" width="810" height="1440"
+               alt="Home screen of live tiles: clock, weather, to-do count and a habit strip above a row of app icons, a photo tile, a folder, two quick-contact tiles and a reminder" loading="lazy">
         </figure>
         <figure class="shot">
-          <img src="assets/img/screens/02_dashboard.png" width="1080" height="1920"
-               alt="Dashboard with the day's weather forecast, calendar events, to-dos, habit streaks and reminders" loading="lazy">
+          <img src="assets/img/screens/02_wallpaper.png" width="810" height="1440"
+               alt="The same grid over a photo wallpaper, each tile showing the part of the picture behind it" loading="lazy">
         </figure>
         <figure class="shot">
-          <img src="assets/img/screens/03_edit.png" width="1080" height="1920"
-               alt="Edit mode with numbered rows, drag handles and a reshapeable dock" loading="lazy">
+          <img src="assets/img/screens/03_dashboard.png" width="810" height="1440"
+               alt="Dashboard with today's weather, the next calendar events, to-dos, habit streaks and reminders on one page" loading="lazy">
         </figure>
         <figure class="shot">
-          <img src="assets/img/screens/04_customize.png" width="1080" height="1920"
-               alt="Settings screen with the accent colour palette, black or white background and five tile icon styles" loading="lazy">
+          <img src="assets/img/screens/04_sizes.png" width="810" height="1440"
+               alt="Edit mode with the tile size list open, offering seven sizes from half a cell up to a full-width banner" loading="lazy">
         </figure>
         <figure class="shot">
-          <img src="assets/img/screens/05_applist.png" width="1080" height="1920"
-               alt="App list with alphabet jump navigation and monochrome icons" loading="lazy">
+          <img src="assets/img/screens/05_edit.png" width="810" height="1440"
+               alt="Edit mode: numbered rows with drag handles, and badges on the selected tile for colour, icon, size and unpin" loading="lazy">
+        </figure>
+        <figure class="shot">
+          <img src="assets/img/screens/06_colors.png" width="810" height="1440"
+               alt="The custom colour dialog: a saturation square, a hue bar and a hex code field" loading="lazy">
+        </figure>
+        <figure class="shot">
+          <img src="assets/img/screens/07_gallery.png" width="810" height="1440"
+               alt="The photo tile picked out on the home screen, panning slowly across the picture" loading="lazy">
+        </figure>
+        <figure class="shot">
+          <img src="assets/img/screens/08_applist.png" width="810" height="1440"
+               alt="App list with monochrome icons, letter headers and the alphabet rail down the right edge" loading="lazy">
         </figure>
       </div>
     </div>
@@ -102,8 +110,9 @@
           <span class="feature-num">01</span>
           <h3>Square tiles, real information</h3>
           <p>
-            Every tile is a square you can resize and recolour. Apps, shortcuts, weather,
-            your next event, a habit streak — laid out on one predictable grid.
+            Seven tile sizes, from a single icon square to a full-width banner, each one
+            recolourable. Apps, folders, contacts, weather, your next event, a habit
+            streak — laid out on one predictable grid.
           </p>
         </div>
         <div class="feature">
@@ -141,10 +150,11 @@
         </div>
         <div class="feature">
           <span class="feature-num">06</span>
-          <h3>Benchmarked every release</h3>
+          <h3>Measured, not guessed</h3>
           <p>
-            Each build is measured before it ships. If a number moves the wrong way, the
-            next thing I work on is finding what slowed it down — not the next feature.
+            Any release that touches the startup path gets benchmarked on a real phone
+            before it ships. If a number moves the wrong way, the next thing I work on is
+            finding what slowed it down — not the next feature.
           </p>
         </div>
       </div>
@@ -190,8 +200,11 @@
         <span class="eyebrow">Backlog</span>
         <h2>Just landed, and what's next.</h2>
         <p>
-          Shipped in small updates rather than big releases. Keep the app updated — or
-          <a href="#newsletter">subscribe</a> and I'll tell you when each of these lands.
+          Shipped in small updates rather than big releases — four of them in the last two
+          weeks alone, written up in
+          <a href="post.html?slug=four-releases-what-you-asked-for">the release notes</a>.
+          Keep the app updated, or <a href="#newsletter">subscribe</a> and I'll tell you
+          when each of these lands.
         </p>
       </div>
 
@@ -200,34 +213,44 @@
            plain chip = exploring. -->
       <div class="backlog">
         <div class="backlog-item">
-          <span class="chip chip--done">Shipped</span>
-          <h3>Parallax wallpaper behind the tiles</h3>
-          <p>Your wallpaper shifts as you scroll, so the grid sits on top of it instead of hiding it.</p>
+          <span class="chip chip--done">1.4.0</span>
+          <h3>A home screen that's already set up</h3>
+          <p>A fresh install now opens on a working grid — clock, weather, to-dos, dock — instead of an empty screen and an instruction.</p>
         </div>
         <div class="backlog-item">
-          <span class="chip chip--done">Shipped</span>
-          <h3>Rotating gallery tile</h3>
-          <p>A tile that cycles through your photos with a slow Ken Burns pan and zoom.</p>
+          <span class="chip chip--done">1.4.0</span>
+          <h3>Press and hold for a quick menu</h3>
+          <p>Hold an empty spot and four flat tiles unfold under your finger: add a tile, edit, wallpaper, settings.</p>
         </div>
         <div class="backlog-item">
-          <span class="chip chip--done">Shipped</span>
+          <span class="chip chip--done">1.3.4</span>
+          <h3>Readable under any accent</h3>
+          <p>Buttons, pickers and text fields keep their contrast even when the accent is the same colour as the background.</p>
+        </div>
+        <div class="backlog-item">
+          <span class="chip chip--done">1.3.3</span>
+          <h3>Folders and quick contacts</h3>
+          <p>Nine apps in one tile, and a tile that calls or messages one person straight from the grid.</p>
+        </div>
+        <div class="backlog-item">
+          <span class="chip chip--done">1.3.0</span>
           <h3>Custom colour picker</h3>
           <p>Add up to ten colours of your own on top of the built-in accents — the grid is yours to match.</p>
         </div>
         <div class="backlog-item">
           <span class="chip chip--now">In dev</span>
-          <h3>Tile folders</h3>
-          <p>Group related apps into a single tile that expands in place, without leaving the grid.</p>
+          <h3>Icon packs</h3>
+          <p>Point sqTile at an icon pack you already own and let it feed the tiles, alongside the built-in glyph styles.</p>
+        </div>
+        <div class="backlog-item">
+          <span class="chip chip--next">Up next</span>
+          <h3>A full weather screen</h3>
+          <p>Tapping the weather tile should open a proper forecast, not send you to the dashboard.</p>
         </div>
         <div class="backlog-item">
           <span class="chip">Exploring</span>
-          <h3>Multiple home pages</h3>
-          <p>Swipe between separate grids — one for work, one for downtime, one for everything else.</p>
-        </div>
-        <div class="backlog-item">
-          <span class="chip">Exploring</span>
-          <h3>Home screen widget for habits</h3>
-          <p>A streak view that stays visible on any launcher, not just sqTile.</p>
+          <h3>Widgets on the dashboard</h3>
+          <p>Room for the Android widgets you can't replace with a tile — without letting them loose on the grid.</p>
         </div>
       </div>
     </div>

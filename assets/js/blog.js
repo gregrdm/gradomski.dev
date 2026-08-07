@@ -27,7 +27,7 @@ function postCard(post) {
         <div class="empty">
           <h3>Nothing here yet.</h3>
           <p>
-            The first release notes go up when sqTile leaves closed testing.
+            Release notes go up here as sqTile ships.
             <a href="index.html#newsletter">Subscribe</a> and they'll reach you by email too.
           </p>
         </div>`;

@@ -1,3 +1,12 @@
 {
-  "posts": []
+  "posts": [
+    {
+      "slug": "four-releases-what-you-asked-for",
+      "title": "Four releases in six days: what you asked for, and what shipped",
+      "date": "2026-08-07",
+      "tag": "Release",
+      "excerpt": "sqTile went public on 2 August. Six days and four releases later: a colour picker that stopped hiding its own buttons, two crashes with very different levels of certainty, and the release that finally answered \"great launcher, now what?\"",
+      "image": "assets/img/blog/four-releases-cover.png"
+    }
+  ]
 }

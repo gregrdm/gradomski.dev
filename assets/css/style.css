@@ -668,6 +668,20 @@ section[id] { scroll-margin-top: 90px; }
 .prose li { margin: .35rem 0; }
 .prose img { border-radius: var(--radius); border: 1px solid var(--border); margin: 1.5rem 0; }
 
+/* Screenshots in a post. A 9:16 phone shot at the 760px column width would be
+   1350px tall, so `.post-shot` caps it and centres it under its caption. */
+.prose figure { margin: 2.25rem 0; }
+.prose figure img { margin: 0 auto; }
+.post-shot img { max-width: min(320px, 100%); }
+
+.prose figcaption {
+  margin-top: .8rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: .88rem;
+  line-height: 1.5;
+}
+
 .prose blockquote {
   margin: 1.5rem 0;
   padding: .3rem 0 .3rem 1.25rem;
