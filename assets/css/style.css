@@ -364,6 +364,8 @@ section[id] { scroll-margin-top: 90px; }
 
 /* ---------- Screenshot strip ---------- */
 
+.shots-viewport { position: relative; }
+
 .shots {
   display: grid;
   grid-auto-flow: column;
@@ -376,6 +378,46 @@ section[id] { scroll-margin-top: 90px; }
   padding-bottom: 1rem;
   scroll-snap-type: x mandatory;
   scrollbar-width: thin;
+}
+
+/* The row fades out on whichever side still has screenshots on it. A mask, not
+   a gradient overlay: it fades the shots to transparent and lets the page show
+   through, so it needs no colour of its own and is right in both themes. */
+.shots-viewport[data-at="start"] .shots {
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 5rem), transparent);
+  mask-image: linear-gradient(to right, #000 calc(100% - 5rem), transparent);
+}
+.shots-viewport[data-at="middle"] .shots {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 4rem, #000 calc(100% - 5rem), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 4rem, #000 calc(100% - 5rem), transparent);
+}
+.shots-viewport[data-at="end"] .shots {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 4rem);
+  mask-image: linear-gradient(to right, transparent, #000 4rem);
+}
+
+.shots-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  opacity: 1;
+  transition: opacity .2s var(--ease), border-color .18s var(--ease), color .18s var(--ease);
+}
+.shots-nav--prev { left: .5rem; }
+.shots-nav--next { right: .5rem; }
+
+/* Faded out rather than removed, so nothing reflows as you scroll. The script
+   sets `disabled` too, which is what actually takes it out of the tab order —
+   opacity alone would leave an invisible button focusable. */
+.shots-nav:disabled { opacity: 0; pointer-events: none; }
+
+/* Touch scrolls the row by itself, and at this width the buttons would sit on
+   top of the screenshot rather than beside it. */
+@media (max-width: 700px) {
+  .shots-nav { display: none; }
 }
 
 .shot {

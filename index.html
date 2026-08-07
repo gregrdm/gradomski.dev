@@ -51,11 +51,26 @@
   </section>
 
   <!-- ============ Screenshots ============ -->
-  <section class="section" style="padding-top:0" aria-label="Screenshots">
+  <section class="section" style="padding-top:0">
     <div class="wrap">
       <!-- Same promo shots as the Play Store listing; each already carries its own caption.
-           Source set: sqTile/docs/store-screenshots/, downscaled to 810px wide. -->
-      <div class="shots">
+           Source set: sqTile/docs/store-screenshots/, downscaled to 810px wide.
+
+           The row scrolls sideways, which nothing about a static row says out loud:
+           a mouse wheel won't move it and macOS hides the scrollbar until you do.
+           So the arrows are the control and the edge fade is the hint. Both are
+           driven by data-at, set by the script at the bottom of this file. -->
+      <div class="shots-viewport" data-shots data-at="start">
+        <!-- Both start disabled, so without JavaScript they stay invisible instead of
+             sitting there doing nothing; the fade and native scrolling still work.
+             The script's first measurement enables whichever one has somewhere to go. -->
+        <button class="icon-btn shots-nav shots-nav--prev" type="button" aria-label="Previous screenshots" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 5-7 7 7 7"/></svg>
+        </button>
+        <button class="icon-btn shots-nav shots-nav--next" type="button" aria-label="More screenshots" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>
+        </button>
+        <div class="shots" tabindex="0" role="region" aria-label="Screenshots">
         <figure class="shot">
           <img src="assets/img/screens/01_home.png" width="810" height="1440"
                alt="Home screen of live tiles: clock, weather, to-do count and a habit strip above a row of app icons, a photo tile, a folder, two quick-contact tiles and a reminder" loading="lazy">
@@ -88,6 +103,7 @@
           <img src="assets/img/screens/08_applist.png" width="810" height="1440"
                alt="App list with monochrome icons, letter headers and the alphabet rail down the right edge" loading="lazy">
         </figure>
+        </div>
       </div>
     </div>
   </section>
@@ -298,5 +314,51 @@
 <div id="site-footer"></div>
 
 <script src="assets/js/site.js"></script>
+<script>
+  /*
+    Screenshot row. `data-at` on the viewport drives the edge fade; the arrows
+    are disabled at the ends. Both come from one measurement so they can never
+    disagree — a visible fade with a dead arrow under it is worse than neither.
+  */
+  (function initShots() {
+    const viewport = document.querySelector("[data-shots]");
+    if (!viewport) return;
+
+    const rail = viewport.querySelector(".shots");
+    const prev = viewport.querySelector(".shots-nav--prev");
+    const next = viewport.querySelector(".shots-nav--next");
+    const smooth = matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+
+    function update() {
+      // Fractional layout means scrollLeft never lands exactly on 0 or on max,
+      // so both ends need a pixel of slack or the last arrow never switches off.
+      const max = rail.scrollWidth - rail.clientWidth;
+      const atStart = rail.scrollLeft <= 1;
+      const atEnd = rail.scrollLeft >= max - 1;
+
+      viewport.dataset.at = max <= 1 ? "none" : atStart ? "start" : atEnd ? "end" : "middle";
+      prev.disabled = max <= 1 || atStart;
+      next.disabled = max <= 1 || atEnd;
+    }
+
+    function page(direction) {
+      const shot = rail.querySelector(".shot");
+      const gap = parseFloat(getComputedStyle(rail).columnGap) || 0;
+      const step = shot ? shot.getBoundingClientRect().width + gap : rail.clientWidth;
+      // Whole screenshots at a time, so the scroll snap always has somewhere
+      // clean to land. At least one, however narrow the window gets.
+      const count = Math.max(1, Math.floor(rail.clientWidth / step));
+      rail.scrollBy({ left: direction * step * count, behavior: smooth });
+    }
+
+    prev.addEventListener("click", () => page(-1));
+    next.addEventListener("click", () => page(1));
+    rail.addEventListener("scroll", update, { passive: true });
+    addEventListener("resize", update);
+    // The shots are lazy-loaded, but width/height on each tag reserves the
+    // space up front, so scrollWidth is already right on the first measurement.
+    update();
+  })();
+</script>
 </body>
 </html>
