@@ -60,6 +60,42 @@ So:
   load from jsDelivr are gone with the client-side post rendering. `privacy.html` says so;
   if you ever add an embed or a web font, that section stops being true.
 
+## The social preview image
+
+`assets/img/og-cover.png` (1200×630) is what `og:image` points at. It is **generated from
+`assets/img/og-cover.svg`**, which stays in the repo as the source — edit the SVG, then
+re-render.
+
+It has to be a raster. LinkedIn, X and Facebook do not render SVG in a preview card, so
+pointing `og:image` at the `.svg` gets you a blank card on all three.
+
+To re-render after editing the SVG, with Chromium and Node:
+
+```bash
+npm i playwright
+node -e '
+const { chromium } = require("playwright");
+const svg = require("fs").readFileSync("assets/img/og-cover.svg", "utf8")
+  .replace(/system-ui,sans-serif/g, "Liberation Sans, Arial, Helvetica, sans-serif");
+(async () => {
+  const b = await chromium.launch();
+  const p = await b.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 });
+  await p.setContent(`<style>html,body{margin:0}svg{display:block}</style>${svg}`);
+  await p.evaluate(() => document.fonts.ready);
+  await p.screenshot({ path: "assets/img/og-cover.png" });
+  await b.close();
+})();'
+```
+
+The font substitution matters: the SVG asks for `system-ui`, which is right in a browser
+but resolves to whatever the rendering machine happens to have. Pinning it to an
+Arial-metric face keeps the PNG looking like the site's own fallback rather than like the
+build box.
+
+Each page also declares `og:image:width`, `og:image:height`, `og:image:type` and
+`og:image:alt`. The dimensions let a scraper reserve the right space before it has fetched
+the file; keep them true if you change an image.
+
 The copyright year in the footer is hardcoded (`© 2026`) since the footer is no longer
 generated. Six files to bump each January.
 
@@ -143,9 +179,6 @@ sync if you change provider.
 
 - **Reviews** — the section in `index.html` is commented out; it holds placeholder quotes.
   Swap in real Play Store reviews and remove the comment wrapper to bring it back.
-- **`og:image` is an SVG.** LinkedIn, X and Facebook do not render SVG in a preview card,
-  so the card comes up blank on all three. Export `assets/img/og-cover.svg` to a 1200×630
-  PNG and point the `og:image` tags at it.
 
 ## Theme
 
