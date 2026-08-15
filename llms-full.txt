@@ -1,3 +1,179 @@
+# gradomski.dev — full text
+
+> Everything on this site as one plain-text document: the landing page, the
+> about page, and every changelog post in full. The linked index is at
+> https://www.gradomski.dev/llms.txt
+
+Site: https://www.gradomski.dev/
+Author: Grzegorz Radomski — Android engineer, Senior Software Engineer at Allegro
+Publisher: Grzegorz Radomski TECH, ul. Pawia 10B/1, 08-825 Adamowizna, Poland
+Contact: contact@gradomski.dev
+Last assembled: 9 August 2026
+
+---
+
+# Landing page — sqTile Launcher
+
+Source: https://www.gradomski.dev/
+
+## Your home screen, squared away.
+
+sqTile is a local-first Android launcher built around square tiles. Your
+calendar, reminders, habits and unread badges live on one calm grid — and none
+of it goes to a server of mine.
+
+- Local-first — no backend, no account
+- No ads, no tracking SDKs
+- Free, with a one-time Pro unlock
+- Android 8.0 and newer
+- Available in English, Polish, German, Italian and Ukrainian
+- Install: https://play.google.com/store/apps/details?id=dev.gradomski.sqtilelauncher
+
+## The project: a launcher that does the small things properly.
+
+Most launchers are either a wall of icons or a subscription with a dashboard.
+sqTile sits in between: a tidy grid that actually tells you something, and
+nothing that phones home.
+
+01. **Square tiles, real information.** Seven tile sizes, from a single icon
+    square to a full-width banner, each one recolourable. Apps, folders,
+    contacts, weather, your next event, a habit streak — laid out on one
+    predictable grid.
+
+02. **Badges that come from your notifications.** Grant notification access and
+    tiles show unread counts. Notification content is read for the badge and
+    never stored or transmitted.
+
+03. **To-dos, reminders and habits built in.** Capture something from the home
+    screen and it schedules an on-device reminder. No second app, no sync
+    service, no sign-up.
+
+04. **Local-first by architecture.** There is no server of mine to send your
+    data to. Layout, tasks and settings live in the app's private storage; back
+    them up to a file you control.
+
+05. **Every dependency has to earn its place.** Libraries get picked for what
+    they cost in download size and RAM, not for convenience. A launcher runs all
+    day — it has no business being the heaviest thing on your phone.
+
+06. **Measured, not guessed.** Any release that touches the startup path gets
+    benchmarked on a real phone before it ships. If a number moves the wrong
+    way, the next thing I work on is finding what slowed it down — not the next
+    feature.
+
+## Who it's for: built for people who want their phone to be quiet.
+
+sqTile is not trying to be every launcher for everyone. It's aimed at a specific
+kind of user — and everything on the backlog is judged against that.
+
+- **The intentional phone user.** Wants a home screen that shows what matters
+  today, not 40 icons and a news feed.
+- **The privacy-minded.** Reads permission lists. Prefers on-device processing
+  and no account over convenience.
+- **Tinkerers & customisers.** Enjoys arranging a grid until it's exactly right,
+  and wants export/import to keep it.
+- **Light task-manager users.** Needs to-dos, reminders and habits close at hand
+  — without adopting a whole system.
+
+## Backlog: just landed, and what's next.
+
+Shipped in small updates rather than big releases — four of them in the last two
+weeks alone, written up in the release notes below.
+
+Shipped:
+
+- **1.4.0 — A home screen that's already set up.** A fresh install now opens on a
+  working grid — clock, weather, to-dos, dock — instead of an empty screen and an
+  instruction.
+- **1.4.0 — Press and hold for a quick menu.** Hold an empty spot and four flat
+  tiles unfold under your finger: add a tile, edit, wallpaper, settings.
+- **1.3.4 — Readable under any accent.** Buttons, pickers and text fields keep
+  their contrast even when the accent is the same colour as the background.
+- **1.3.3 — Folders and quick contacts.** Nine apps in one tile, and a tile that
+  calls or messages one person straight from the grid.
+- **1.3.0 — Custom colour picker.** Add up to ten colours of your own on top of
+  the built-in accents — the grid is yours to match.
+
+In development:
+
+- **Icon packs.** Point sqTile at an icon pack you already own and let it feed
+  the tiles, alongside the built-in glyph styles.
+
+Up next:
+
+- **A full weather screen.** Tapping the weather tile should open a proper
+  forecast, not send you to the dashboard.
+
+Exploring:
+
+- **Widgets on the dashboard.** Room for the Android widgets you can't replace
+  with a tile — without letting them loose on the grid.
+
+---
+
+# About & contact
+
+Source: https://www.gradomski.dev/contact.html
+
+## Hi, I'm Grzegorz.
+
+Android engineer, nine years in. Senior Software Engineer at **Allegro** by day;
+before that senior and then lead engineer at **Centralny Ośrodek Informatyki**,
+and Android work in Warsaw and Zurich before that.
+
+The day job is the large end of the craft — big codebases, big teams, and a lot
+of people depending on the thing not breaking. **sqTile Launcher** is the other
+end: a local-first home screen I design, build, ship and support on my own, where
+every call is mine and I live with the consequences. Doing both keeps each one
+honest — the scale teaches discipline, the solo work keeps the standards from
+becoming somebody else's problem.
+
+What I care about is the part people actually feel: how fast it opens, how little
+it asks for, how long it keeps working without maintenance. That shows up as a
+short permission list, no accounts, and no analytics SDK following you around. I
+ship in small updates and write down what changed.
+
+sqTile is built under **Grzegorz Radomski TECH**. If you want to talk about a
+project, a bug, or just how something works — email is the fastest way to reach
+me.
+
+## Timeline
+
+- **2019 — now: Software engineer.** Seven years across product teams in Warsaw
+  and Zurich — and sqTile on my own time.
+- **2018 — 2019: Data analyst.** A year back with data before returning to
+  engineering for good.
+- **2017: Software engineer.** Six months that turned a side interest into the
+  job.
+- **2009 — 2017: Data analyst.** Eight years of reading data for a living — where
+  the habit of measuring things started.
+
+## Elsewhere
+
+- GitHub: https://github.com/gregrdm (@gregrdm)
+- LinkedIn: https://www.linkedin.com/in/grzegorz-radomski/
+- Email: contact@gradomski.dev
+
+---
+
+# Changelog
+
+Source: https://www.gradomski.dev/blog.html
+
+Release notes and short build-log entries. No comments, no reactions.
+
+---
+
+## Four releases in six days: what you asked for, and what shipped
+
+Published: 7 August 2026 · Tag: Release
+Source: https://www.gradomski.dev/posts/four-releases-what-you-asked-for.html
+Markdown: https://www.gradomski.dev/posts/four-releases-what-you-asked-for.md
+
+sqTile went public on 2 August. Six days and four releases later: a colour picker
+that stopped hiding its own buttons, two crashes with very different levels of
+certainty, and the release that finally answered "great launcher, now what?"
+
 On 2 August, Google finally let sqTile onto the production channel. Six days later
 there had been four releases: **1.3.4, 1.3.5, 1.4.0 and 1.4.1**.
 
@@ -198,3 +374,7 @@ something you need is not on it, tell me — that has changed the order more tha
 sqTile is on [Google Play](https://play.google.com/store/apps/details?id=dev.gradomski.sqtilelauncher),
 in English, Polish, German, Italian and Ukrainian. Free, with a single one-time Pro
 unlock and no subscription. No ads, no analytics SDK, no account.
+
+---
+
+End of file. Index: https://www.gradomski.dev/llms.txt

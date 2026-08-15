@@ -3,37 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Post — gradomski.dev</title>
-<meta name="description" content="A post from the gradomski.dev changelog.">
+<title>Redirecting — gradomski.dev</title>
+<meta name="description" content="Posts have moved to their own pages under /posts/. This page forwards the old ?slug= links.">
+<!-- Posts used to be rendered here from Markdown at ?slug=…, which meant the
+     page was empty for anything that does not run JavaScript. They are static
+     pages under /posts/ now. This shim only exists to forward links that were
+     shared or indexed before the move; it should never be indexed itself. -->
+<meta name="robots" content="noindex, follow">
 <link rel="icon" href="assets/img/favicon.svg">
 <link rel="stylesheet" href="assets/css/style.css">
 <script>
   try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "dark"; } catch (e) {}
+
+  // Slugs are filenames, so anything that is not a plain filename is not a post
+  // we have — send those to the index rather than building a path out of them.
+  (function forward() {
+    const slug = new URLSearchParams(location.search).get("slug") || "";
+    const safe = /^[a-z0-9-]+$/i.test(slug);
+    location.replace(safe ? `posts/${slug}.html` : "blog.html");
+  })();
 </script>
 </head>
 <body data-page="post">
 
-<div id="site-header"></div>
-
 <main id="main">
-  <article class="wrap wrap--narrow">
-    <header class="post-header" id="post-header">
-      <p class="loading">Loading…</p>
-    </header>
-    <div class="prose" id="post-body"></div>
-    <nav class="post-nav">
-      <a href="blog.html">← All posts</a>
-      <a href="index.html#newsletter">Get these by email →</a>
-    </nav>
-  </article>
-  <div style="height:var(--section-y)"></div>
+  <section class="section">
+    <div class="wrap wrap--narrow">
+      <h1>This post has moved.</h1>
+      <p class="lead">
+        Posts now live at their own addresses under <code>/posts/</code>.
+        <a href="blog.html">All posts</a> lists them.
+      </p>
+    </div>
+  </section>
 </main>
 
-<div id="site-footer"></div>
-
-<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
-<script src="assets/js/site.js"></script>
-<script src="assets/js/post.js"></script>
 </body>
 </html>
