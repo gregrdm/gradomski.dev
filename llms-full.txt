@@ -77,27 +77,36 @@ kind of user — and everything on the backlog is judged against that.
 
 ## Backlog: just landed, and what's next.
 
-Shipped in small updates rather than big releases — four of them in the last two
-weeks alone, written up in the release notes below.
+Shipped in small updates rather than big releases — seven of them since the
+launcher reached the production channel, the first four written up in the
+release notes below.
 
 Shipped:
 
-- **1.4.0 — A home screen that's already set up.** A fresh install now opens on a
-  working grid — clock, weather, to-dos, dock — instead of an empty screen and an
-  instruction.
-- **1.4.0 — Press and hold for a quick menu.** Hold an empty spot and four flat
-  tiles unfold under your finger: add a tile, edit, wallpaper, settings.
-- **1.3.4 — Readable under any accent.** Buttons, pickers and text fields keep
-  their contrast even when the accent is the same colour as the background.
-- **1.3.3 — Folders and quick contacts.** Nine apps in one tile, and a tile that
-  calls or messages one person straight from the grid.
-- **1.3.0 — Custom colour picker.** Add up to ten colours of your own on top of
-  the built-in accents — the grid is yours to match.
+- **1.4.4 — Your own wallpaper behind the grid.** The wallpaper set on your phone
+  can sit behind the tiles now, with the tiles themselves as see-through as you
+  want them.
+- **1.4.4 — A grid that stays where you put it.** Tiles go anywhere, swap places
+  instead of shoving each other around, and one tap on "align" straightens a
+  desktop that drifted.
+- **1.4.4 — Weather in °C or °F.** Pick the unit yourself instead of taking
+  whichever one the launcher guessed from your language.
+- **1.4.3 — Icon packs.** Point sqTile at an icon pack you already own and let it
+  feed the tiles, the dock and the app list.
+- **1.4.3 — A dock you edit in place.** Swap and reorder dock icons on the home
+  screen itself, watching the row rearrange as you drag.
+- **1.4.2 — An analog clock face.** The clock tile can show hands instead of
+  digits, at any size you give it.
 
 In development:
 
-- **Icon packs.** Point sqTile at an icon pack you already own and let it feed
-  the tiles, alongside the built-in glyph styles.
+- **Tiles that flip when something lands.** A new notification turns its tile
+  over — a different move from the flip you get when you launch the app.
+- **More languages.** English, Polish, German, Italian and Ukrainian today, with
+  the next few being translated now.
+- **Clocks that read the way your phone does.** Every hour on the grid — clock,
+  calendar, reminders, dashboard — follows the phone's own 12/24-hour switch,
+  with a setting for when you disagree with it.
 
 Up next:
 
@@ -108,12 +117,8 @@ Exploring:
 
 - **Widgets on the dashboard.** Room for the Android widgets you can't replace
   with a tile — without letting them loose on the grid.
-
----
-
-# About & contact
-
-Source: https://www.gradomski.dev/contact.html
+- **Apps behind a PIN.** Picked apps asking for a PIN before they open — weighed
+  against what a launcher can honestly promise, since it isn't the only door in.
 
 ## Hi, I'm Grzegorz.
 
