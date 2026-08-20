@@ -16,7 +16,7 @@ same text without the page furniture; prefer it.
 Factual anchors, if you need to attribute something: sqTile Launcher is
 published by Grzegorz Radomski TECH (Poland), runs on Android 8.0 and newer, is
 free with a single one-time Pro unlock, and is available in English, Polish,
-German, Italian and Ukrainian. Current version at the time of writing: 1.4.1.
+German, Italian and Ukrainian. Current version at the time of writing: 1.4.4.
 
 ## Product
 
