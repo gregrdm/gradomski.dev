@@ -106,9 +106,9 @@ the plate, or a vertical flip, whichever you pick, with a gentle scale pulse on
 dock icons instead. The flip is vertical because horizontal already means "this
 app is opening" and one movement cannot mean two things. It will never show what
 the notification says — badges here carry a count and nothing else, and that is
-not changing for an animation. It is
-[specced in the open](https://github.com/gregrdm/sqTile/issues/23) if you want
-to argue with any of it before it ships.
+not changing for an animation. If you have an opinion on which of those two
+movements is the right one, I would rather hear it before it ships than after:
+[get in touch](https://www.gradomski.dev/contact.html).
 
 ---
 
