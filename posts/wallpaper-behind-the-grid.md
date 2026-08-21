@@ -129,6 +129,11 @@ Compose/AGP/Kotlin version bump, no features, the kind of release that
 doesn't get its own post. After that, 1.5.0 opens features back up again,
 starting with locking the app behind a PIN.
 
+*Correction, 21 August: it did not stay boring. A 12/24-hour clock setting went
+in on top of the toolchain bump, so 1.4.5 got
+[its own post](https://www.gradomski.dev/posts/the-clock-stops-guessing.html)
+after all.*
+
 ---
 
 sqTile is on [Google Play](https://play.google.com/store/apps/details?id=dev.gradomski.sqtilelauncher),
