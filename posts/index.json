@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "wallpaper-behind-the-grid",
+      "title": "The launcher stops hiding your wallpaper",
+      "date": "2026-08-15",
+      "tag": "Release",
+      "excerpt": "1.4.4 puts your system wallpaper behind the grid, adds live slider previews and finishes the row model with Align."
+    },
+    {
+      "slug": "icon-packs-and-a-grid-that-behaves",
+      "title": "Icon packs, a dock you can finally edit, and a grid that behaves",
+      "date": "2026-08-13",
+      "tag": "Release",
+      "excerpt": "Icon packs across the launcher, direct dock editing, and a grid that swaps and shifts tiles without surprise cascades."
+    },
+    {
       "slug": "four-releases-what-you-asked-for",
       "title": "Four releases in six days: what you asked for, and what shipped",
       "date": "2026-08-07",
