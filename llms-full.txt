@@ -1,0 +1,689 @@
+# gradomski.dev — full text
+
+> Everything on this site as one plain-text document: the landing page, the
+> about page, and every changelog post in full. The linked index is at
+> https://www.gradomski.dev/llms.txt
+
+Site: https://www.gradomski.dev/
+Author: Grzegorz Radomski — Android engineer, Senior Software Engineer at Allegro
+Publisher: Grzegorz Radomski TECH, ul. Pawia 10B/1, 08-825 Adamowizna, Poland
+Contact: contact@gradomski.dev
+Last assembled: 21 August 2026
+
+---
+
+# Landing page — sqTile Launcher
+
+Source: https://www.gradomski.dev/
+
+## Your home screen, squared away.
+
+sqTile is a local-first Android launcher built around square tiles. Your
+calendar, reminders, habits and unread badges live on one calm grid — and none
+of it goes to a server of mine.
+
+- Local-first — no backend, no account
+- No ads, no tracking SDKs
+- Free, with a one-time Pro unlock
+- Android 8.0 and newer
+- Available in English, Polish, German, Italian and Ukrainian
+- Install: https://play.google.com/store/apps/details?id=dev.gradomski.sqtilelauncher
+
+## The project: a launcher that does the small things properly.
+
+Most launchers are either a wall of icons or a subscription with a dashboard.
+sqTile sits in between: a tidy grid that actually tells you something, and
+nothing that phones home.
+
+01. **Square tiles, real information.** Seven tile sizes, from a single icon
+    square to a full-width banner, each one recolourable. Apps, folders,
+    contacts, weather, your next event, a habit streak — laid out on one
+    predictable grid.
+
+02. **Badges that come from your notifications.** Grant notification access and
+    tiles show unread counts. Notification content is read for the badge and
+    never stored or transmitted.
+
+03. **To-dos, reminders and habits built in.** Capture something from the home
+    screen and it schedules an on-device reminder. No second app, no sync
+    service, no sign-up.
+
+04. **Local-first by architecture.** There is no server of mine to send your
+    data to. Layout, tasks and settings live in the app's private storage; back
+    them up to a file you control.
+
+05. **Every dependency has to earn its place.** Libraries get picked for what
+    they cost in download size and RAM, not for convenience. A launcher runs all
+    day — it has no business being the heaviest thing on your phone.
+
+06. **Measured, not guessed.** Any release that touches the startup path gets
+    benchmarked on a real phone before it ships. If a number moves the wrong
+    way, the next thing I work on is finding what slowed it down — not the next
+    feature.
+
+## Who it's for: built for people who want their phone to be quiet.
+
+sqTile is not trying to be every launcher for everyone. It's aimed at a specific
+kind of user — and everything on the backlog is judged against that.
+
+- **The intentional phone user.** Wants a home screen that shows what matters
+  today, not 40 icons and a news feed.
+- **The privacy-minded.** Reads permission lists. Prefers on-device processing
+  and no account over convenience.
+- **Tinkerers & customisers.** Enjoys arranging a grid until it's exactly right,
+  and wants export/import to keep it.
+- **Light task-manager users.** Needs to-dos, reminders and habits close at hand
+  — without adopting a whole system.
+
+## Backlog: just landed, and what's next.
+
+Shipped in small updates rather than big releases — seven of them since the
+launcher reached the production channel, the first four written up in the
+release notes below.
+
+Shipped:
+
+- **1.4.4 — Your own wallpaper behind the grid.** The wallpaper set on your phone
+  can sit behind the tiles now, with the tiles themselves as see-through as you
+  want them.
+- **1.4.4 — A grid that stays where you put it.** Tiles go anywhere, swap places
+  instead of shoving each other around, and one tap on "align" straightens a
+  desktop that drifted.
+- **1.4.4 — Weather in °C or °F.** Pick the unit yourself instead of taking
+  whichever one the launcher guessed from your language.
+- **1.4.3 — Icon packs.** Point sqTile at an icon pack you already own and let it
+  feed the tiles, the dock and the app list.
+- **1.4.3 — A dock you edit in place.** Swap and reorder dock icons on the home
+  screen itself, watching the row rearrange as you drag.
+- **1.4.2 — An analog clock face.** The clock tile can show hands instead of
+  digits, at any size you give it.
+
+In development:
+
+- **Tiles that flip when something lands.** A new notification turns its tile
+  over — a different move from the flip you get when you launch the app.
+- **More languages.** English, Polish, German, Italian and Ukrainian today, with
+  the next few being translated now.
+- **Clocks that read the way your phone does.** Every hour on the grid — clock,
+  calendar, reminders, dashboard — follows the phone's own 12/24-hour switch,
+  with a setting for when you disagree with it.
+
+Up next:
+
+- **A full weather screen.** Tapping the weather tile should open a proper
+  forecast, not send you to the dashboard.
+
+Exploring:
+
+- **Widgets on the dashboard.** Room for the Android widgets you can't replace
+  with a tile — without letting them loose on the grid.
+- **Apps behind a PIN.** Picked apps asking for a PIN before they open — weighed
+  against what a launcher can honestly promise, since it isn't the only door in.
+
+## Hi, I'm Grzegorz.
+
+Android engineer, nine years in. Senior Software Engineer at **Allegro** by day;
+before that senior and then lead engineer at **Centralny Ośrodek Informatyki**,
+and Android work in Warsaw and Zurich before that.
+
+The day job is the large end of the craft — big codebases, big teams, and a lot
+of people depending on the thing not breaking. **sqTile Launcher** is the other
+end: a local-first home screen I design, build, ship and support on my own, where
+every call is mine and I live with the consequences. Doing both keeps each one
+honest — the scale teaches discipline, the solo work keeps the standards from
+becoming somebody else's problem.
+
+What I care about is the part people actually feel: how fast it opens, how little
+it asks for, how long it keeps working without maintenance. That shows up as a
+short permission list, no accounts, and no analytics SDK following you around. I
+ship in small updates and write down what changed.
+
+sqTile is built under **Grzegorz Radomski TECH**. If you want to talk about a
+project, a bug, or just how something works — email is the fastest way to reach
+me.
+
+## Timeline
+
+- **2019 — now: Software engineer.** Seven years across product teams in Warsaw
+  and Zurich — and sqTile on my own time.
+- **2018 — 2019: Data analyst.** A year back with data before returning to
+  engineering for good.
+- **2017: Software engineer.** Six months that turned a side interest into the
+  job.
+- **2009 — 2017: Data analyst.** Eight years of reading data for a living — where
+  the habit of measuring things started.
+
+## Elsewhere
+
+- GitHub: https://github.com/gregrdm (@gregrdm)
+- LinkedIn: https://www.linkedin.com/in/grzegorz-radomski/
+- Email: contact@gradomski.dev
+
+---
+
+# Changelog
+
+Source: https://www.gradomski.dev/blog.html
+
+Release notes and short build-log entries. No comments, no reactions.
+
+---
+
+## Four releases in six days: what you asked for, and what shipped
+
+Published: 7 August 2026 · Tag: Release
+Source: https://www.gradomski.dev/posts/four-releases-what-you-asked-for.html
+Markdown: https://www.gradomski.dev/posts/four-releases-what-you-asked-for.md
+
+sqTile went public on 2 August. Six days and four releases later: a colour picker
+that stopped hiding its own buttons, two crashes with very different levels of
+certainty, and the release that finally answered "great launcher, now what?"
+
+On 2 August, Google finally let sqTile onto the production channel. Six days later
+there had been four releases: **1.3.4, 1.3.5, 1.4.0 and 1.4.1**.
+
+That is not a plan. That is what happens when an app stops being tested by eighteen
+friends and starts being used by strangers, on phones I have never held, in languages
+I do not speak, with apps installed that I have never heard of.
+
+Here is what people said, and what I did about it.
+
+## "I want my own colours, not your twenty"
+
+Fair. The Windows Phone palette is beautiful and it is also somebody else's taste. If
+your brand colour, your car, your favourite mug is a shade that Microsoft did not ship
+in 2012, the grid could never match it.
+
+So, with **1.3.0**, a full colour picker: a saturation square, a hue bar, and a hex
+field you can type into. Pick a colour, save it, and it sits on the shelf next to the
+built-in accents — up to ten of your own. The picker lives in three places (the global
+accent, the per-tile colour badge, and the wallpaper icon accent), and it is the same
+panel in all three.
+
+<figure class="post-shot">
+  <img src="https://www.gradomski.dev/assets/img/screens/06_colors.png" alt="The custom colour dialog: a saturation square, a hue bar and a hex code field showing #1C3454" loading="lazy">
+  <figcaption>Hue survives a trip through pure black and pure white — the classic colour-picker bug, closed by keeping the state in HSV rather than ARGB.</figcaption>
+</figure>
+
+Then somebody set their accent to pure white, on a white background, and watched the
+**OK** and **Cancel** buttons disappear.
+
+## "Your dialogs vanish when I pick white"
+
+They did. That was reported on 2 August, the day the app went public, and it was
+correct: Material paints a text button with the accent colour, and an accent equal to
+the background is a button painted in the colour of the thing behind it.
+
+The tempting fix is to special-case white. **1.3.4** did the boring thing instead and
+went looking for every place the same assumption was hiding:
+
+- 17 buttons across 10 dialogs now take a neutral grey instead of the accent.
+- The date and time pickers keep the accent only where it *means* something — the
+  selected day, the "today" ring, the clock hand — and route it through a helper that
+  cannot resolve to the background colour.
+- Text fields were rebuilt with a hard square Windows Phone frame: grey at rest,
+  accent on focus. Inside the field there is no accent at all, so the text carries its
+  own contrast.
+
+That last one turned up a bug that had nothing to do with white: the folder rename
+field sits on an accent-coloured plate, so its cursor was accent-on-accent. Invisible.
+Always. At every colour anyone had ever picked.
+
+## "It crashed on startup"
+
+Two separate crashes, and I want to be honest about the difference between them,
+because it is not the same kind of honest.
+
+**1.3.5** chased a `database is locked` crash at launch. Cold start was subscribing to
+ten database queries at once; Room runs those on a pool of four threads; four threads
+all asking to open the same database file do writes on the way in, and one of them
+loses the race. The fix pins every query to a single thread — one thread, one
+connection, nothing to race. Four of those queries also turned out to be running twice
+for no reason, so the count went from ten to six on the way past.
+
+What I could not do was reproduce it. Ten runs on the old code, ten clean. So the fix
+removes the mechanism the stack trace points at, and it cost nothing at startup
+(184.8 ms → 184.3 ms, measured on the same phone the same afternoon) — but "probably"
+is the honest word, and Crashlytics gets the final say.
+
+**1.4.1** is the opposite: fully understood, reproduced in a test.
+
+One user's launcher crashed every single time they opened the app list. Not randomly —
+every time. The cause was the name of an app they had installed. If a name begins with
+a character the sorting rules ignore completely — a bidi mark, a zero-width space, a
+soft hyphen — the app sorts by the rest of its name and lands in the middle of the
+list, while the header logic still files it under `#`. Two `#` headers in one list, two
+identical keys, and the list throws during measurement, somewhere no screen can catch
+it.
+
+The same bug was sitting on accents, quietly: `Äpfel` sorts between `Apple` and
+`Avast`, which gave you two `A` headers. The fix stopped scanning the sorted list and
+started bucketing it, so a letter can only produce one header no matter what the
+collator does with it. That code had been untouched since the very first version of the
+app — it shipped broken in every release sqTile has ever had.
+
+One user in Crashlytics. For that one user, the launcher was unusable.
+
+## "Great launcher. I have no idea what to do with it."
+
+This was the one that stung, because more than one tester said it, in slightly
+different words, without talking to each other. That is the point where it stops being
+an opinion and starts being a fact about the app.
+
+Four symptoms, all real: nobody discovered the long-press, everyone got lost in edit
+mode, nobody knew the special tiles existed, and the badges in the corners of a
+selected tile meant nothing to anyone.
+
+**1.4.0** answers all four.
+
+**A fresh install now opens on a working home screen.** Clock, weather, to-dos, the
+store, settings, and a dock with your dialer, messages, browser and camera already in
+it. This is the biggest lever in the whole release, because it changes the first task
+from "build something out of nothing" into "change the thing you can see" — and those
+are not the same job. It also means you *see* that tiles other than app icons exist,
+which no amount of instruction text ever achieved.
+
+Getting there was less glamorous than it sounds: the launcher has to resolve which app
+is actually your dialer, and on Android 11 and up it can only see apps it has declared
+an interest in. Verified on three ROMs, including a ColorOS phone on Android 11, which
+is exactly where that would have quietly failed.
+
+**Press and hold an empty spot and you get a menu.** Four flat tiles — add a tile,
+edit, wallpaper, settings — unfolding radially from wherever your finger is, then
+settling into a square block. Every other Android launcher answers a long-press with a
+menu. sqTile answered it by dumping you into an unnamed edit mode. People arrived with
+a working mental model and the app refused to honour it.
+
+**Edit mode says what it is.** The bar grew from one row to two: a line of plain
+language on top, and underneath it four equal chips with an icon over a label — add,
+undo, settings, done. It used to be a labelled chip, a bare circle and a text button
+sharing a row, and the bare circle was the only way to add a tile. Nobody recognised
+it. The first time you select a tile, its four corner badges now animate in one at a
+time, which walks your eye into each corner far better than any sentence naming them
+could.
+
+<figure class="post-shot">
+  <img src="https://www.gradomski.dev/assets/img/screens/2026_07_25_drag_drop.gif" alt="A tile being dragged across the grid in edit mode while the other tiles move out of the way" loading="lazy">
+  <figcaption>Edit mode, mid-drag. Holes are allowed and nothing auto-packs — where you drop a tile is where it stays.</figcaption>
+</figure>
+
+**Three flat dashes under the status bar** tell you there are three pages, and which
+one you are on. Nothing in the app had ever said so. Worse, the old first-run hint
+paired a swipe-right pictogram with text about the app list *and* the same pictogram
+with text about the dashboard — one of those was wrong, in five languages, since
+launch. The fix was to stop naming directions in words at all.
+
+None of this is a feature you can put on a store listing. All of it is the difference
+between somebody keeping the launcher and somebody uninstalling it on day one.
+
+## "So when do you start nagging me for a rating?"
+
+You will get asked at most three times, ever, and only if the app has actually been
+useful to you.
+
+There is no "do you like sqTile?" dialog, because Google's own guidelines forbid
+pre-prompts — and a mood check that filters out unhappy people is exactly the sort of
+thing that makes store ratings worthless. Instead the app keeps a score: one point for
+a to-do you ticked off, two for a habit day you completed, two for a reminder you
+finished from its notification. Three points a day, maximum, so one productive Tuesday
+does not look like a week of use.
+
+Ask number one needs eight points, four separate active days, a week since install, and
+sqTile actually being your home screen. The next ask costs twice as much and fourteen
+days of silence. After three, never again.
+
+<figure class="post-shot">
+  <img src="https://www.gradomski.dev/assets/img/screens/03_dashboard.png" alt="Dashboard with today's weather, the next calendar events, to-dos, habit streaks and reminders on one page" loading="lazy">
+  <figcaption>The dashboard: where those points come from, and the reason the ask fires here and nowhere else.</figcaption>
+</figure>
+
+## Thank you
+
+Seriously. This release run exists because of people who did unpaid work on my app.
+
+To the **eighteen closed testers** who used it daily for two weeks and answered my
+"what did you actually do in the app today?" messages honestly rather than kindly — the
+seeded home screen, the long-press menu and the readable edit bar are all yours. I had
+a strong opinion about that entry barrier. You were right and I was wrong.
+
+To whoever set their accent to white on 2 August and told me instead of shrugging.
+To the person whose app list crashed every time, whose crash report carried enough
+detail to find a bug that had been in the app since day one.
+
+And to the tester on a Pixel who reported the same bug twice. A notification badge
+that refused to go back to zero looked fixed in 1.2.4; it wasn't, and rather than
+give up they came back and told me the count stayed stuck *no matter which counting
+mode they picked*. That one detail killed two of my three theories in a sentence and
+left the real one: Android had quietly killed the listener binding without telling
+the app, so sqTile kept serving numbers from a connection that no longer existed.
+1.3.0 taught it to notice that and reconnect. **Confirmed clear on their phone.**
+
+A bug report that comes back a second time is worth ten that stop after the first
+reply.
+
+And to everyone who installed this thing, set it as their home screen, and let a
+one-person launcher run their phone all day. That is a lot of trust for version 1.4.
+
+## What's next
+
+**Icon packs** are in development — point sqTile at a pack you already own and let it
+feed the tiles. After that, a **full weather screen**, because tapping the weather tile
+and landing on the dashboard has never been the right answer. **Widgets on the
+dashboard** are still a question mark rather than a promise.
+
+The [backlog](https://www.gradomski.dev/index.html#backlog) is on the front page and I keep it current. If
+something you need is not on it, tell me — that has changed the order more than once.
+
+---
+
+sqTile is on [Google Play](https://play.google.com/store/apps/details?id=dev.gradomski.sqtilelauncher),
+in English, Polish, German, Italian and Ukrainian. Free, with a single one-time Pro
+unlock and no subscription. No ads, no analytics SDK, no account.
+
+---
+
++
+---
+
+## The launcher stops hiding your wallpaper
+
+Published: 15 August 2026 · Tag: Release
+Source: https://www.gradomski.dev/posts/wallpaper-behind-the-grid.html
+Markdown: https://www.gradomski.dev/posts/wallpaper-behind-the-grid.md
+
+1.4.3 fixed how the grid behaves when you drag something. 1.4.4 fixes what
+sits behind it: a flat black rectangle where your wallpaper used to be.
+
+## The launcher stops hiding your wallpaper
+
+**What ships.** Background gets a third option next to black and white: the
+wallpaper you already have set on your phone. Not an import, not a new
+picture to choose — the one you picked before you ever installed a
+launcher.
+
+<figure class="post-shot">
+  <img src="https://www.gradomski.dev/assets/img/screens/10_wallpaper_home.png" alt="Home screen showing the desktop grid with the phone's own wallpaper visible behind semi-transparent glass tiles" loading="lazy">
+  <figcaption>The system wallpaper is now a third background choice beside black and white. The window stays transparent, the veil preserves contrast, and the photo shows through the tile plates themselves; new installs start here while existing installs keep their old black background.</figcaption>
+</figure>
+
+A launcher that paints a solid rectangle over your entire screen takes away
+the wallpaper you picked before it ever showed up. Installing sqTile read as
+*losing* something. The window was already flagged to draw behind the system
+bars — that groundwork existed already — so the whole feature was mostly
+about no longer painting over it: the window background goes transparent
+unconditionally now, because it is decided the moment the window is created,
+before the setting has even loaded from disk.
+
+The existing black-or-white toggle keeps every bit of its old job. Over a
+wallpaper it stops meaning "which flat colour" and starts meaning "which
+colour to veil the photo with" — which is exactly the value the contrast math
+elsewhere in the app already reads, so nothing downstream had to change to
+make it work.
+
+Text, icons and badges stay fully opaque no matter how far you push the
+transparency slider, because a launcher you can't actually read at the
+extreme end of a setting isn't a real setting — it's a decoration. The veil
+is free. Letting the wallpaper show *through* the tiles themselves is Pro.
+
+New installs get the wallpaper on by default now. Existing installs keep
+their black background, on purpose, through a settings migration rather than
+a changed default — because a changed default would have repainted
+everyone's home screen in an update nobody asked for. The migration caught
+one real bug the night before release: restoring an *older* backup was
+quietly turning wallpaper back on anyway, because the backup file's missing
+field decoded to today's default instead of the old one. Fixed by bumping
+the backup format version and gating on it explicitly, so an old backup
+restores exactly as flat as it was saved.
+
+## Drag a slider, watch it happen live
+
+**What ships.** Hold down a slider in appearance settings and the settings
+screen fades away, showing the real desktop underneath while the slider
+redraws itself at the bottom, still under your finger.
+
+<figure class="post-shot">
+  <img src="https://www.gradomski.dev/assets/img/screens/2026_08_live_preview.gif" alt="A settings slider being dragged, with the settings screen fading out to reveal the live desktop changing underneath in real time" loading="lazy">
+  <figcaption>Seven continuous appearance sliders preview against the live desktop while the settings screen fades away. Chips still commit instantly; the live preview exists because settings and the desktop share one container, not because the app navigates to a second screen.</figcaption>
+</figure>
+
+Adjusting how strong the veil should be, or how see-through a tile is, used
+to mean: close settings, look, reopen, nudge, repeat. That is a bad way to
+tune anything you're trying to *feel* rather than pick from a list. The
+feature works because the desktop was already composed underneath the
+settings screen the whole time — the screen was only ever painting over it —
+so the entire thing is transparency plus somewhere to redraw the slider. That
+is also its one hard requirement: it only works because both screens share a
+single container. Moving settings to its own destination in navigation would
+kill it outright.
+
+Worth being honest about: the first version of this quietly did nothing at
+all, and no test caught it. Whether a slider was currently held was read as a
+value captured inside a coroutine's closure, so it worked exactly once, at
+the moment the effect first launched, and then never again for the rest of
+the session — invisible in every test, because the seam being tested was
+correct the whole time. Only running it on an actual phone showed the
+preview never firing.
+
+## The grid, finished
+
+If you read [the last post](https://www.gradomski.dev/posts/icon-packs-and-a-grid-that-behaves.html),
+1.4.3 fixed how a *drop* resolves. This one replaces the model underneath it:
+one invariant, one owner, instead of four code paths that each quietly
+disagreed with the others about what a legal position even was.
+
+<figure class="post-shot">
+  <img src="https://www.gradomski.dev/assets/img/screens/11_edit_align.png" alt="Edit mode with a row handle held, outlining the full band of tiles that will move together, and a new Align chip in the toolbar" loading="lazy">
+  <figcaption>Holding a row handle outlines the complete band before the drag starts, so the affected tiles are visible in advance. The new Align chip then repairs vertical drift without reshuffling positions you deliberately placed.</figcaption>
+</figure>
+
+The smallest tile is genuinely 1×1 now — no position is privileged over any
+other, which is what was quietly warping rows every time a small tile showed
+up next to something bigger. A held row handle now outlines the whole band
+of tiles it's about to move, before the first drag, instead of after. A
+dragged tile draws on top of whatever it's aiming for now — there wasn't a
+single `zIndex` anywhere in the file before, so a tile dragged up from the
+bottom of the screen always drew underneath the thing you were trying to hit.
+A new **Align** chip in edit mode tidies a desktop that has drifted —
+vertically only, nothing you deliberately placed gets reshuffled — and it's
+undoable like everything else in edit mode. And the size picker grows a pair
+of `−`/`+` buttons that trim a tile narrower one unit at a time, instead of
+only offering a fixed ladder of shapes.
+
+## "How do I switch the weather to Fahrenheit?"
+
+That question arrived by email from someone in the US. There wasn't an
+answer — the launcher had printed Celsius everywhere since its very first
+version, without ever asking. Not a missing option so much as a feature that
+didn't work for a chunk of the world.
+
+Now there's a chip in settings with two choices, defaulting to whatever unit
+the phone's own country normally uses — not GPS, not IP, just the locale
+already set on the device — and a deliberate choice always overrides that
+default. Conversion happens at render time off one canonical value stored in
+Celsius, so switching costs a recompose, not a network round trip, and it
+still works with no signal at all.
+
+Worth saying plainly: everyone with an existing install in a US locale will
+jump from °C to °F on update, without being asked first. That's the intended
+fix, not a side effect — but it's still a behaviour change for someone who
+never touched the setting.
+
+## Also in 1.4.4
+
+- Dock background can be set to **auto / visible / hidden** — auto hides the
+  bar over a wallpaper and shows it over a flat colour, since over a flat
+  colour it was always painting the exact shade sitting behind it anyway.
+- 364 unit tests now, up from 269 two releases ago.
+
+## What's next
+
+Next up is 1.4.5, and it's deliberately boring on purpose: a
+Compose/AGP/Kotlin version bump, no features, the kind of release that
+doesn't get its own post. After that, 1.5.0 opens features back up again,
+starting with locking the app behind a PIN.
+
+---
+
+sqTile is on [Google Play](https://play.google.com/store/apps/details?id=dev.gradomski.sqtilelauncher),
+in English, Polish, German, Italian and Ukrainian. Free, with a single one-time Pro
+unlock and no subscription. No ads, no analytics SDK, no account.
+
+---
+
+## Icon packs, a dock you can finally edit, and a grid that behaves
+
+Published: 13 August 2026 · Tag: Release
+Source: https://www.gradomski.dev/posts/icon-packs-and-a-grid-that-behaves.html
+Markdown: https://www.gradomski.dev/posts/icon-packs-and-a-grid-that-behaves.md
+
+Two releases went out since the last post — 1.4.3 and 1.4.4. This one is about
+1.4.3: icon packs, a dock you can finally edit without leaving it, and a grid
+that stopped rearranging itself when you least expected it.
+
+## Icon packs, everywhere the launcher draws an icon
+
+**What ships.** Point sqTile at any icon pack you already have installed from
+Play, and it applies across the whole launcher — desktop, dock, app list.
+Picking the pack is free. Pinning a single icon from it to one tile, and
+giving the dock its own icon style so it stays monochrome under a colourful
+pack, are Pro.
+
+<figure class="post-shot">
+  <img src="https://www.gradomski.dev/assets/img/screens/09_iconpack_picker.png" alt="The icon pack picker: a search field over a dense grid of icon thumbnails from an installed pack" loading="lazy">
+  <figcaption>sqTile detects installed packs through the standard launcher intents and applies one pack across the desktop, dock and app list. Choosing the pack is free; pinning one icon to a single tile and giving the dock its own style remain Pro.</figcaption>
+</figure>
+
+This is the one I kept putting off, and it turned out to be the whole
+ballgame. Between packs, per-tile icons and per-tile colours, the desktop is
+genuinely yours now instead of a theme I picked for you.
+
+**The first version looked broken and wasn't.** Icon packs went through the
+same glyph/silhouette pipeline as everything else, so a full-colour pack under
+the "glyph" style turned straight back into a glyph — a coloured pack that,
+switched on, looked exactly as dead as before. The fix is that pack art now
+draws the way its author drew it, full stop, and skips the pipeline entirely.
+The one exception is a pack that ships flat, white, single-tone glyphs on
+purpose, expecting the launcher to tint them — that kind still gets tinted,
+because handing it back untouched would mean a white shape floating with no
+plate under it.
+
+**The picker went blank on its own icons.** With a few packs installed, the
+list runs into the thousands, and part of the grid just stopped rendering on
+a real phone. My first attempt made it slower: I shrank the decode target,
+which sounds like less work but isn't — the platform decodes the full PNG
+either way, so downscaling after the fact just adds a second allocation. What
+actually fixed it: skip the density upscale most decoders do by default,
+resolve every resource name once instead of on every scroll, drop names the
+pack declares but never ships, and cap the grid at three columns so only a
+dozen or so thumbnails are ever decoding at once. Confusing what a bitmap
+costs to *hold* with what it costs to *make* cost me an evening.
+
+## I had it behind the paywall until the night before shipping
+
+1.4.2 sat at over 60 installs a day and two Pro purchases. That is not a
+sign that too little is locked — if people are leaving in the first session,
+it does not matter what is behind the paywall, because they never get there.
+
+Icon packs were planned as entirely Pro, right up until the night before this
+release. Three things changed my mind, in order of how much they mattered:
+packs are table stakes for a launcher now, not a premium extra, and a paywall
+here reads as "this app charges for the basics"; it is also the worst
+possible *moment* for a paywall, because picking a pack is one of the first
+things anyone does after installing, on zero investment in the app; and
+per-tile pinning is honestly better suited to Pro anyway — it is for someone
+who already likes the desktop they built and wants to fuss over one tile,
+which is a different person than someone still deciding whether to keep the
+app at all.
+
+The cost of the change was zero. The section was already its own locked
+block in the settings screen, so flipping it open was deleting one wrapper,
+not redesigning anything.
+
+## Editing the dock without leaving it
+
+Swapping an app in the dock used to be impossible to do directly — you
+removed it with the X, then re-pinned from the app list, which dropped the
+new app into the first free slot rather than the one you had just emptied.
+
+<figure class="post-shot">
+  <img src="https://www.gradomski.dev/assets/img/screens/2026_08_dock_edit.gif" alt="A dock icon being replaced in place in edit mode, then two icons reordering live as a finger drags between them" loading="lazy">
+  <figcaption>In edit mode, a tap opens the picker and writes the replacement into that exact dock slot. Reordering follows the finger across a neighbour, while the dragged icon stays attached to the right app even as the slot indices change.</figcaption>
+</figure>
+
+Now a tap on a slot in edit mode opens a picker that writes into exactly that
+slot, and the nearest empty one shows a plain "+". Reordering updates live as
+your finger crosses a neighbour, not just once you release — which sounds
+simple and took four separate fixes to feel right: the drag gesture was
+keyed on the very index it was changing, so it kept cancelling itself
+mid-drag; a fast swipe could outrun the database write and grab the wrong
+icon; the icon under your finger was keyed by *slot number*, so a reorder
+kept the gesture but silently swapped which app it was dragging; and the
+offset that compensates for the jump was applied a frame before the layout
+knew about the new order, so icons visibly hopped a beat too early.
+
+## One bad rule, four bugs that didn't look related
+
+I spent one evening dragging tiles around on my own phone and hit four
+different-looking bugs, all from the same desktop, all from the same root
+cause.
+
+Since the grid doubled from four columns to eight, a full-size tile snapped
+to *even* positions. That reads as "aligned" only if every row above it has a
+whole number of cell-heights — and one row of small, half-unit shortcut icons
+under the clock was enough to push everything below it onto odd rows, where
+"even" had stopped meaning anything at all. From there: a tile dragged into
+an obviously empty gap would land a whole cell too far and shove a gallery
+tile out of the way; a tile dropped halfway onto a neighbour would land on an
+even row that nothing corrected, and sit there straddling two rows; a
+sideways swap would end up shoving something *down* instead, because the
+collision logic only knew how to push along a row; and a tile aimed at the
+gap next to a small icon would instead snap to the neighbour a whole row
+above it.
+
+<figure class="post-shot">
+  <img src="https://www.gradomski.dev/assets/img/screens/2026_08_grid_dragdrop.gif" alt="A tile being dragged across the desktop grid, swapping cleanly with a same-size neighbour and settling without disturbing the rest of the layout" loading="lazy">
+  <figcaption>The drop resolver compares the pointer position with a whole-cell step from the tile's current origin and chooses the move that displaces fewer neighbours. Same-size neighbours swap; a farther drop shifts one column instead of cascading tiles across several rows.</figcaption>
+</figure>
+
+The fix drops the even-position rule entirely. A drop now weighs two
+candidate landings — the raw drop point, and a whole-cell step counted from
+wherever the tile is already standing, not from the edge of the grid — and
+whichever one moves fewer other tiles wins. One rule instead of four special
+cases, and it happens to fix all four symptoms at once, because "move the
+least" is what a sensible drop looks like in every one of them. Two
+same-size tiles that land exactly on each other's footprint now swap
+outright, restricted to actual neighbours after an on-device test showed a
+drop two cells away flinging the tile in between four rows down for no
+visible reason. The last of it — a one-frame flicker on drop — turned out to
+be the same class of bug as the dock reorder above: the position offset was
+compensated a frame late, so it briefly drew a whole cell off. Same fix,
+applied the same way.
+
+## Also in 1.4.3
+
+- **Sharper photos in gallery tiles**, especially wide ones — the cache now
+  remembers the size it decoded a photo for, not just its address, so a
+  freshly added photo no longer inherits a thumbnail meant for a small
+  picker.
+- **Uninstall an app straight from the app list**, long-press menu, instead
+  of three taps through system app info.
+- Buttons, spinners and dialog captions no longer disappear when the accent
+  colour happens to match a role the theme never actually assigned to them.
+- The app version now sits at the bottom of settings — for every support
+  message that starts with "which version are you on."
+
+## What's next
+
+Last post said icon packs were next. They're here. The honest answer this
+time is 1.4.4, already out by the time this goes up: the launcher stops
+painting over your wallpaper. [That one gets its own
+post](https://www.gradomski.dev/posts/wallpaper-behind-the-grid.html).
+
+---
+
+sqTile is on [Google Play](https://play.google.com/store/apps/details?id=dev.gradomski.sqtilelauncher),
+in English, Polish, German, Italian and Ukrainian. Free, with a single one-time Pro
+unlock and no subscription. No ads, no analytics SDK, no account.
+
+
+End of file. Index: https://www.gradomski.dev/llms.txt

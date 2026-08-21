@@ -1,0 +1,17 @@
+# gradomski.dev — open to crawlers, including the ones reading on behalf of an
+# AI. There is nothing here worth hiding: it is a public profile and a changelog.
+#
+# /llms.txt is a plain-text index of the site, and every post has a .md sitting
+# next to its .html. No crawler discovers those from this file — it is a signpost
+# for whoever comes looking — but they are linked from every page's <head> and
+# served from the root.
+#
+# Nothing is disallowed on purpose. privacy.html and post.html should stay out
+# of search results, and they say so with `noindex` in their own <head>. Blocking
+# them here would be worse than useless: a crawler that is not allowed to fetch
+# a page never sees the noindex on it, and the bare URL can end up indexed anyway.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.gradomski.dev/sitemap.xml

@@ -1,7 +1,16 @@
 /* ============================================================
-   Shared chrome: header, footer, theme toggle, mobile nav.
-   Edit SITE below — it is the single source for links used
-   across every page.
+   Shared behaviour: theme toggle, mobile nav, newsletter form.
+
+   The header, nav and footer are plain HTML in every page — not
+   rendered from here. They used to be, and the cost was that a
+   crawler which does not run JavaScript (ClaudeBot, GPTBot and
+   PerplexityBot do not) saw a site with no navigation and no
+   internal links at all. Markup that matters ships as markup.
+
+   SITE below is still the single source for the values used in
+   forms and scripts. When you change storeUrl, email or a social
+   link here, update the copies in the page HTML too — grep for
+   the old value; there are six pages.
    ============================================================ */
 
 const SITE = {
@@ -23,20 +32,13 @@ const SITE = {
     action: "https://assets.mailerlite.com/jsonp/2525700/forms/193694051445245785/subscribe",
     field: "fields[email]"
   },
+  // Mirrored in the .social list on contact.html and in the Person JSON-LD there.
   socials: [
     { id: "github",   label: "GitHub",   handle: "@gregrdm",           url: "https://github.com/gregrdm" },
     { id: "linkedin", label: "LinkedIn", handle: "Grzegorz Radomski",  url: "https://www.linkedin.com/in/grzegorz-radomski/" },
     { id: "mail",     label: "Email",    handle: "contact@gradomski.dev", url: "mailto:contact@gradomski.dev" }
   ]
 };
-
-const NAV = [
-  { label: "Project",   href: "index.html#project" },
-  { label: "Backlog",   href: "index.html#backlog" },
-  { label: "Blog",      href: "blog.html" },
-  { label: "About",     href: "contact.html" },
-  { label: "Subscribe", href: "index.html#newsletter" }
-];
 
 /* ---------- Theme ---------- */
 
@@ -49,58 +51,13 @@ function toggleTheme() {
   setTheme(document.documentElement.dataset.theme === "light" ? "dark" : "light");
 }
 
-/* ---------- Chrome ---------- */
-
-const ICONS = {
-  sun: '<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
-  moon: '<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
-  menu: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>'
-};
-
-function renderHeader() {
-  const page = document.body.dataset.page || "";
-  const links = NAV.map(item => {
-    const target = item.href.split("#")[0];
-    const current = target === `${page}.html` && !item.href.includes("#") ? ' aria-current="page"' : "";
-    return `<a href="${item.href}"${current}>${item.label}</a>`;
-  }).join("");
-
-  return `
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header">
-  <div class="wrap nav">
-    <a class="brand" href="index.html">${SITE.name}<span>${SITE.tld}</span></a>
-    <nav class="nav-links" id="nav-links">
-      ${links}
-      <a class="btn btn--primary" href="${SITE.storeUrl}" rel="noopener">${SITE.storeLabel}</a>
-    </nav>
-    <div class="nav-actions">
-      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle colour theme">${ICONS.sun}${ICONS.moon}</button>
-      <button class="icon-btn nav-toggle" id="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">${ICONS.menu}</button>
-    </div>
-  </div>
-</header>`;
-}
-
-function renderFooter() {
-  const year = new Date().getFullYear();
-  return `
-<footer class="site-footer">
-  <div class="wrap footer-inner">
-    <div>© ${year} ${SITE.company}. Built and shipped from Poland.</div>
-    <div class="footer-links">
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">About</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="mailto:${SITE.email}">${SITE.email}</a>
-    </div>
-  </div>
-</footer>`;
-}
-
 /*
   Newsletter block — mount it on any page with <div id="newsletter-mount"></div>.
   Wire it up by filling in SITE.newsletter above; nothing else needs to change.
+
+  This one stays in JavaScript on purpose: it is a form, not content a reader
+  needs, and keeping it here keeps the provider wiring in one place. The relative
+  links inside assume a page at the site root — index.html and blog.html today.
 
   The form submits with fetch() and reports the result in place. MailerLite's
   endpoint sends CORS headers, so the JSON response is readable and the visitor
@@ -111,11 +68,11 @@ function renderNewsletter() {
   const { action, field } = SITE.newsletter;
   const formAttrs = action ? ` action="${action}" method="post" target="_blank"` : "";
   return `
-<section class="section section--alt newsletter" id="newsletter">
+<section class="section section--alt newsletter" id="newsletter" aria-labelledby="newsletter-title">
   <div class="wrap wrap--narrow">
     <div class="section-head">
       <span class="eyebrow">Newsletter</span>
-      <h2>Release notes, in your inbox.</h2>
+      <h2 id="newsletter-title">Release notes, in your inbox.</h2>
       <p>
         A short email when something ships — what changed, what's next. No more than
         once or twice a month, and unsubscribe in one click.
@@ -197,9 +154,8 @@ function initNewsletterForm() {
 
 /*
   Render `html` into the placeholder with this id, then unwrap it — the
-  placeholder div would otherwise be the containing block for the sticky
-  header, and since it is exactly as tall as the header, sticky would have
-  nowhere to travel and the bar would scroll away.
+  placeholder div would otherwise sit in the flow as an extra element between
+  sections.
 */
 function mount(id, html) {
   const slot = document.getElementById(id);
@@ -208,11 +164,8 @@ function mount(id, html) {
   slot.replaceWith(...slot.childNodes);
 }
 
-function mountChrome() {
-  mount("site-header", renderHeader());
+function initChrome() {
   mount("newsletter-mount", renderNewsletter());
-  mount("site-footer", renderFooter());
-
   initNewsletterForm();
 
   document.getElementById("theme-toggle")?.addEventListener("click", toggleTheme);
@@ -228,19 +181,4 @@ function mountChrome() {
   });
 }
 
-/* ---------- Helpers shared with blog pages ---------- */
-
-function formatDate(iso) {
-  return new Date(iso + "T00:00:00").toLocaleDateString("en-GB", {
-    day: "numeric", month: "long", year: "numeric"
-  });
-}
-
-async function loadPosts() {
-  const res = await fetch("posts/index.json", { cache: "no-cache" });
-  if (!res.ok) throw new Error(`Cannot load posts/index.json (${res.status})`);
-  const data = await res.json();
-  return data.posts.slice().sort((a, b) => b.date.localeCompare(a.date));
-}
-
-document.addEventListener("DOMContentLoaded", mountChrome);
+document.addEventListener("DOMContentLoaded", initChrome);

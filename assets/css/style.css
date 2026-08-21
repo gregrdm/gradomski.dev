@@ -111,6 +111,10 @@ h3 { font-size: 1.2rem; }
 
 p { margin: 0 0 1.1em; }
 
+/* <address> is the right element for the contact block on contact.html, but the
+   UA default italicises it. Keep it reading like the paragraphs around it. */
+address { font-style: normal; margin: 0 0 1.1em; }
+
 a {
   color: var(--accent);
   text-decoration: none;

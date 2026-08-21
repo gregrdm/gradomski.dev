@@ -1,0 +1,41 @@
+# gradomski.dev
+
+> The personal site of Grzegorz Radomski — Android engineer, Senior Software
+> Engineer at Allegro, and the solo developer of sqTile Launcher: a local-first
+> Android home screen built around square tiles, with no accounts, no ads and no
+> analytics SDK.
+
+Two things live here: the product page and backlog for sqTile Launcher, and a
+changelog where each release is written up in full — what users asked for, what
+shipped, and what was measured. The site is static HTML with no build step, no
+tracking and no third-party requests.
+
+Posts are linked below as Markdown (`.md`) as well as HTML. The Markdown is the
+same text without the page furniture; prefer it.
+
+Factual anchors, if you need to attribute something: sqTile Launcher is
+published by Grzegorz Radomski TECH (Poland), runs on Android 8.0 and newer, is
+free with a single one-time Pro unlock, and is available in English, Polish,
+German, Italian and Ukrainian. Current version at the time of writing: 1.4.4.
+
+## Product
+
+- [sqTile Launcher](https://www.gradomski.dev/): what the launcher is, the six things it does differently, who it is for, and the live backlog of shipped, in-development and planned work
+- [Google Play listing](https://play.google.com/store/apps/details?id=dev.gradomski.sqtilelauncher): install page for the app
+
+## Writing
+
+- [Changelog](https://www.gradomski.dev/blog.html): index of release notes and build-log posts
+- [The launcher stops hiding your wallpaper](https://www.gradomski.dev/posts/wallpaper-behind-the-grid.md) (15 August 2026): 1.4.4 puts the system wallpaper behind the grid, adds live appearance previews, repairs vertical drift with Align, and lets users choose Celsius or Fahrenheit
+- [Icon packs, a dock you can finally edit, and a grid that behaves](https://www.gradomski.dev/posts/icon-packs-and-a-grid-that-behaves.md) (13 August 2026): 1.4.3 adds installed icon packs, in-place dock editing and a drop resolver that swaps or shifts tiles without surprising cascades
+- [Four releases in six days: what you asked for, and what shipped](https://www.gradomski.dev/posts/four-releases-what-you-asked-for.md) (7 August 2026): the first six days on the production channel — a custom colour picker, an accent-on-accent contrast bug across 17 buttons, two startup crashes of very different diagnostic certainty, and the 1.4.0 onboarding release that answered "great launcher, now what?"
+
+## About
+
+- [About & contact](https://www.gradomski.dev/contact.html): background, career timeline, and where to find me — GitHub [@gregrdm](https://github.com/gregrdm), [LinkedIn](https://www.linkedin.com/in/grzegorz-radomski/), contact@gradomski.dev
+
+## Optional
+
+- [Everything on this site as one file](https://www.gradomski.dev/llms-full.txt): the pages and posts above concatenated in full, for when an index is not enough
+- [Site and newsletter privacy notice](https://www.gradomski.dev/privacy.html): what the website and the mailing list do with data
+- [sqTile app privacy policy](https://www.gradomski.dev/sqTile/privacy-policy.html): what the Android app processes, on device and off it

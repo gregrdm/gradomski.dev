@@ -9,7 +9,7 @@ picture to choose — the one you picked before you ever installed a
 launcher.
 
 <figure class="post-shot">
-  <img src="assets/img/screens/10_wallpaper_home.png" alt="Home screen showing the desktop grid with the phone's own wallpaper visible behind semi-transparent glass tiles" loading="lazy">
+  <img src="https://www.gradomski.dev/assets/img/screens/10_wallpaper_home.png" alt="Home screen showing the desktop grid with the phone's own wallpaper visible behind semi-transparent glass tiles" loading="lazy">
   <figcaption>The system wallpaper is now a third background choice beside black and white. The window stays transparent, the veil preserves contrast, and the photo shows through the tile plates themselves; new installs start here while existing installs keep their old black background.</figcaption>
 </figure>
 
@@ -49,7 +49,7 @@ screen fades away, showing the real desktop underneath while the slider
 redraws itself at the bottom, still under your finger.
 
 <figure class="post-shot">
-  <img src="assets/img/screens/2026_08_live_preview.gif" alt="A settings slider being dragged, with the settings screen fading out to reveal the live desktop changing underneath in real time" loading="lazy">
+  <img src="https://www.gradomski.dev/assets/img/screens/2026_08_live_preview.gif" alt="A settings slider being dragged, with the settings screen fading out to reveal the live desktop changing underneath in real time" loading="lazy">
   <figcaption>Seven continuous appearance sliders preview against the live desktop while the settings screen fades away. Chips still commit instantly; the live preview exists because settings and the desktop share one container, not because the app navigates to a second screen.</figcaption>
 </figure>
 
@@ -73,13 +73,13 @@ preview never firing.
 
 ## The grid, finished
 
-If you read [the last post](post.html?slug=icon-packs-and-a-grid-that-behaves),
+If you read [the last post](https://www.gradomski.dev/posts/icon-packs-and-a-grid-that-behaves.html),
 1.4.3 fixed how a *drop* resolves. This one replaces the model underneath it:
 one invariant, one owner, instead of four code paths that each quietly
 disagreed with the others about what a legal position even was.
 
 <figure class="post-shot">
-  <img src="assets/img/screens/11_edit_align.png" alt="Edit mode with a row handle held, outlining the full band of tiles that will move together, and a new Align chip in the toolbar" loading="lazy">
+  <img src="https://www.gradomski.dev/assets/img/screens/11_edit_align.png" alt="Edit mode with a row handle held, outlining the full band of tiles that will move together, and a new Align chip in the toolbar" loading="lazy">
   <figcaption>Holding a row handle outlines the complete band before the drag starts, so the affected tiles are visible in advance. The new Align chip then repairs vertical drift without reshuffling positions you deliberately placed.</figcaption>
 </figure>
 

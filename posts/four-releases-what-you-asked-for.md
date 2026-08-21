@@ -20,7 +20,7 @@ accent, the per-tile colour badge, and the wallpaper icon accent), and it is the
 panel in all three.
 
 <figure class="post-shot">
-  <img src="assets/img/screens/06_colors.png" alt="The custom colour dialog: a saturation square, a hue bar and a hex code field showing #1C3454" loading="lazy">
+  <img src="https://www.gradomski.dev/assets/img/screens/06_colors.png" alt="The custom colour dialog: a saturation square, a hue bar and a hex code field showing #1C3454" loading="lazy">
   <figcaption>Hue survives a trip through pure black and pure white — the classic colour-picker bug, closed by keeping the state in HSV rather than ARGB.</figcaption>
 </figure>
 
@@ -122,7 +122,7 @@ time, which walks your eye into each corner far better than any sentence naming 
 could.
 
 <figure class="post-shot">
-  <img src="assets/img/screens/2026_07_25_drag_drop.gif" alt="A tile being dragged across the grid in edit mode while the other tiles move out of the way" loading="lazy">
+  <img src="https://www.gradomski.dev/assets/img/screens/2026_07_25_drag_drop.gif" alt="A tile being dragged across the grid in edit mode while the other tiles move out of the way" loading="lazy">
   <figcaption>Edit mode, mid-drag. Holes are allowed and nothing auto-packs — where you drop a tile is where it stays.</figcaption>
 </figure>
 
@@ -152,7 +152,7 @@ sqTile actually being your home screen. The next ask costs twice as much and fou
 days of silence. After three, never again.
 
 <figure class="post-shot">
-  <img src="assets/img/screens/03_dashboard.png" alt="Dashboard with today's weather, the next calendar events, to-dos, habit streaks and reminders on one page" loading="lazy">
+  <img src="https://www.gradomski.dev/assets/img/screens/03_dashboard.png" alt="Dashboard with today's weather, the next calendar events, to-dos, habit streaks and reminders on one page" loading="lazy">
   <figcaption>The dashboard: where those points come from, and the reason the ask fires here and nowhere else.</figcaption>
 </figure>
 
@@ -190,7 +190,7 @@ feed the tiles. After that, a **full weather screen**, because tapping the weath
 and landing on the dashboard has never been the right answer. **Widgets on the
 dashboard** are still a question mark rather than a promise.
 
-The [backlog](index.html#backlog) is on the front page and I keep it current. If
+The [backlog](https://www.gradomski.dev/index.html#backlog) is on the front page and I keep it current. If
 something you need is not on it, tell me — that has changed the order more than once.
 
 ---

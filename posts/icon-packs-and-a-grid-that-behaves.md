@@ -11,7 +11,7 @@ giving the dock its own icon style so it stays monochrome under a colourful
 pack, are Pro.
 
 <figure class="post-shot">
-  <img src="assets/img/screens/09_iconpack_picker.png" alt="The icon pack picker: a search field over a dense grid of icon thumbnails from an installed pack" loading="lazy">
+  <img src="https://www.gradomski.dev/assets/img/screens/09_iconpack_picker.png" alt="The icon pack picker: a search field over a dense grid of icon thumbnails from an installed pack" loading="lazy">
   <figcaption>sqTile detects installed packs through the standard launcher intents and applies one pack across the desktop, dock and app list. Choosing the pack is free; pinning one icon to a single tile and giving the dock its own style remain Pro.</figcaption>
 </figure>
 
@@ -68,7 +68,7 @@ removed it with the X, then re-pinned from the app list, which dropped the
 new app into the first free slot rather than the one you had just emptied.
 
 <figure class="post-shot">
-  <img src="assets/img/screens/2026_08_dock_edit.gif" alt="A dock icon being replaced in place in edit mode, then two icons reordering live as a finger drags between them" loading="lazy">
+  <img src="https://www.gradomski.dev/assets/img/screens/2026_08_dock_edit.gif" alt="A dock icon being replaced in place in edit mode, then two icons reordering live as a finger drags between them" loading="lazy">
   <figcaption>In edit mode, a tap opens the picker and writes the replacement into that exact dock slot. Reordering follows the finger across a neighbour, while the dragged icon stays attached to the right app even as the slot indices change.</figcaption>
 </figure>
 
@@ -103,7 +103,7 @@ gap next to a small icon would instead snap to the neighbour a whole row
 above it.
 
 <figure class="post-shot">
-  <img src="assets/img/screens/2026_08_grid_dragdrop.gif" alt="A tile being dragged across the desktop grid, swapping cleanly with a same-size neighbour and settling without disturbing the rest of the layout" loading="lazy">
+  <img src="https://www.gradomski.dev/assets/img/screens/2026_08_grid_dragdrop.gif" alt="A tile being dragged across the desktop grid, swapping cleanly with a same-size neighbour and settling without disturbing the rest of the layout" loading="lazy">
   <figcaption>The drop resolver compares the pointer position with a whole-cell step from the tile's current origin and chooses the move that displaces fewer neighbours. Same-size neighbours swap; a farther drop shifts one column instead of cascading tiles across several rows.</figcaption>
 </figure>
 
@@ -139,7 +139,7 @@ applied the same way.
 Last post said icon packs were next. They're here. The honest answer this
 time is 1.4.4, already out by the time this goes up: the launcher stops
 painting over your wallpaper. [That one gets its own
-post](post.html?slug=wallpaper-behind-the-grid).
+post](https://www.gradomski.dev/posts/wallpaper-behind-the-grid.html).
 
 ---
 
