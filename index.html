@@ -61,7 +61,7 @@
       "name": "sqTile Launcher",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "Android 8.0 and newer",
-      "softwareVersion": "1.4.5",
+      "softwareVersion": "1.4.9",
       "description": "A local-first Android home screen built around square tiles. Calendar, reminders, habits and notification badges are processed on the device — no accounts, no ads, no analytics SDK.",
       "url": "https://www.gradomski.dev/",
       "downloadUrl": "https://play.google.com/store/apps/details?id=dev.gradomski.sqtilelauncher",
@@ -313,79 +313,119 @@
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">Backlog</span>
-        <h2 id="backlog-title">Just landed, and what's next.</h2>
+        <h2 id="backlog-title">What's new, and what's next.</h2>
         <p>
-          Shipped in small updates rather than big releases — eight of them since the
-          launcher reached the production channel, written up as they land in
-          <a href="blog.html">the changelog</a>.
-          Keep the app updated, or <a href="#newsletter">subscribe</a> and I'll tell you
-          when each of these lands.
+          One line, newest first. Solid markers are out on the production channel;
+          hollow ones are not written yet, and the dashed line is the honest bit —
+          plans move. Each release is written up in full in
+          <a href="blog.html">the changelog</a>. Keep the app updated, or
+          <a href="#newsletter">subscribe</a> and I'll tell you when the rest lands.
         </p>
       </div>
 
-      <!-- Edit these as the roadmap moves.
-           chip--done = shipped, chip--now = in development, chip--next = up next,
-           plain chip = exploring. -->
-      <div class="backlog">
-        <div class="backlog-item">
-          <span class="chip chip--done">1.4.5</span>
-          <h3>Clocks that read the way your phone does</h3>
-          <p>Every hour on the grid — clock, calendar, reminders, dashboard — follows the phone's own 12/24-hour switch, and two chips in settings override it when you disagree.</p>
+      <!-- Edit these as the roadmap moves. A shipped node is one version: the
+           <h3> is its number, the bullets are what it changed, and .rel-read
+           links to its post. Planned work is grouped into three nodes carrying
+           .rel-item--planned — In development, Up next, Exploring — and the
+           status is the heading text, not the colour.
+           Keep the last five releases here and let the changelog hold the rest,
+           or this line grows by a node every fortnight. -->
+      <div class="releases">
+
+        <div class="rel-item">
+          <div class="rel-head">
+            <h3 class="rel-ver">1.4.9</h3>
+            <time class="rel-date" datetime="2026-09-07">7 Sep 2026</time>
+            <a class="rel-read" href="posts/add-to-home-screen-has-somewhere-to-go.html">Read the post →</a>
+          </div>
+          <ul class="rel-points">
+            <li><strong>"Add to Home screen" reaches the desktop.</strong> A page you pin from the browser turns into a tile, and a web app you install puts itself there instead of vanishing.</li>
+            <li><strong>Settings became five pages you swipe between.</strong> No more opening one group to close another when you want to compare two settings.</li>
+            <li><strong>Long-press stopped nudging tiles.</strong> Holding a tile now opens edit mode with that tile selected, rather than picking it up as the desktop scales under your finger.</li>
+            <li><strong>A background colour of your own</strong>, beside black, white and your wallpaper — and switching away and back keeps it.</li>
+          </ul>
         </div>
-        <div class="backlog-item">
-          <span class="chip chip--done">1.4.4</span>
-          <h3>Your own wallpaper behind the grid</h3>
-          <p>The wallpaper set on your phone can sit behind the tiles now, with the tiles themselves as see-through as you want them.</p>
+
+        <div class="rel-item">
+          <div class="rel-head">
+            <h3 class="rel-ver">1.4.8</h3>
+            <time class="rel-date" datetime="2026-08-30">30 Aug 2026</time>
+            <a class="rel-read" href="posts/a-month-on-the-tile-and-music-without-the-player.html">Read the post →</a>
+          </div>
+          <ul class="rel-points">
+            <li><strong>A whole month on the calendar tile.</strong> A second face with a dot under every day that has something on it, and a tap that opens the calendar on that day. Wide tiles put today's agenda beside it.</li>
+            <li><strong>Music without opening the player.</strong> Album art, title, artist, skip and pause on a tile — whichever app the sound is coming from.</li>
+            <li><strong>A new 3×3 size.</strong> Two large squares at the ends of a row with a small tile between them.</li>
+            <li><strong>Pick which calendars feed the tile</strong>, so one noisy work calendar stops putting a dot under every day of the month.</li>
+          </ul>
         </div>
-        <div class="backlog-item">
-          <span class="chip chip--done">1.4.4</span>
-          <h3>A grid that stays where you put it</h3>
-          <p>Tiles go anywhere, swap places instead of shoving each other around, and one tap on "align" straightens a desktop that drifted.</p>
+
+        <div class="rel-item">
+          <div class="rel-head">
+            <h3 class="rel-ver">1.4.7</h3>
+            <time class="rel-date" datetime="2026-08-28">28 Aug 2026</time>
+            <a class="rel-read" href="posts/a-null-the-sdk-said-could-not-happen.html">Read the post →</a>
+          </div>
+          <ul class="rel-points">
+            <li><strong>A crash that closed the launcher on its own.</strong> Nothing to tap, nothing to avoid — it fired when an app was installed, updated or archived. Two days after 1.4.6, and nothing else in the release.</li>
+          </ul>
         </div>
-        <div class="backlog-item">
-          <span class="chip chip--done">1.4.4</span>
-          <h3>Weather in °C or °F</h3>
-          <p>Pick the unit yourself instead of taking whichever one the launcher guessed from your language.</p>
+
+        <div class="rel-item">
+          <div class="rel-head">
+            <h3 class="rel-ver">1.4.6</h3>
+            <time class="rel-date" datetime="2026-08-26">26 Aug 2026</time>
+            <a class="rel-read" href="posts/tiles-that-move-when-something-lands.html">Read the post →</a>
+          </div>
+          <ul class="rel-points">
+            <li><strong>Tiles that move when a notification lands.</strong> A sweep of light, a drop, or a flip that turns the tile over to show how many are waiting — and an off switch. A preview in settings plays the one you picked.</li>
+            <li><strong>An icon for any tile, from any pack you own</strong>, instead of only the pack selected globally. Icons also stopped costing about 3.9 MB each.</li>
+            <li><strong>Choose which sections your dashboard shows.</strong> Calendar, tasks, habits and reminders each get a switch.</li>
+            <li><strong>Tile colours can be see-through</strong>, with the plate's own transparency separate from its colour.</li>
+          </ul>
         </div>
-        <div class="backlog-item">
-          <span class="chip chip--done">1.4.3</span>
-          <h3>Icon packs</h3>
-          <p>Point sqTile at an icon pack you already own and let it feed the tiles, the dock and the app list.</p>
+
+        <div class="rel-item">
+          <div class="rel-head">
+            <h3 class="rel-ver">1.4.5</h3>
+            <time class="rel-date" datetime="2026-08-21">21 Aug 2026</time>
+            <a class="rel-read" href="posts/the-clock-stops-guessing.html">Read the post →</a>
+          </div>
+          <ul class="rel-points">
+            <li><strong>Clocks that read the way your phone does.</strong> Every hour on the grid — clock, calendar, reminders, dashboard — follows the phone's own 12/24-hour switch, and two chips in settings override it when you disagree.</li>
+          </ul>
         </div>
-        <div class="backlog-item">
-          <span class="chip chip--done">1.4.3</span>
-          <h3>A dock you edit in place</h3>
-          <p>Swap and reorder dock icons on the home screen itself, watching the row rearrange as you drag.</p>
+
+        <div class="rel-item rel-item--fold">
+          <p class="rel-earlier">Everything before that — back to the first day on the production channel — is in <a href="blog.html">the changelog</a>.</p>
         </div>
-        <div class="backlog-item">
-          <span class="chip chip--done">1.4.2</span>
-          <h3>An analog clock face</h3>
-          <p>The clock tile can show hands instead of digits, at any size you give it.</p>
+
+        <div class="rel-item rel-item--planned">
+          <div class="rel-head">
+            <h3 class="rel-ver rel-ver--now">In development</h3>
+          </div>
+          <ul class="rel-points">
+            <li><strong>Widgets on the dashboard.</strong> Room for the Android widgets you can't replace with a tile — without letting them loose on the grid. Being built and tested now, and it is the kind of thing that has to be right rather than early.</li>
+          </ul>
         </div>
-        <div class="backlog-item">
-          <span class="chip chip--now">In dev</span>
-          <h3>Tiles that flip when something lands</h3>
-          <p>A new notification turns its tile over — a different move from the flip you get when you launch the app.</p>
+
+        <div class="rel-item rel-item--planned">
+          <div class="rel-head">
+            <h3 class="rel-ver rel-ver--next">Up next</h3>
+          </div>
+          <ul class="rel-points">
+            <li><strong>More languages.</strong> English, Polish, German, Italian and Ukrainian today, with the next few being translated now.</li>
+            <li><strong>A full weather screen.</strong> Tapping the weather tile should open a proper forecast, not send you to the dashboard.</li>
+          </ul>
         </div>
-        <div class="backlog-item">
-          <span class="chip chip--now">In dev</span>
-          <h3>More languages</h3>
-          <p>English, Polish, German, Italian and Ukrainian today, with the next few being translated now.</p>
-        </div>
-        <div class="backlog-item">
-          <span class="chip chip--next">Up next</span>
-          <h3>A full weather screen</h3>
-          <p>Tapping the weather tile should open a proper forecast, not send you to the dashboard.</p>
-        </div>
-        <div class="backlog-item">
-          <span class="chip">Exploring</span>
-          <h3>Widgets on the dashboard</h3>
-          <p>Room for the Android widgets you can't replace with a tile — without letting them loose on the grid.</p>
-        </div>
-        <div class="backlog-item">
-          <span class="chip">Exploring</span>
-          <h3>Apps behind a PIN</h3>
-          <p>Picked apps asking for a PIN before they open — weighed against what a launcher can honestly promise, since it isn't the only door in.</p>
+
+        <div class="rel-item rel-item--planned">
+          <div class="rel-head">
+            <h3 class="rel-ver rel-ver--later">Exploring</h3>
+          </div>
+          <ul class="rel-points">
+            <li><strong>Apps behind a PIN.</strong> Picked apps asking for a PIN before they open — weighed against what a launcher can honestly promise, since it isn't the only door in.</li>
+          </ul>
         </div>
       </div>
     </div>

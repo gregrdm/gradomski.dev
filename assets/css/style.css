@@ -505,52 +505,98 @@ section[id] { scroll-margin-top: 90px; }
 }
 .target-item p { color: var(--muted); font-size: .95rem; margin: 0; }
 
-/* ---------- Backlog ---------- */
+/* ---------- Backlog release line ----------
+   One vertical line, newest release at the top, planned work continuing below
+   the last shipped node. Shipped nodes get a filled marker and a solid line,
+   planned ones a hollow marker and a dashed line, so the split between "what
+   shipped" and "what's next" reads without a heading in the middle.
+   Status is carried by the node's own heading text ("Up next"), not by colour
+   alone. */
 
-.backlog {
-  display: grid;
-  gap: 1rem;
+.releases { display: grid; }
+
+.rel-item {
+  position: relative;
+  margin-left: .3rem;
+  padding: 0 0 2rem 1.9rem;
+  border-left: 1px solid var(--border);
 }
+.rel-item:last-child { border-left-color: transparent; padding-bottom: 0; }
+.rel-item--planned { border-left-style: dashed; }
 
-.backlog-item {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: .35rem 1rem;
-  align-items: start;
-  padding: 1.15rem 1.35rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--surface);
-  transition: border-color .2s var(--ease), transform .2s var(--ease);
-}
-.backlog-item:hover { border-color: var(--accent); transform: translateX(3px); }
-
-.backlog-item h3 { grid-column: 2; font-size: 1.02rem; margin: 0; }
-.backlog-item p { grid-column: 2; margin: .2rem 0 0; color: var(--muted); font-size: .94rem; }
-
-.chip {
-  grid-row: span 2;
-  align-self: center;
-  /* fixed width so titles line up across items regardless of chip label */
-  min-width: 5.75rem;
-  text-align: center;
-  font-family: var(--font-mono);
-  font-size: .7rem;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  padding: .3rem .6rem;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  color: var(--muted);
-  white-space: nowrap;
-}
-.chip--now { color: var(--accent); border-color: var(--accent); background: var(--glow); }
-.chip--next { color: var(--accent-2); border-color: color-mix(in srgb, var(--accent-2) 55%, transparent); }
-.chip--done {
-  color: var(--accent-ink);
-  border-color: transparent;
+/* The marker straddles the line, hence the offset of half its own width. */
+.rel-item::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: .35rem;
+  width: 9px;
+  height: 9px;
+  border-radius: 3px;
   background: linear-gradient(100deg, var(--accent), var(--accent-2));
 }
+.rel-item--planned::before {
+  background: var(--bg-2);
+  border: 1px solid var(--accent);
+}
+
+.rel-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .35rem .85rem;
+  margin-bottom: .7rem;
+}
+
+.rel-ver {
+  font-family: var(--font-mono);
+  font-size: .98rem;
+  margin: 0;
+  color: var(--heading);
+}
+.rel-ver--now { color: var(--accent); }
+.rel-ver--next { color: var(--accent-2); }
+.rel-ver--later { color: var(--muted); }
+
+.rel-date {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.rel-read { font-size: .84rem; white-space: nowrap; }
+
+.rel-points { list-style: none; margin: 0; padding: 0; display: grid; gap: .55rem; }
+.rel-points li {
+  position: relative;
+  /* Capped rather than left to fill the 1080px wrap: these are read as prose,
+     not scanned as a table. */
+  max-width: 78ch;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  font-size: .94rem;
+  line-height: 1.55;
+}
+.rel-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 1px;
+  background: var(--accent);
+}
+.rel-points strong { color: var(--text); font-weight: 600; }
+
+/* Tail of the shipped run. The full history lives in the changelog rather than
+   growing this line by one node per release, so its marker is muted: it closes
+   the run instead of announcing another one. */
+.rel-item--fold::before { background: var(--border); }
+.rel-earlier { margin: 0; color: var(--muted); font-size: .9rem; }
+
 
 /* ---------- Reviews ---------- */
 

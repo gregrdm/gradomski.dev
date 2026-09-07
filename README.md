@@ -132,12 +132,20 @@ CI workflow for one post a fortnight.
 - **Nav items** — the `<nav class="nav-links">` block in each of the six pages.
 - **Colours, spacing, type** — the token blocks at the top of `assets/css/style.css`
   (`:root[data-theme="dark"]` and `:root[data-theme="light"]`).
-- **Backlog** — the `.backlog-item` blocks in `index.html`. Chip classes: `chip--done`
-  (shipped), `chip--now` (in development), `chip--next` (up next), plain `chip` (exploring).
-  Shipped items use the version they landed in as the chip label (`1.4.0`) rather than the
-  word "shipped" — it dates the item and shows the release cadence. Keep it in sync with
+- **Backlog** — the `.releases` block in `index.html`. It is one vertical line, newest
+  first: a shipped node is a single version (`.rel-item`, an `<h3 class="rel-ver">` holding
+  the number, a `<time class="rel-date">`, and `.rel-read` linking to that version's post),
+  and its bullets are what that version changed. Planned work is three nodes carrying
+  `.rel-item--planned` — In development, Up next, Exploring — which get a hollow marker and
+  a dashed line. Status is the heading text, never the colour on its own.
+  **Keep only the last five releases here** and let the changelog hold the rest, or the
+  line grows by a node every fortnight; `.rel-item--fold` is the muted node that closes the
+  shipped run and points at `blog.html`. Keep it all in sync with
   `sqTile/docs/to_release_*.md`, which is the source of truth for what each version did.
   The backlog is also summarised in `llms-full.txt`.
+
+  Note `.releases` is not `.timeline` — that one is the career timeline on `contact.html`,
+  and reusing the name silently restyles both.
 - **Target, features** — plain HTML sections in `index.html`, each marked with a comment.
 - **Newsletter** — `renderNewsletter()` in `assets/js/site.js`, rendered into any page that
   has `<div id="newsletter-mount"></div>`. Currently on `index.html` and `blog.html`. Its
