@@ -334,8 +334,8 @@ The disk cache starts paying from the second.
 
 ## What's next
 
-1.4.7, a week later, and it is one line long: a crash from production that took
-the launcher down without the user touching anything. Then 1.4.8 gives the
+1.4.7, two days later, and it is one line long: a crash from production that
+took the launcher down without the user touching anything. Then 1.4.8 gives the
 calendar tile a whole-month face and adds a music tile.
 
 ---

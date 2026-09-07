@@ -89,7 +89,7 @@ Shipped:
   instead of vanishing. Settings became five pages you swipe between. Long-press
   opens edit mode with the tile selected instead of picking it up. A background
   colour of your own, beside black, white and your wallpaper.
-- **1.4.8 (1 September 2026).** A whole-month face on the calendar tile, with a
+- **1.4.8 (30 August 2026).** A whole-month face on the calendar tile, with a
   dot under every day that has something on it and an agenda beside it on wide
   sizes. A music tile with album art, title, artist and transport, reading
   whichever app is playing. A new 3×3 size. A filter for which calendars feed the
@@ -998,7 +998,7 @@ Published: 7 September 2026 · Tag: Release
 Source: https://www.gradomski.dev/posts/a-null-the-sdk-said-could-not-happen.html
 Markdown: https://www.gradomski.dev/posts/a-null-the-sdk-said-could-not-happen.md
 
-1.4.7 fixes one crash and nothing else. No features, no UI changes, one week
+1.4.7 fixes one crash and nothing else. No features, no UI changes, two days
 after 1.4.6.
 
 It gets its own release rather than waiting for the next batch because the crash
@@ -1455,8 +1455,8 @@ The disk cache starts paying from the second.
 
 ## What's next
 
-1.4.7, a week later, and it is one line long: a crash from production that took
-the launcher down without the user touching anything. Then 1.4.8 gives the
+1.4.7, two days later, and it is one line long: a crash from production that
+took the launcher down without the user touching anything. Then 1.4.8 gives the
 calendar tile a whole-month face and adds a music tile.
 
 ---

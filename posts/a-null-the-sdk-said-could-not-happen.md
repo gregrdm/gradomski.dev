@@ -1,4 +1,4 @@
-1.4.7 fixes one crash and nothing else. No features, no UI changes, one week
+1.4.7 fixes one crash and nothing else. No features, no UI changes, two days
 after 1.4.6.
 
 It gets its own release rather than waiting for the next batch because the crash
