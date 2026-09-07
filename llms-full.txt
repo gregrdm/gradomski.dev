@@ -112,20 +112,19 @@ the changelog below.
 
 In development:
 
-- **More languages.** English, Polish, German, Italian and Ukrainian today, with
-  the next few being translated now.
+- **Widgets on the dashboard.** Room for the Android widgets you can't replace
+  with a tile — without letting them loose on the grid. Being built and tested
+  now, and it is the kind of thing that has to be right rather than early.
 
 Up next:
 
-- **The todo and clock tiles on the new 3×3 size.** Both still work their layout
-  out in whole cells, so at 3×3 they can look the way they do at 2×2.
+- **More languages.** English, Polish, German, Italian and Ukrainian today, with
+  the next few being translated now.
 - **A full weather screen.** Tapping the weather tile should open a proper
   forecast, not send you to the dashboard.
 
 Exploring:
 
-- **Widgets on the dashboard.** Room for the Android widgets you can't replace
-  with a tile — without letting them loose on the grid.
 - **Apps behind a PIN.** Picked apps asking for a PIN before they open — weighed
   against what a launcher can honestly promise, since it isn't the only door in.
 
@@ -519,13 +518,16 @@ rule that a lapse keeps what you have and only stops you changing it.
 
 ## What's next
 
-The todo and clock tiles still compute their layout in whole cells, so on the new
-3×3 size they can look the way they do at 2×2. That is the next thing to fix, and
-it is open work rather than a hidden fallback.
+Widgets on the dashboard. The Android widgets you cannot replace with a tile
+need somewhere to live, and the whole question is how to give them that without
+letting them loose on the grid. It is unpacked and under test now rather than
+sketched, because this is the kind of thing that has to be right rather than
+early.
 
-Beyond that: more languages, and then a proper weather screen behind the weather
-tile. If you have an opinion about which of those matters more, I would rather
-hear it before it ships than after — [get in touch](https://www.gradomski.dev/contact.html).
+Behind it: more languages, and then a proper forecast behind the weather tile
+instead of a trip to the dashboard. If you have an opinion about which of those
+matters more, I would rather hear it before it ships than after —
+[get in touch](https://www.gradomski.dev/contact.html).
 
 ---
 
