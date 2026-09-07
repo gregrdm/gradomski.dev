@@ -8,7 +8,7 @@ Site: https://www.gradomski.dev/
 Author: Grzegorz Radomski — Android engineer, Senior Software Engineer at Allegro
 Publisher: Grzegorz Radomski TECH, ul. Pawia 10B/1, 08-825 Adamowizna, Poland
 Contact: contact@gradomski.dev
-Last assembled: 21 August 2026
+Last assembled: 7 September 2026
 
 ---
 
@@ -75,41 +75,50 @@ kind of user — and everything on the backlog is judged against that.
 - **Light task-manager users.** Needs to-dos, reminders and habits close at hand
   — without adopting a whole system.
 
-## Backlog: just landed, and what's next.
+## Backlog: what's new, and what's next.
 
-Shipped in small updates rather than big releases — eight of them since the
-launcher reached the production channel, written up as they land in the
-changelog below.
+One line, newest first. Shipped releases are on the production channel; planned
+work is not written yet. Each release is written up in full in the changelog
+below. Twelve releases since the launcher reached the production channel on
+2 August 2026.
 
 Shipped:
 
-- **1.4.5 — Clocks that read the way your phone does.** Every hour on the grid —
-  clock, calendar, reminders, dashboard — follows the phone's own 12/24-hour
-  switch, and two chips in settings override it when you disagree.
-- **1.4.4 — Your own wallpaper behind the grid.** The wallpaper set on your phone
-  can sit behind the tiles now, with the tiles themselves as see-through as you
-  want them.
-- **1.4.4 — A grid that stays where you put it.** Tiles go anywhere, swap places
-  instead of shoving each other around, and one tap on "align" straightens a
-  desktop that drifted.
-- **1.4.4 — Weather in °C or °F.** Pick the unit yourself instead of taking
-  whichever one the launcher guessed from your language.
-- **1.4.3 — Icon packs.** Point sqTile at an icon pack you already own and let it
-  feed the tiles, the dock and the app list.
-- **1.4.3 — A dock you edit in place.** Swap and reorder dock icons on the home
-  screen itself, watching the row rearrange as you drag.
-- **1.4.2 — An analog clock face.** The clock tile can show hands instead of
-  digits, at any size you give it.
+- **1.4.9 (7 September 2026).** "Add to Home screen" reaches the desktop: a page
+  pinned from the browser becomes a tile, and an installed web app places itself
+  instead of vanishing. Settings became five pages you swipe between. Long-press
+  opens edit mode with the tile selected instead of picking it up. A background
+  colour of your own, beside black, white and your wallpaper.
+- **1.4.8 (1 September 2026).** A whole-month face on the calendar tile, with a
+  dot under every day that has something on it and an agenda beside it on wide
+  sizes. A music tile with album art, title, artist and transport, reading
+  whichever app is playing. A new 3×3 size. A filter for which calendars feed the
+  tile. Icon size from 60% to 250% and a choice of font weight.
+- **1.4.7 (28 August 2026).** One crash and nothing else: a field Android
+  declares non-null came back null for a package the launcher could see but not
+  read — most likely an archived app — and took the process down from an app-list
+  reload that fires on its own.
+- **1.4.6 (26 August 2026).** Tiles move when a notification lands: a sweep, a
+  drop, or a flip that turns the tile over to show the unread count, with an off
+  switch and a preview in settings. An icon for any tile from any installed pack,
+  and an icon cache rebuilt around a byte budget. A switch per dashboard section.
+  Tile colours that can be see-through.
+- **1.4.5 (21 August 2026).** Clocks that read the way your phone does: every
+  hour on the grid follows the phone's own 12/24-hour switch, with two chips in
+  settings to override it.
+
+Everything before that — back to the first day on the production channel — is in
+the changelog below.
 
 In development:
 
-- **Tiles that flip when something lands.** A new notification turns its tile
-  over — a different move from the flip you get when you launch the app.
 - **More languages.** English, Polish, German, Italian and Ukrainian today, with
   the next few being translated now.
 
 Up next:
 
+- **The todo and clock tiles on the new 3×3 size.** Both still work their layout
+  out in whole cells, so at 3×3 they can look the way they do at 2×2.
 - **A full weather screen.** Tapping the weather tile should open a proper
   forecast, not send you to the dashboard.
 
@@ -166,6 +175,1295 @@ me.
 Source: https://www.gradomski.dev/blog.html
 
 Release notes and short build-log entries. No comments, no reactions.
+
+---
+
+## Add to Home screen finally has somewhere to go
+
+Published: 7 September 2026 · Tag: Release
+Source: https://www.gradomski.dev/posts/add-to-home-screen-has-somewhere-to-go.html
+Markdown: https://www.gradomski.dev/posts/add-to-home-screen-has-somewhere-to-go.md
+
+Open a page in Chrome, hit "Add to Home screen", and until 1.4.9 nothing
+happened. sqTile had no filter in its manifest for pinning, so the system had
+nobody to hand the request to.
+
+It does now. And finding out what that menu item actually does turned up a
+second, larger hole that pinning does not fix — so 1.4.9 fixes that too. On top
+of it, the settings screen stopped being seven collapsible groups, long-press
+stopped picking tiles up by accident, and the background can be a colour of your
+own.
+
+Twenty decisions were settled before any code, two of them with their own
+written records. The two that matter most to anyone using the launcher are below.
+
+## What you get
+
+You are in the browser on a page, menu → "Add to Home screen". A compact sqTile
+dialog appears over it: the page's icon, its name, one sentence saying it will
+land at the end of the desktop, and **Add** / **Cancel**. After Add you are back
+in the browser exactly where you were, and the tile is waiting on the desktop.
+
+No toast afterwards — the dialog just said what it would do, which is precisely
+why the sentence about where it lands has to be *in* the dialog rather than
+after it. And no size picker: you are halfway through another task, and you will
+fix the size in edit mode when you are actually looking at it.
+
+## This is not a "PWA" feature
+
+The branch was called `feature/pwa` and that is what people reach for it with.
+There is not one word about PWAs in the code, and there will not be.
+
+**Android does not tell a launcher "this is a PWA".** "Add to Home screen" is a
+pin-shortcut request, and what the launcher receives is identical for a Firefox
+bookmark, a contact, a Spotify playlist or a shortcut to a settings page. There
+is nothing in that request that says "web".
+
+**And an installable PWA usually is not a shortcut at all.** On a device with
+Google services, Chrome mints a **WebAPK** — a real package, which sqTile's app
+list already sees like any other app. The pin-shortcut path is what
+*non*-installable pages get, and devices without Play services. Confirmed on the
+phone, and Samsung Internet behaves the same way: installing a page from either
+browser produced a new package and **no pin request at all**.
+
+## The hole that finding that out opened
+
+Chrome 152 calls the menu item **"Install and create shortcut"**. For an
+installable page it does the first half — installs the WebAPK — and expects the
+launcher to put the icon on the home screen itself. One UI and Pixel do that,
+because they place every newly installed app.
+
+sqTile did not. A new package refreshed the app list and that was all.
+
+So: you install a web app, the browser says it will create a shortcut, and the
+desktop is empty. That reads as a broken feature, **and it is exactly the case
+most people mean when they say "PWA"**. Pinned shortcuts do not fix it, because
+in that case there is no pin.
+
+### Web apps land by themselves; nothing else does
+
+The fix is a rule, not a workaround: **installing a WebAPK is the only kind of
+install that is itself a request for an icon on the home screen.** The user was
+standing in a browser and pressed a button that promised a shortcut. Installing
+from Play carries no such intent, and neither does an update.
+
+Both alternatives are worse. Doing nothing leaves the most common case broken.
+Placing *every* newly installed app turns the desktop into a dump on Play
+installs, updates and system apps — which is the behaviour people leave OEM
+launchers to get away from.
+
+Detection is **by metadata, not by package name**. A WebAPK declares its start
+URL, confirmed by reading the manifest of an installed shell on the phone. The
+package-name prefix stays as a fallback for a shell without readable metadata.
+The metadata says what the package **is** — a shell around a start URL — while
+the prefix only says what it is **called**.
+
+Duplicate protection is a requirement rather than caution here: the
+package-added callback also fires on a package **replacement**, so without it
+every update to a web app would add another tile. Matching is by package rather
+than by exact component, because a shell that renames its activity between
+versions is still, to the person looking at it, the same app.
+
+## The permission that undercuts the whole thing
+
+Launching a pinned shortcut works **only while sqTile is the default launcher**.
+Without that role it throws, and there is no way around it: the shortcut's intent
+is not readable by anyone but its publisher, so we cannot fall back to starting
+it ourselves.
+
+That runs straight into the fact that sqTile ships a "set as default" tile —
+which is to say it explicitly assumes users who have not made it their default.
+
+Three states, and they are not the same shape:
+
+| state | permanence | what happens |
+| --- | --- | --- |
+| publisher uninstalled | permanent — reinstalling does not restore the pin | the tile is deleted, like an app's |
+| no default-launcher role | temporary | the tile stays; tapping explains |
+| shortcut gone after a device transfer | permanent, but undetectable | the tile stays; tapping offers to remove it |
+
+Those last two need **two different dialog texts, not one**. One is repairable
+and leads to the default-launcher settings; the other is not, and the honest
+offer is to delete the tile. A single text for both is a lie in one of them.
+
+Chrome softens the first case on its own, as it turns out: it asks whether the
+current default launcher can accept a pin at all, and **hides the menu item**
+when it cannot. So until sqTile is your default, you do not see "Add to Home
+screen" in the first place — a gentler failure than a tile that does nothing.
+For testing it means the debug build has to be set as default or the feature
+cannot even be invoked, which looks like a broken browser.
+
+### A decision that changed while I was writing the code
+
+In the design session I wrote that the launcher never deletes tiles by itself,
+citing the install check that only runs on import. That was wrong. The
+application class had been listening for removed packages and deleting their
+tiles for a long time — a tile for an uninstalled app disappears immediately, and
+always has.
+
+So the rule in the table above is the real one, and it came from re-reading the
+code rather than from the design note. Deleting a shortcut tile when its
+publisher is uninstalled is one line; reversing that decision later is deleting
+the same line.
+
+Pruning on import follows the same principle from the other side. We ask the
+system whether the shortcut is still pinned and **remove the tile only on a
+definite no**. When we cannot ask — because we are not the default launcher —
+we keep it. Importing a backup on a fresh install *before* setting sqTile as
+default is a likely order of operations, and pruning on uncertainty would delete
+every shortcut tile from a backup the same phone had written. **Deleting because
+"I do not know" is a worse failure than a dead tile.**
+
+## The icon is a snapshot, deliberately
+
+It is rendered once, at the moment of pinning, and stored keyed by tile id.
+
+Everywhere else in the launcher, an icon is re-derived on demand and cached in
+scratch space that the system may reclaim. A shortcut's icon **cannot be
+re-derived** in the states this tile lives in — not while we lack the launcher
+role, not after the publisher revokes the shortcut, not after Chrome is
+uninstalled. That is exactly the split the icon cache already documents:
+derivable things go in the disposable cache, non-derivable things get kept.
+
+Icon packs do not apply, and the picker for them does not appear on this tile
+type. Pack mappings are indexed by component, and a shortcut has no component;
+an empty picker is worse than no picker. The per-tile override offers only the
+full image or a monogram — a themed or silhouetted favicon is a white blob, and
+the override exists so you have a way out of "one colourful tile among white
+glyphs" without pretending we can theme a favicon.
+
+## Backup carries the icon but not the pin
+
+Worth knowing, because it produces a confusing result. The icon and the label
+travel in Android's auto-backup and in a device transfer. **The pin on the
+system's side does not.** So after moving to a new phone you get a tile that
+looks perfect and will not launch — which is the second dialog text above,
+earning its place.
+
+The manual backup file does not even carry the icon; it holds entities only, the
+same way contact photos have never travelled in it.
+
+## Field evidence: a shortcut id can be a UUID
+
+Samsung Internet wrote its shortcut id as `7354df85-b807-…`, not as a URL.
+
+That is a small thing with a large consequence: every temptation to read the
+page's host out of that identifier — and there was one, for naming the tile —
+would break on it. The id stays opaque.
+
+## Long-press stopped picking tiles up
+
+A user reported it plainly: on a full grid it is far too easy to move a tile.
+
+The cause was one gesture doing two jobs. A tile's long-press handler both
+entered edit mode **and** picked the tile up in the same callback. Entering edit
+mode scales the desktop down, so the tile ran out from under the finger by up to
+eight per cent of its distance from the centre of the scale — and the finger was
+already in a drag. On a full grid there is no empty space to hold, so the tile
+was the **only** way into edit mode: every single trip into editing began with an
+accidental tile move that then saved itself.
+
+Long-press now goes straight into edit mode, with the tile you pressed selected,
+and picks nothing up until edit mode is already open.
+
+There was a four-cell menu in between — long-press opened a menu instead, and
+nothing moved — and it was **withdrawn before this release shipped**. It earned
+its place when edit mode opened with no labels at all, but the edit bar now
+carries add, tidy up, settings and done itself, so two of the four cells were
+that bar's buttons written differently and the other two were doors the menu was
+standing in front of. The cost, named: the shortcut straight to wallpaper goes
+with it. Wallpaper is still under Settings → Appearance, but nothing jumps
+directly to that section any more.
+
+### The frame that never happens
+
+Entering edit mode used to animate exactly one thing — the scale — with a spring,
+while everything the mode really changes happened in the switch frame: the rail
+appeared and **narrowed every cell**, the bar took its space, the grid jumped
+sideways. One animated movement out of four. It ignored the animation-speed
+multiplier too, so it sprang even at "no animations".
+
+The resolution simplifies all of it: **the cell size stopped depending on the
+mode.** The rail is no longer subtracted from the cell width, so the grid never
+recalculates. There is no switch frame, so there is nothing to mask, and no jump
+either entering or leaving. Edit mode is one scale over a grid that was already
+laid out. It then runs in two stages — the desktop first, the rail and bar
+after — and leaving reverses the order by itself.
+
+The scale went from 0.92 to 0.85, and that is not taste: the margin the scale
+opens is now the **only** place the rail fits, and 0.92 left about 29 dp for a
+44 dp rail.
+
+Three things that do not work, each tried on the phone first:
+
+- **Animating the cell size.** Tiles move relative to one another, and it looks
+  like the grid is running away underneath them while they chase it. Worse than
+  the jump it replaced.
+- **Hiding the recalculation frame under a fade.** Reads as a blink.
+- **A compensating scale with a switch threshold.** Plates cross over smoothly,
+  but icons and labels have fixed sizes in dp — so *they* jump instead. The jump
+  moves rather than disappearing.
+
+## Three bugs found on the way
+
+- **A single-page tile swallowed desktop scrolling.** The vertical gesture
+  detector was installed unconditionally and checked how many pages there were
+  only when the drag ended. Such a detector consumes from the first frame, so the
+  gesture was eaten along its whole length before that check ever ran: a scroll
+  begun on a todo tile with one page simply did nothing. It is now installed only
+  when there is something to page through.
+- **A layout dropped an entire second row, silently.** The flow layout places
+  only as many lines as fit its height, and if the next line misses by a single
+  pixel it is dropped whole — so three of the six types in one section of the add
+  menu were **not drawn at all**, with no trace on screen. Rows are cut by hand
+  now: the worst a bad measurement can do is clip a pixel.
+- **The held-row highlight had no visible effect.** It was drawn with the helper
+  grid, which puts it **under** the tiles, in the accent colour — the same colour
+  the tiles are painted. With a free cell it glimmered through the gaps; on a
+  full desktop it was covered completely. A marker has to differ from the thing
+  it marks, and be on top of it.
+
+## Settings became five pages you swipe between
+
+Seven collapsible groups, with a rule that only one could be open at a time —
+because a stack of seven open ones is unreadable. That same rule made it
+impossible to compare two settings: you had to open them alternately. And the
+largest group was a wall inside a wall: eight sections, about sixteen controls
+with a system wallpaper set, longer when open than the rest of the screen put
+together.
+
+It is five pages now — look, tiles, content, apps, about — with boxes inside each
+instead of bare section headings. A box says where one subject ends and the next
+begins without collapsing anything. Nothing was dropped; the box was the unit of
+the move.
+
+The move was also the moment to fix things that had ended up wherever they
+happened to land:
+
+- **The two wallpapers sit next to each other.** The system wallpaper as a
+  background and the tile wallpaper were five sections apart, told apart only by
+  a sentence whose entire job was to say "not the other one". Position tells them
+  apart now.
+- **Animation speed got its own box.** A multiplier applied to **every** animation
+  in the app was the tail of a group about how tiles look.
+- **"Rate sqTile" moved out of the backup group**, whose subtitle was one word:
+  "backup".
+- **Badges moved from content to tiles**, because they describe how a tile looks,
+  not what it contains.
+
+Two rules hold it together. **The accent frame is used exactly once** — on the
+"what's new" box — because an accent frame is this app's way of saying "look
+here", and five of them under one another would stop meaning anything. And **the
+Pro marker sits on the control, not on the box**, because boxes mix paid and free
+controls: a chip on the title of a box holding both would be untrue.
+
+"What's new" shows a marker on its box rather than a modal on launch. The
+launcher is the first thing you see after unlocking the phone and has no business
+putting anything on top of that.
+
+Generating those notes from the release documents was considered and rejected in
+favour of writing them by hand with a guard test that fails when the version code
+moves without them: parsing five language versions of a changelog block would be
+more code than the thing it protects.
+
+## Your own background colour, and the trap that nearly shipped
+
+Black, white, wallpaper — and now a colour you pick.
+
+It is stored as **two fields**, not one nullable colour: whether a custom
+background is live, and which colour was chosen. One field is simpler and loses
+the colour every time you switch to black, so the picker would open from scratch
+instead of from the colour you were just working on. Separating "what is on" from
+"what the user did" is what lets one tap bring your colour back.
+
+Resolution runs in order: wallpaper, then custom, then black or white. Wallpaper
+winning first is why a custom colour under a wallpaper is dormant rather than
+erased.
+
+**And that order is the trap.** Because the resolver answers in sequence, the
+black chip has to **clear the custom flag** — otherwise the custom branch still
+wins and the chip **does nothing at all**. The same ordering breaks a write split
+across several steps: between "wallpaper off" and "custom off" there is an
+emission where the desktop paints the very colour the user is leaving. So each
+chip is one atomic write, not a sequence.
+
+Two smaller things worth recording. The chip is filled with the colour only when
+selected, and carries a hairline outline, because **any colour can be exactly the
+colour of the screen** — unlike the accent, which is always pushed to visibility.
+That is not hypothetical: my own saved colour is `#021A0C`, near enough the
+settings background that without the outline the chip would be invisible.
+
+And the gate order was corrected in flight: **choosing a saved colour comes
+before the Pro check.** The gate guards creating and changing a colour, not
+returning to your own. With the checks the other way round, someone whose Pro had
+lapsed could not even go back to their own background — which contradicts the
+rule that a lapse keeps what you have and only stops you changing it.
+
+## Also in 1.4.9
+
+- **The add-tile menu is grouped into sections you swipe through** — apps, day,
+  media, contacts, tools. It was a flat list of every type, 616 dp tall on a
+  360×800 screen, growing by 40 dp with each new type; it would have run out of
+  screen before I ran out of ideas. Its height no longer depends on how many
+  types there are, and each type's section, label and icon are declared together
+  in one place, so a new type will not compile until it has answered all three.
+- **A toolchain trap that cost an hour**, written down so it costs nobody else
+  one: the incremental dexing cache produced a `classes.dex` whose checksum did
+  not match its contents, and the app died at launch with a missing-class error
+  pointing at something else entirely. The build says success, the JVM tests
+  pass, the APK signs and installs. `clean` fixes it; a twenty-line script
+  confirms it in half a minute. The dead ends, so nobody walks them twice: a
+  notification-listener warning in the system log was a *consequence* of the
+  crash loop, and the USB transfer was not corrupting anything.
+- **600 unit tests**, no failures.
+
+## What's next
+
+The todo and clock tiles still compute their layout in whole cells, so on the new
+3×3 size they can look the way they do at 2×2. That is the next thing to fix, and
+it is open work rather than a hidden fallback.
+
+Beyond that: more languages, and then a proper weather screen behind the weather
+tile. If you have an opinion about which of those matters more, I would rather
+hear it before it ships than after — [get in touch](https://www.gradomski.dev/contact.html).
+
+---
+
+sqTile is on [Google Play](https://play.google.com/store/apps/details?id=dev.gradomski.sqtilelauncher),
+in English, Polish, German, Italian and Ukrainian. Free, with a single one-time Pro
+unlock and no subscription. No ads, no analytics SDK, no account.
+
+---
+
+## A month on the tile, and music without opening the player
+
+Published: 7 September 2026 · Tag: Release
+Source: https://www.gradomski.dev/posts/a-month-on-the-tile-and-music-without-the-player.html
+Markdown: https://www.gradomski.dev/posts/a-month-on-the-tile-and-music-without-the-player.md
+
+1.4.8 is the opposite of the hotfix before it. The calendar tile gets a second
+face showing the whole month, there is a new music tile, a new 3×3 size, and a
+filter for which calendars feed any of it.
+
+Both new faces were designed in full before a line of code: 26 decisions, each
+with the alternative that was rejected. The starting point was working code from
+a sibling project of mine, read, taken apart into decisions, and rewritten
+against this project's rules rather than copied. What came across and what
+deliberately did not is most of what follows.
+
+## A whole month on the calendar tile
+
+It is a **second face of the existing calendar tile**, held in the same field
+that already holds the clock's dial and the weather's face — the third time that
+pattern has earned its place. Switch it with the badge in the corner in edit
+mode, exactly like the clock. A tile from before the update reads as the old
+face, so **every existing calendar tile looks identical after upgrading** and
+there is nothing to migrate.
+
+A new tile type was the obvious alternative and it is worse. The picker already
+has 13 entries; a fourteenth called "calendar (month)" next to "calendar" makes
+the user guess what the difference is before either one is on screen. Switching
+face by size was the other option — small means teaser, large means month — and
+it breaks the promise the size ladder makes, which is that it is a menu of
+shapes. It would also deny a small month grid to someone who wants exactly that.
+
+The geometry is always the same: seven columns, one row per week. Only the
+contents of a cell change, on a single threshold computed from the **cell as
+actually measured** — not from the tile's width in grid units, which says
+nothing about available dp across different screens.
+
+- **Below the threshold:** a dot. No day number, no weekday header.
+- **Above it:** the day number, a dot beneath it, and the weekday header.
+
+Three signs that never change meaning: the plate says the day exists, the dot
+says something is on it, and a brighter plate says it is today. The dot is
+binary and never a count — at 2×2 there is no room for one, and at 8×4 a number
+squeezed under the day number is a mark nobody reads. The query is identical
+either way, so being binary buys one rendering rule rather than two.
+
+Today used to carry an outline around its digit, and that was wrong: an outline
+draws *around* the number and so competes with it for the same few dp. On the
+phone it overlapped its own digits at ordinary font sizes and could only get
+worse as the system font grew. A fill sits *behind* the text and cannot collide
+with it at any size.
+
+Why a threshold is needed at all: the desktop is eight columns, so a grid unit
+is about 40 dp on a 360 dp screen and a 2×2 tile is about 84 dp. Seven day
+columns leave about 12 dp per day, and a two-digit number needs about 14. That is
+not a font-size problem — the numbers simply do not fit, and an unreadable number
+is **worse** than a dot, because it pretends to say something.
+
+**Tapping a day opens the system calendar on that day**, with the turnstile,
+because that is still opening an app, just with an argument. It degrades by
+itself: at 2×2 a day cell is around 12 dp, far below the touch minimum, so there
+the whole tile simply opens today. No extra rule required.
+
+There is no month navigation. Horizontal is the page pager plus the turnstile's
+reserved meaning, vertical is desktop scrolling and the tile's own page
+rotation. Browsing months is the calendar app's job, and the tap already goes
+there.
+
+### The first day of the week comes from the region, not the language
+
+The locale is taken **from composition**, not from the process default, because
+Android 13's per-app languages make those two different answers.
+
+The trap underneath that: the week-fields lookup reads the first day of the week
+from the **region**, not the language. A locale carrying only a language answers
+Sunday for *every* language — Polish included. Verified on the JVM: `pl` gives
+Sunday, `pl-PL` gives Monday. And per-app languages can hand composition a bare
+`pl`, which would have started a Polish user's week on Sunday.
+
+So the region is taken from the locale when it has one and borrowed from the
+system locale when it does not. Borrowing the phone's region is a better answer
+in its own right, not just a patch: the start of the week is a regional
+convention, so someone in Poland running the launcher in English still starts
+on Monday. The language stays with the composition locale, because that is what
+draws the day letters.
+
+### It draws the month before it knows what is on it
+
+The grid, the numbers and today's brighter plate render immediately. The dots
+wait for the first real emission from the query.
+
+That is not a nicety. An empty grid of dots at start-up is exactly the bug that
+already shipped once on this project — a "0" and "set a city" flashing at people
+with a full desktop. A month grid drawn without dots is **indistinguishable from
+a month that is genuinely empty**.
+
+It is now a standing entry in the regression checklist rather than a one-off fix,
+because this class of bug is invisible to whoever writes it: with a warm process
+you never see it, the value is correct two frames later, and the only people who
+meet it are users cold-starting with real data.
+
+### Wide sizes stopped being a stretched grid
+
+The first device pass was blunt: 4×4 and 2×2 good, 8×4 and 4×2 weak. There is one
+cause and it can be named. **The month grid stops carrying more information as it
+grows wider.** Cells get wider but not taller, so 8×4 spends 50 dp on a day to
+say precisely what a 24 dp cell said at 4×4. The rest is whitespace.
+
+Three layouts now, chosen from the measured tile rather than from a list of known
+sizes:
+
+| shape | layout |
+| --- | --- |
+| width − height ≥ 120 dp | **split**: a square month on the left, an agenda on the right |
+| that, and width ≥ 1.8 × height | **agenda only** |
+| anything else | **grid only** |
+
+The first condition is phrased as "how much is left **beside** a square month",
+and that is not an accident: a month is square by nature, so the question is
+whether the remainder is enough for an agenda. At 8×4 that leaves 184 dp — a real
+list. At 4×2 it leaves 92 dp, too little for a time and a title, so that shape
+does not split.
+
+**The 120 dp threshold is computed, not eyeballed.** The requirement was that
+width 7 must look like width 8, because a tile trimmed by one unit changing its
+layout is a distinction nobody asked for. Of the shapes that must split, 7×4
+leaves the least: 123 dp on a 320 dp screen, 138 at 360, 158 at 412. One hundred
+and twenty fits every one of those, and width 6 stays out of the split on all
+ordinary screens at 82, 92 and 105 dp. The first version used 140, which is
+exactly why 7×4 fell back to a bare grid.
+
+The left half of the split is literally the same month grid used at 4×4, not a
+second rendering of it. The agenda comes from the flow the dashboard already
+lives on, filtered with the **same grouping** the dashboard's calendar section
+uses, so the two surfaces cannot disagree about which day an event belongs to.
+
+The agenda shows **two days, not one**. A wide tile usually has room to spare, and
+the honest thing to put there is the next thing that will matter, not whitespace.
+Tomorrow is added **only when rows actually remain**, so a packed day pushes it
+out entirely instead of stealing rows from today. Both days carry a dated
+heading, including in the split layout — a reversal of the first version, which
+dropped the heading because the grid beside it already highlights today. That
+argument stopped being true the moment a second day appeared: the headings are
+what tell the two lists apart.
+
+Rows **truncate rather than compress**. A list longer than the space loses the far
+end of the horizon; it does not shrink the type. A calendar that fits one more
+row at the cost of every row's legibility has stopped answering "what now".
+
+### The largest system font broke both halves at once
+
+Reported from the phone at the largest font step, with screen zoom untouched.
+Three symptoms, **one cause**: the thresholds were constants in `dp`, and text
+grows in `sp`.
+
+The regression checklist already says it outright — nothing about the tiles
+scales with that setting, they are a fixed grid of millimetres, while every `sp`
+inside them does. The tile stays the same size; the letters in it do not.
+
+- **Day numbers cut to one digit.** The fixed comparison still said "print
+  numbers" to a cell that had stopped fitting them.
+- **Dots vanished.** At double scale the number took the cell's whole height, so
+  the dot under it was pushed out.
+- **The agenda ran outside the plate**, painting onto the tiles beneath.
+
+Both thresholds now multiply by the font scale, floored at 1 — a smaller-than-
+default font does not buy the grid the right to draw in a tighter cell than the
+layout was designed for. At the largest font the whole month drops to dots, and
+that is the intended outcome rather than a capitulation: the checklist accepts
+text that **is not there** and rejects text that is **cut**.
+
+Only the vertical budget scales. Whether the agenda fits beside the grid at all
+does not, deliberately: running out of width ends in an ellipsis, which is proper
+degradation, while running out of height ends in cutting.
+
+### Then I broke the weekday header, and that one was a design error
+
+The fix worked — the month dropped to dots at the largest font, as intended — and
+**took the `M T W T F S S` header with it**, which nobody had asked for. Reported
+from the phone immediately.
+
+The cause is not in that fix. It is in a rule I had written earlier: the header
+shares a threshold with the numbers, because a grid without dates has nothing to
+label. That sentence is true in exactly one case — a one-cell tile, where the
+column is 12 dp and a letter does not fit either. Everywhere else it glues two
+different questions together:
+
+- **A day letter** is one glyph on one line. It needs its own line, and it needs
+  the weeks to still have something left.
+- **A date** is two digits with a dot beneath, inside a week row. It needs the
+  row to be **tall**, not merely wide.
+
+At double scale the second failed and the header went with it, despite sitting in
+25 dp columns where the letter had fitted all along.
+
+Two separate tests now. The header appears wherever the weeks can live with it,
+and gives way only on a one-cell tile, where taking a line would leave the month
+with nothing. The cell height is computed from what the weeks **actually** get,
+so the header still cannot starve the numbers it labels. At the largest font the
+result is a header plus dots. A week row's height deliberately does **not** scale
+with the font: a plate and a dot are not text.
+
+## Music, without opening the player
+
+A new tile type. Album art as the plate, title, artist, skip and pause, and a tap
+on the body opens whatever the sound is coming from.
+
+The session is picked live rather than pinned to the tile: the first one playing,
+or the first in the list when nothing is. The system already orders that list by
+activity, so "the first one playing" is the one being listened to. Pinning a
+player to a tile was the alternative, and it demands an answer to "what does a
+tile pinned to Spotify show while YouTube is playing" — a separate feature, not a
+variant of this one.
+
+The reference implementation I read has a real bug here that this one does not:
+there, the controller is fetched afresh on every button press, so "next" can land
+on a different session than the one the tile is currently drawing. Here the
+controller is held, and the action goes to the session that is on screen.
+
+### Three states, not two
+
+This distinction is easy to miss and it changes the design.
+
+1. **Playing** — art, title, artist, transport with a pause icon.
+2. **Paused, session alive** — the same, with a play icon. **The metadata here is
+   real, not stale.** A media session usually survives a pause, the controller is
+   still returned, and play **resumes that exact player**. The difference from
+   state 1 is **the icon and nothing else** — no dimming, no greying. Dimming
+   would suggest "out of date", and it is up to date; the only thing that changed
+   is that the sound stopped, which is precisely what the icon says.
+3. **No session at all** — the player was killed, or the phone restarted. There
+   is no metadata and nothing to resume, so this is the empty face, **without a
+   `+` affordance**: `+` promises that the action happens on this tile, and
+   opening a player is not that. Tapping opens the device's default music app,
+   which turns a dead tile into a useful one without making a promise.
+
+### Album art on the plate is a correctness requirement
+
+The art fills the whole plate with a gradient scrim from the bottom; text and
+transport sit on the scrim. That is not decoration.
+
+The function that picks a readable content colour takes **one `Color`** and
+judges its luminance. An image has no single luminance, so white text on light
+album art simply disappears. The scrim is a known colour — **and it is the scrim
+we compute contrast against**, not the picture.
+
+The scrim carries the **tile's colour**, not black. The first version was flat
+black and read like a system media notification rather than like *this* tile. The
+colour is mixed into black rather than used at full chroma, and that is not
+taste: the scrim exists so that contrast can be **computed**, and darkening
+whatever colour the user picked guarantees the bottom of the gradient stays a
+known, legible ground even with a bright accent.
+
+Two collisions had to be settled. The desktop draws one photo *through* the tile
+plates, so album art would be a second image in the same plate: **while something
+is playing, the art wins** — the tile stops being a window and becomes its own
+image, and returns to being a window when the session goes. Plate transparency
+applies to the art exactly as it applies to a colour.
+
+The sizes go 2×2, 4×2, 4×4, 8×4. The floor is **2, not 4**, and that took an
+argument. Three transport buttons need about 40 dp each, so about 120 dp, so
+three units — which suggests a minimum width of 4. But that minimum also bounds
+the size ladder, so it would **exclude the 2×2 rung**, where this tile is a
+designed variant (art plus one centred play button) rather than a layout failure.
+The definition in the code is "the narrowest width at which this tile still says
+something", and a play button on album art says something. The touch problem is
+solved by **removing two buttons**, not by squeezing in three. The artist drops at
+4×2 — the only place text disappears on shrinking, because 84 dp of height is
+spent by three 40 dp buttons and one line of title.
+
+### The icon lost a second, and only in one direction
+
+Pause switched instantly. Start took about a second. The asymmetry was the clue:
+the playing check tested for exactly the "playing" state, but playback begins by
+passing through **buffering**. The icon was not waiting for our event — it was
+waiting for the player's buffer to fill. A pause has no such state on the way.
+
+Fixed in two layers: buffering and seeking stopped counting as paused, which also
+removed a latent bug where skipping to the next track flashed the icon back to
+"play"; and an optimistic switch, set **before** the command is sent, so the icon
+turns in the same frame as the touch. It only holds until the session disagrees,
+so the cost of being wrong is a pause pressed *in the player* right after the
+tap.
+
+### And then buffering had to get its own sign
+
+Folding buffering into playing hid it **under the pause icon**. On a slow stream
+the tile then shows a pause, makes no sound and does not move — which is exactly
+what a hung tile looks like. Reported from the phone right after the previous
+fix.
+
+So the boolean gave way to three values — paused, buffering, playing — and the
+work divides cleanly. Drawing looks at all three and puts a **spinner in the
+button's place** while buffering. Pressing the button looks at "engaged", because
+pressing during buffering means pause and that is what the user wants. Session
+selection looks at "engaged", because a session that is buffering is the one being
+listened to. And the art's drift looks at "engaged", because a tile freezing the
+moment a stream stalls would read as broken all over again.
+
+Seeking goes to *playing*, not buffering, deliberately: a skip usually takes a
+frame or two, and a spinner flashing on every "next" would be worse than no
+spinner. A skip that genuinely has to wait passes through buffering anyway.
+
+The optimistic switch changed meaning for the better along the way. Pressing play
+now shows a **spinner** rather than a pause icon — "heard you, working" instead
+of "playing", which was not yet true.
+
+One deliberate exception: the spinner does **not** obey the animation-speed
+multiplier. Everywhere else zero means "finished", but that rule is about
+decoration — the turnstile, arrivals, the art's drift. This is feedback, and a
+progress indicator frozen mid-arc says "hung", which is the very thing the
+spinner exists to prevent.
+
+### The drift, and a bug that was already there
+
+The album art drifts the same way the gallery tile's photo does, from one shared
+implementation. Those are the only two places where an image fills a plate, and a
+second, subtly different movement would read as a fault rather than as variety.
+
+Two rules make it more than an ornament. **The drift runs only while something is
+playing**, which turns it into a **state signal**: a tile that moves is a tile
+that is playing, readable from across the room without squinting at an icon. And
+**zero on the speed multiplier means finished** — no transition is composed at
+all, the image stands.
+
+**Which fixed a bug that was already shipped.** The gallery tile did not respect
+the speed multiplier — not one reference to it in that file; it stopped only in
+edit mode. The multiplier is documented as applying to **every** animation in the
+app, so anyone who had turned all animations off still had a drifting photo on
+their desktop. Copying that pattern would have spread the bug to a second tile
+instead of fixing it, so both moved onto the shared path at once.
+
+And one that arrived with the change: the drift scales the image to 1.15 and the
+music face clipped **nothing**, so the art ran past its plate and lay over
+neighbouring tiles — visible immediately in a screenshot from the phone. The
+gallery tile has carried that clip since it got its own drift. The lesson is
+worth writing down because it is not a one-off: anything given this movement
+**must** be in a clipped container. Scaling beyond its own bounds is built into
+it, not a side effect.
+
+### Why a track title does not break the rule from 1.4.6
+
+1.4.6 settled that the unread **count** on the flip's back face is metadata the
+tile already prints, and that a **sender or a message snippet** is excluded,
+because those change a row in Data Safety, the lock-screen decision and the
+privacy weight of the whole app. That post ended by saying a sender on that face
+would be a separate feature with a separate answer.
+
+The music tile shows a title and an artist. **This is that separate answer.**
+
+It does not break the rule, and it is worth being exact about why. What was ruled
+out is the **content of a notification**. A track title does not come from a
+notification — it comes from the media session's metadata, which the playing app
+publishes *so that the system can display it*. The same words already stand on
+the lock screen and in the shade, by that app's decision rather than ours. The
+badge data still carries not one character of notification text; listener access
+here is the key to the session API, not to content.
+
+**The counter-argument, which I am not hiding:** the tile hangs on a desktop that
+anyone glancing at the phone sees, and a podcast episode title can carry exactly
+the class of information the earlier rule protects against. The difference is
+that the user adds this tile themselves and removes it themselves, whereas a
+badge arrives on every tile at once. Visibility here is a choice, not a side
+effect.
+
+Operationally: no new row in Data Safety, because nothing leaves the device, and
+**no new permission**. Music goes through the media session manager, which needs
+notification-listener access — and this launcher already has it for badges.
+Someone who turns that access on for music will also get counts on their tiles,
+because badges have no separate switch. That is deliberate and it needed zero
+lines of code: it is how the permission already behaves.
+
+Coming back from system settings has to revive the tile without a restart, and
+that needed its own mechanism. There is no result to await and no dialog to hang
+a callback on — the launcher simply returns to the foreground holding a
+permission it did not have when the flow started subscribing. So the subscription
+is rebuilt from scratch, gated on the access state having **actually** changed, so
+an ordinary return to the desktop does not re-register system listeners.
+
+There is no marquee on the title. It ellipsises like every other piece of text on
+every other tile. A long title is not a special case deserving its own rule.
+
+## Choose which calendars feed the tile
+
+Until now every calendar was pulled without asking. With one noisy work calendar
+a dot appears under every day of the month and the grid stops saying anything.
+The old teaser face never had that problem because it showed one event at a time;
+the month grid exposes it.
+
+The interesting part is what did **not** turn out to be needed. The project's
+rule is that a new non-nullable field in the backup format needs a version gate,
+because the JSON decoder will materialise it as `false`/`0` in an old file rather
+than as the default. The real test is sharper: **does what the decoder puts in
+place of the missing field differ from the truth about the launcher that wrote
+that file?** Here it does not. A missing field gives an empty set, an empty set
+means "all calendars", and a launcher from before the picker showed exactly all
+of them. That is a concrete payoff of encoding "empty means all", not a matter of
+taste.
+
+The selection enters the repository as a flow rather than being handed in by a
+screen, so the tile, the dashboard and the picker all see one answer. It is
+composed with the ordinary refresh trigger, so changing the selection updates the
+tile immediately rather than at the next tick — with one caveat found in review:
+that flow has to be **de-duplicated**, because the settings flow emits on every
+settings write and every one of those emissions would otherwise be a query to the
+content provider.
+
+The summary row has to name the "all" case in words. Stored, that case is an
+empty set, and "0 selected" would read as a tile showing nothing — the exact
+opposite of what it means.
+
+**A known limitation, accepted:** the IDs belong to the provider, so an account
+removed and added again comes back with a different ID and stops matching a saved
+selection. That reads as a calendar quietly returning to the tile, which is a
+better failure than the reverse — a filter hiding a calendar the user can see in
+every other app.
+
+## Also in 1.4.8
+
+- **A new 3×3 size.** Three grid units by three, so a row works out as
+  `3 + 2 + 3 = 8`: two large squares at the ends and a small tile between them.
+  Every type gets it, including folders and the gallery, whose floor drops from
+  4×4. Weather fits three days with glyphs at that width, and the seven-day face
+  trims to three instead of falling back to the current temperature; music shows
+  title, artist and the full transport. **The todo and clock tiles still compute
+  their layout in whole cells and can look like 2×2 there** — that is open work,
+  not a hidden fallback.
+- **Icon size from 60% to 250%, and Light / Normal / Bold type.** One typographic
+  scale now covers every tile face; large readings keep their sizes but take the
+  chosen weight. The app name no longer moves the icon: its strip is a measured,
+  invisible copy above the icon, so both ends of the face take the same space.
+- **The badge dot became a pin.** In dot mode every tile — 1×1, larger, folder —
+  draws it in the **top-right** corner, 2 dp in, with no plate under a full-colour
+  icon. The counter stays in the bottom strip beside the name. A notification
+  arriving must not move or resize the icon.
+- **All-day events were showing a day early**, west of UTC. They begin at UTC
+  midnight, and three places converted that with the local zone — so at a negative
+  offset an all-day event landed on the wrong day on the tile, in the grid's dots
+  and on the dashboard. A pre-existing bug, found while building the agenda, now
+  fixed through one shared helper and covered by a test that had been passing
+  falsely.
+- **Edit controls hide while you move a tile.** Delete, size, colour and the type
+  control get out of the way during a drag and come back when you put it down.
+
+## What's next
+
+1.4.9, and it is two things at once: Chrome's "Add to Home screen" finally has
+somewhere to go, and the settings screen stops being seven collapsible groups.
+
+---
+
+sqTile is on [Google Play](https://play.google.com/store/apps/details?id=dev.gradomski.sqtilelauncher),
+in English, Polish, German, Italian and Ukrainian. Free, with a single one-time Pro
+unlock and no subscription. No ads, no analytics SDK, no account.
+
+---
+
+## A null the SDK said could not happen
+
+Published: 7 September 2026 · Tag: Release
+Source: https://www.gradomski.dev/posts/a-null-the-sdk-said-could-not-happen.html
+Markdown: https://www.gradomski.dev/posts/a-null-the-sdk-said-could-not-happen.md
+
+1.4.7 fixes one crash and nothing else. No features, no UI changes, one week
+after 1.4.6.
+
+It gets its own release rather than waiting for the next batch because the crash
+is fatal and **there is no way for a user to avoid it**. It comes from reloading
+the app list, and that reload fires on its own — at process start, and on every
+package change. You do not have to open anything to hit it, and there is nothing
+to steer around. It is triggered by the state of one installed app, so for an
+affected phone it repeats for as long as that state lasts.
+
+## What it looked like
+
+The launcher vanishes. Not after tapping something — after a package changed, or
+simply on process start.
+
+```
+java.lang.NullPointerException: Attempt to invoke virtual method
+'java.lang.Class java.lang.Object.getClass()' on a null object reference
+    at dev.gradomski.sqtilelauncher.core.apps.AppRepository.loadApps
+```
+
+That `getClass()` is the giveaway. It is not a call anybody wrote — it is how R8
+compiles a Kotlin null-check. Something the code declared non-null was null.
+
+## `applicationInfo.sourceDir` was null
+
+`LauncherApps.getActivityList` returned an entry whose `sourceDir` was null, and
+`loadApps` read it into a non-null `String`.
+
+`sourceDir` is declared non-null in the SDK. But it is filled in by **another
+process**, about a package that need not be complete. The most likely culprit is
+an **archived app** — archiving has been in Android since 15, and sqTile targets
+36. The entry stays visible to the launcher, which is the entire point of
+archiving, but there is no APK on the device. The same hole opens for a package
+caught mid-install or mid-uninstall — and the reload runs from the
+package-changed callback, so we aim straight into that window — and for a
+package on unmounted storage.
+
+## Why it killed the process rather than failing a reload
+
+The throw happened inside `map` on the `apps` flow, shared with `stateIn` from a
+scope with a `SupervisorJob`.
+
+A supervisor does not *handle* a child's failure, it stops the failure
+propagating upward. The exception went to the default uncaught handler and took
+the process down. And even if it had not, it would have closed that flow: the app
+list would never have refreshed again for the life of the process.
+
+## The fix, in three layers
+
+1. **Fields another process fills in are read through explicitly nullable
+   locals**, and each has a degraded answer rather than an exception. No APK
+   means "timestamp unknown" — a case the icon disk cache already handles, at the
+   cost of one re-render. No label means falling back to the package name: the
+   app stays in the list and still launches.
+2. **`loadApps` now runs behind a `reloadApps`** that reports the failure to
+   Crashlytics and returns the last good list instead of tearing the flow down.
+   Before the first successful pass it returns `null` — "not loaded yet", which
+   is the project's rule for the initial value of a data flow, and not an empty
+   list that a real user state could also produce.
+3. **The timestamp helper moved to the top level**, because it needs nothing from
+   the instance and can therefore be tested without a device. The reproducing
+   case is now a unit test.
+
+**What the fix does not settle.** That the culprit was an archived app comes from
+the stack trace and the SDK version, not from a reproduction on a phone. If it
+comes back, the report from layer 2 hands over a concrete exception instead of
+killing the process — the next report will be diagnostic.
+
+## Three more places of the same class
+
+Invisible to a user, but the same mistake waiting for its turn. All three are
+about the same principle: **someone else's APK is external input, not our
+invariant.**
+
+- **The icon pack timestamp** wrapped `File(sourceDir)` in a catch for "package
+  not found" only. An icon pack is an app like any other, so it can be archived
+  too: still installed enough to answer, still without an APK to stamp.
+- **The list of available packs** now falls back to the package name for a
+  missing label. One odd theme app on a device used to take down the whole pack
+  picker.
+- **The source drawable** inflates a drawable from **another app's** resources,
+  on a path started from composition. A damaged or archived APK threw there,
+  into the composition; it returns null now and the tile keeps its plate.
+
+The uninstall entry in the tile menu also got a guard: an entry that will not say
+whether it is a system app does not get offered "Uninstall", because there would
+be no honest way to handle it.
+
+**Considered and deliberately left alone:** resolving activities calls a binder
+that can throw when `system_server` is having a bad day. Not wrapped — it is not
+a known failure mode of this app, and the coding standards here say plainly not
+to wrap code just in case. If such an exception shows up in Crashlytics, there is
+one place to change.
+
+## Scale
+
+One report, which is how this crash arrived at all: a production log on 28
+August. I did not read the Crashlytics numbers. If this release ever needs an
+argument about reach, that argument has to come from the console, not from here.
+
+## What's next
+
+1.4.8, and it is the opposite of this one in every dimension: a whole-month face
+for the calendar tile, a new music tile, a 3×3 size, and a rebuild of how tile
+faces are styled.
+
+---
+
+sqTile is on [Google Play](https://play.google.com/store/apps/details?id=dev.gradomski.sqtilelauncher),
+in English, Polish, German, Italian and Ukrainian. Free, with a single one-time Pro
+unlock and no subscription. No ads, no analytics SDK, no account.
+
+---
+
+## Tiles that move when something lands
+
+Published: 7 September 2026 · Tag: Release
+Source: https://www.gradomski.dev/posts/tiles-that-move-when-something-lands.html
+Markdown: https://www.gradomski.dev/posts/tiles-that-move-when-something-lands.md
+
+The last post ended with a question: a sweep of light across the plate, or a
+vertical flip? I asked because I would rather hear the answer before shipping
+than after.
+
+The answer turned out to be "both, and a third one, and an off switch". 1.4.6
+gives the tile three movements and a way to turn all of them off, and the flip
+does something the spec had explicitly ruled out.
+
+Four releases went out between that post and this one. This is the first of
+four write-ups, published together because they should have gone up as they
+landed.
+
+## Three movements, and one of them turns the tile over
+
+Until now a new notification added a static dot or a number, which nobody
+notices unless they happen to be looking at that exact tile. Now the tile face
+itself reacts:
+
+- **Sweep** (the default) — a band of light in the accent colour crosses the
+  plate once, along the tile's diagonal.
+- **Drop** — three rings spread from the centre of the plate to its corners,
+  like rain landing on water.
+- **Flip** — the tile turns over on its **vertical** axis, shows the **unread
+  count** on the back (up to "99+"), holds it, and finishes the turn back to
+  the icon.
+- **None** — just the badge, as before.
+
+Dock icons get a gentle scale pulse in all three modes, never a flip: there is
+no plate there for anything to run across, and a row of rotating icons is too
+much movement at once.
+
+The setting lives in **tile content → notifications**, under the badge style
+chips. That whole section is already behind a check for notification access, so
+someone without it never sees a choice about something they do not have.
+
+## Arrival is the notification's own timestamp, not a change in a counter
+
+This is the one decision in the release that had no alternative, and it is worth
+spelling out because the obvious approach fails in a way you would only find on
+a real phone.
+
+The obvious approach is a delta: remember each package's badge count, animate
+when it goes up. It does not work here.
+`NotificationBadgeService.refresh()` runs on **every** return of the launcher to
+the foreground, and in the branch without a live binding it **zeroes** the map
+before rebuilding it a moment later. `publish()` rewrites the map wholesale on
+`onNotificationRankingUpdate` too. So the delta would be positive for every
+package on every trip back to the home screen, and the feature would be an
+avalanche of animations across the whole desktop.
+
+`BadgeEntry.postedAtMillis` is a property of the notification itself. `clear()`,
+a republish, a rebind after doze, a dead listener, a ranking change — none of
+them touch it. A whole class of bugs disappears instead of being patched with a
+guard on every publication path.
+
+Two consequences come free:
+
+- A notification **swiped away** is not in `entries`, so it has nothing to
+  animate with, however fresh it was. After eight hours away the wave covers
+  packages with a notification **still standing**, not eight hours of history.
+- The badge-ability filter (`isOngoing` / `isGroupSummary` /
+  `isSuppressedBubble`) is pulled into one place and shared with `countBadges`,
+  so a notification that cannot show a number cannot move a tile either.
+
+Both functions return **the arrival time, not a boolean**, and that is not
+tidiness. The "seen" floor does not move while the desktop is on top, so a flag
+reading "this package has something unread" stays raised once raised — a second
+message in the same conversation would not change it and would pass with no
+animation at all. That is precisely the case the cooldown exists for. A
+timestamp changes with every message.
+
+The tile also fires **only on a time newer** than the one it last ran on:
+swiping away the newest notification uncovers an older one and *lowers* that
+value, which is not an arrival and has no business moving anything.
+
+**A limitation I cannot fix:** apps that never clear their own notifications
+after you have read them inside the app leave them standing, and the launcher
+sees exactly what the notification shade sees. A per-package timestamp removes
+most of that margin. What is left is narrow — a notification that arrived while
+you were inside the app and that you did not read animates when you come back,
+which is arguably correct anyway.
+
+The logic is pure and lives in `core/notifications/BadgeArrivals.kt`, with 16
+JVM test cases and no device involved.
+
+## 480 milliseconds was the wrong answer three times over
+
+The first build ran every movement at 480 ms, derived from `FLIP_DURATION_MS`
+(half a turnstile turn) times two. On the phone that was a mistake you could see
+from across the room: a full badge rotation went **twice as fast as any other
+flip in the launcher** and read like panic rather than like a message.
+
+Two rules came out of it, both now written into `DESIGN.md`:
+
+1. **Movement the user did not ask for goes slower than movement they did.** The
+   turnstile answers a tap and has every right to snap. A badge animation is an
+   interruption.
+2. **Every movement gets its own timing, none derived from another.** At speed
+   1: flip **1900 ms** (500 turn + 900 hold + 500 back), drop **1000 ms**, sweep
+   **900 ms**. The shared constant was convenient and false — a second and a bit
+   stretched across a band of light turns a flash into a gradient crawling over
+   the tile, while turning a whole plate over needs exactly that long to look
+   deliberate.
+
+Easing sits **inside** the shape of the movement rather than on the animation.
+The flip is three stages, and one curve stretched across the whole thing would
+ease in and out of the *hold* instead of each half-turn. So every movement runs
+on a linear clock and takes from it whatever it needs; the half-turns get a
+symmetric curve of their own so neither end snaps.
+
+The cooldown is **derived too**, not a constant: this movement's duration at
+this speed, plus 800 ms of silence — 2700 ms for the flip, 1800 for the drop,
+1700 for the sweep. The flat 2 s of the first version meant "the animation, then
+roughly a second of nothing", and the moment the movements stopped sharing a
+duration that constant would have quietly eaten the silence on the slowest one.
+Deriving it keeps the invariant that was the decision, rather than the number
+that was its consequence.
+
+The cooldown **drops** a second event inside its window rather than queueing it.
+That is deliberate: queueing would turn a burst of messages into a burst of
+animations chasing reality, which is the strobe the cooldown exists to prevent.
+
+## The flip grew a real back face
+
+The first flip turned the tile 360° and came back to the same face, because the
+spec deliberately ruled out "a real live tile". On the phone it was obvious that
+a rotation which reveals nothing has nothing to say. The tile now turns onto its
+back, shows the unread count, holds it for 900 ms and continues the turn — the
+same way round, not back the way it came, because reversing halfway through the
+hold reads like a jam.
+
+**This does not break the privacy invariant, and it is worth saying exactly
+why.** What was ruled out is the notification's **content** — the sender, a
+snippet of the message — because that changes a row in Data Safety, the decision
+about the lock screen and the whole privacy weight of the app. A count is
+metadata the tile **already prints in its corner**. The back face shows nothing
+the launcher was not already showing, and `BadgeEntry` still carries not one
+character of notification text. If a sender ever belongs on that face, it is a
+separate feature with a separate answer in Data Safety, not an extension of this
+one.
+
+Two layouts, chosen by the same predicate the front uses:
+
+- **Below 2×2** — the number alone, filling the plate.
+- **2×2 and up** — the app icon and the number beside it, centred as one pair.
+
+The app name **left** the back face, and that is a deliberate reversal of the
+first version rather than an oversight. The reason it was there — an upended
+tile still says whose it is, which matters when several turn at once — is now
+served better: an icon is recognised faster than 11-point text is read. A 2×2
+plate will not hold icon, number and name without shrinking all three below
+usefulness.
+
+A folder tile shows the icon of **the member that got the notification**, from a
+source that shares one filter with the arrival itself: a source that could
+disagree with it would dress the tile in the wrong app's icon. The number stays
+the sum across members, the way the same tile's corner prints it. Icon says who
+woke the tile, number says how many are waiting.
+
+One trap worth writing down, because it cost the whole effect: `displaySmall`
+carries a fixed `lineHeight` of 44 sp, and auto-sizing only changes `fontSize`.
+Left in, it pins the block height at 44 sp whatever size the fitter finds — so
+on a plate shorter than that, nothing ever "fits" and the number drops to the
+floor, which is exactly the outcome filling the plate was meant to remove.
+Confirmed in the Compose sources: the step-based fitter rejects a candidate on
+overflow in either axis, and layout overwrites `fontSize` alone.
+
+## A setting you could not check until something happened
+
+Four chips — sweep, drop, flip, none — are four words describing movements the
+user has never seen. Worse, this is the **only setting in the app whose result
+cannot be checked on demand**: every other one shows itself the moment you leave
+settings, and this one waits for a notification to arrive. Choosing between
+"drop" and "sweep" was choosing between two words.
+
+There is now a tile next to the chips that plays the selected movement. It plays
+when you pick a chip and when you tap it, and never on a loop — a tile moving by
+itself inside a scrolling list takes attention away from the chips it is there
+to explain.
+
+The decisions behind it, in order of how much they matter:
+
+- **The scene draws with the desktop's own code**, not an imitation of it — the
+  same plate, the same sweep, the same flip angle, the same back face, in the
+  user's accent and corner radius. A preview that is its own drawing of roughly
+  how something looks guarantees exactly one thing: that it will stop being true
+  one day and nobody will find out.
+- **It deliberately does not share the trigger.** The real one is gated by, among
+  other things, whether the desktop page is active — which is false in settings.
+  A preview built on that function would **never fire and never say why**. The
+  scene runs its own clock at the same duration. That looks like a shortcut and
+  is a decision.
+- **The kill switches are honoured.** Animation speed at zero, or the system
+  animation scale at zero, stops the scene. The "none" chip shows a tile at rest,
+  which **is** its correct preview rather than the absence of one.
+- **The scene is 2×2, and that is not cosmetic.** After the back-face change, its
+  layout threshold runs exactly at 2×2; a smaller scene would be a preview of a
+  different thing than the user is going to get.
+
+The pattern is written for the users that come after it. Tile icons already meet
+its contract. The dock does not — it reads the desktop view model, so its
+preview starts with extracting a parameterised row of icons, which is why it is
+not in this release.
+
+## The system animation scale, read for the first time
+
+The animation-speed slider sits behind the Pro gate, and so does the "none"
+chip. Which means a free user gets this movement and **has nothing to turn it
+off with**.
+
+So 1.4.6 is the first place in the app that reads Android's own
+`ANIMATOR_DURATION_SCALE`, on every resume, and treats zero **purely as a
+switch** — the two scales are never multiplied together, the setting simply
+collapses to "none". That gives a free user a fire exit without dismantling the
+Pro gating and without adding a second free toggle.
+
+The scope of that rule is this one animation. The turnstile, the cascades and
+the sweeping border do not read it — that is a separate tidy-up, deliberately
+left out of this release.
+
+## Icon packs, and the memory they had been costing
+
+Long-press a tile, "change icon", and an empty grid. Always when no pack was
+selected in settings, which is where everyone starts.
+
+The view was not at fault. A tile held **only a resource name**, so it could be
+resolved only through the globally selected pack, and the picker was by
+construction a window onto that one pack. Per-tile personalisation could not
+mean anything else until the model could say which pack a name came from.
+
+**The same root gave a second bug that nobody reported.** A pinned name changed
+meaning when the global pack changed: a tile with `ic_phone` pinned from pack A
+showed `ic_phone` **from pack C** after switching — a different drawing under the
+same name — or fell back to the app icon if C had no such name. On a tile the
+user never touched. Qualifying the reference with its pack removes that in
+passing.
+
+A tile now holds `"pack/resource"`. A name without a slash still means "the
+active pack", which is exactly what those rows meant before, so there is **no
+Room migration and no backup version bump** — old rows and old backups are read
+by a rule, not converted.
+
+Then the work of loading icons exposed something older and more expensive.
+Picking Lawnicons could bog the whole launcher down until you unpinned it. Two
+causes, both in how a drawing becomes a bitmap and how it is kept — code older
+than this release. Measured on an S25 Ultra at 420 dpi with 190 launchable apps:
+
+| | before | after |
+| --- | --- | --- |
+| rasterisation size | the drawable's own (~1000 px) | 192 px ceiling |
+| one icon in memory | ~3.9 MB | 144 KB |
+| cache capacity | 128 **entries** | a **32 MB** budget |
+| native heap (Heap Alloc) | 100 MB, 27 MB pushed to disk | 69 MB, zero swap |
+| total PSS | 253 MB | 229 MB |
+
+Three changes.
+
+**A rasterisation ceiling.** Icons were drawn at the drawable's own size, which
+is whatever the pack's author picked: Lawnicons carries 19,230 resources, each an
+adaptive icon on a 192 dp vector, which is about 504 px at 420 dpi before the
+adaptive viewport scale and around 1000 px after it. Monochrome renders always
+came out at 192 px; without a ceiling there were **two** full-colour paths that
+did not. The second was the one feeding the dock, the search field and the dock
+app picker — an easy one to miss, and it was missed until a code review went
+looking.
+
+The 192 px ceiling is a display size, not just a byte budget: the largest icon on
+screen is 56 dp, which is 196 px at 560 dpi and 224 px at 640 dpi. If that
+ceiling ever gets computed from density it becomes an input to the render and
+**must** join the cache key.
+
+**A budget in bytes, not entries.** A counter cannot bound something it does not
+measure, and 128 entries duly accepted half a gigabyte. It fixes an older bug at
+the same time: 128 was **below the number of apps on the phone**, so scrolling a
+190-item list evicted icons that the same list needed a moment later, and
+re-rendered them for the rest of the session.
+
+**A disk cache**, tried after memory and before rendering. Its key is built
+**only from things known before the pack is queried**, so a hit skips the
+appfilter lookup, the identifier lookup and the rasterisation together. The app's
+own version code is part of that key: timestamps name pages **outside** the app,
+while the pixels also depend on our renderer, and `cacheDir` survives an app
+update — without it, changing the renderer in a later release would leave
+everyone who updates with 1.4.6's renders forever. Same quiet symptom as a
+missing timestamp: the icon still looks right.
+
+Known limitation: the first run after choosing a pack still renders everything.
+The disk cache starts paying from the second.
+
+## Also in 1.4.6
+
+- **Choose which sections your dashboard shows.** Calendar, tasks, habits and
+  reminders each get a checkbox. A section that is off is not composed at all,
+  which is the difference from collapsing a heading. Stored as the set of
+  **hidden** sections rather than visible ones, because "no answer" has to mean
+  "show everything" — and three different situations produce no answer: a fresh
+  install, a backup written before the option existed, and a section added in a
+  future version. The new group is free: it is the user saying what their own
+  dashboard is for.
+- **The free and Pro split, tidied.** Icon style was behind the paywall in
+  settings and free in the per-tile menu, so the paywall stood somewhere nobody
+  had to walk past. The rule now: free gets a workable set, Pro removes the
+  limits. Gating applies to **adding**, never to what is already there — a list
+  over the limit after Pro lapses keeps every row.
+- **The badge stopped pushing the icon around.** On a tile with no name, the
+  bottom strip only existed when there was something to put in it, so a notification
+  stole a dozen dp of height from the icon and swiping it away gave them back.
+  The badge is now a layer over the face rather than a row inside it.
+- **A tile lands where you let it go.** A 2×2 tile on column 0, under a row of
+  icons starting at column 1, dragged one column right, landed on column 2. The
+  stepping rule now has one stated exception: a drop that displaces nobody but
+  the tile itself wins immediately.
+- **Tile colours can be see-through**, with an alpha bar in every picker and a
+  transparency slider in the tile's colour menu. Plate opacity moved out of the
+  colour's top byte into its own column, because "has a colour" is also the flag
+  "this tile opted out of the wallpaper photo" — so dimming a default-coloured
+  tile used to swap its photo for a translucent accent.
+- **Controls on the smallest tiles** stopped shrinking. Below a full cell they
+  are 36 dp with their centre sitting on the tile's corner, so the middle of the
+  face stays clear instead of being covered by four touch targets that met in
+  the middle.
+- **Debug builds got their own package.** `connectedDebugAndroidTest` uninstalls
+  the app it tested, and debug shared an application ID with release — so the
+  first run on the phone took the installed release build and its database with
+  it. Recovered from a local copy made minutes earlier; the suffix means it
+  cannot happen twice.
+- **Room went to schema 13** for the per-tile plate opacity, as an added nullable
+  column with a migration test. The backup version stays at 4: no existing field
+  changes meaning.
+- **456 unit tests**, up from 382. Six of them fail on my machine for a reason
+  that has nothing to do with this release — the settings tests cannot swap a
+  DataStore temp file under Windows file locking, and they fail identically on a
+  clean checkout. That is its own decision to make, and it is not this one.
+
+## What's next
+
+1.4.7, a week later, and it is one line long: a crash from production that took
+the launcher down without the user touching anything. Then 1.4.8 gives the
+calendar tile a whole-month face and adds a music tile.
+
+---
+
+sqTile is on [Google Play](https://play.google.com/store/apps/details?id=dev.gradomski.sqtilelauncher),
+in English, Polish, German, Italian and Ukrainian. Free, with a single one-time Pro
+unlock and no subscription. No ads, no analytics SDK, no account.
 
 ---
 

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Add to Home screen finally has somewhere to go — gradomski.dev</title>
+<meta name="description" content="1.4.9 makes sqTile accept pinned shortcuts — and finding out what that menu item really does turned up a bigger hole. Settings became five pages on the way.">
+<meta name="author" content="Grzegorz Radomski">
+<meta property="og:title" content="Add to Home screen finally has somewhere to go">
+<meta property="og:description" content="1.4.9 makes sqTile accept pinned shortcuts — and finding out what that menu item really does turned up a bigger hole. Settings became five pages on the way.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.gradomski.dev/posts/add-to-home-screen-has-somewhere-to-go.html">
+<meta property="og:image" content="https://www.gradomski.dev/assets/img/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="sqTile Launcher — a local-first home screen">
+<meta property="og:site_name" content="gradomski.dev">
+<meta property="article:published_time" content="2026-09-07">
+<meta property="article:author" content="Grzegorz Radomski">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.gradomski.dev/posts/add-to-home-screen-has-somewhere-to-go.html">
+<link rel="icon" href="../assets/img/favicon.svg">
+<!-- The Markdown source of this post, kept in step with the page — it is what
+     llms.txt points AI readers at. -->
+<link rel="alternate" type="text/markdown" href="add-to-home-screen-has-somewhere-to-go.md" title="This post as Markdown">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt — plain-text guide to this site">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script>
+  try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "dark"; } catch (e) {}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "https://www.gradomski.dev/posts/add-to-home-screen-has-somewhere-to-go.html#post",
+  "headline": "Add to Home screen finally has somewhere to go",
+  "description": "1.4.9 makes sqTile accept pinned shortcuts \u2014 and finding out what that menu item really does turned up a bigger hole. Settings became five pages on the way.",
+  "datePublished": "2026-09-07",
+  "dateModified": "2026-09-07",
+  "inLanguage": "en",
+  "image": "https://www.gradomski.dev/assets/img/og-cover.png",
+  "url": "https://www.gradomski.dev/posts/add-to-home-screen-has-somewhere-to-go.html",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.gradomski.dev/posts/add-to-home-screen-has-somewhere-to-go.html"
+  },
+  "isPartOf": {
+    "@id": "https://www.gradomski.dev/blog.html#blog"
+  },
+  "about": {
+    "@id": "https://www.gradomski.dev/#sqtile"
+  },
+  "keywords": [
+    "sqTile Launcher",
+    "Android",
+    "release notes",
+    "launcher",
+    "1.4.9"
+  ],
+  "author": {
+    "@type": "Person",
+    "@id": "https://www.gradomski.dev/contact.html#person",
+    "name": "Grzegorz Radomski",
+    "url": "https://www.gradomski.dev/contact.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Grzegorz Radomski TECH",
+    "url": "https://www.gradomski.dev/"
+  }
+}
+</script>
+</head>
+<body data-page="post">
+
+<!-- Header and footer are plain markup on every page rather than rendered by
+     site.js, so a crawler that runs no JavaScript still finds the navigation.
+     Links are one level up from here. -->
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="../index.html">gradomski<span>.dev</span></a>
+    <nav class="nav-links" id="nav-links" aria-label="Main">
+      <a href="../index.html#project">Project</a>
+      <a href="../index.html#backlog">Backlog</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../contact.html">About</a>
+      <a href="../index.html#newsletter">Subscribe</a>
+      <a class="btn btn--primary" href="https://play.google.com/store/apps/details?id=dev.gradomski.sqtilelauncher" rel="noopener">Get sqTile</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle colour theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+      <button class="icon-btn nav-toggle" id="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <article class="wrap wrap--narrow">
+    <header class="post-header">
+      <div class="post-meta">
+        <time datetime="2026-09-07">7 September 2026</time>
+        <span class="tag">Release</span>
+      </div>
+      <h1>Add to Home screen finally has somewhere to go</h1>
+      <p class="lead">1.4.9 makes sqTile accept pinned shortcuts — and finding out what that menu item really does turned up a bigger hole. Settings became five pages on the way.</p>
+    </header>
+
+    <div class="prose">
+<p>
+        Open a page in Chrome, hit &quot;Add to Home screen&quot;, and until 1.4.9 nothing happened. sqTile had no filter in its manifest for pinning, so the system had nobody to hand the request to.
+      </p>
+
+<p>
+        It does now. And finding out what that menu item actually does turned up a second, larger hole that pinning does not fix — so 1.4.9 fixes that too. On top of it, the settings screen stopped being seven collapsible groups, long-press stopped picking tiles up by accident, and the background can be a colour of your own.
+      </p>
+
+<p>
+        Twenty decisions were settled before any code, two of them with their own written records. The two that matter most to anyone using the launcher are below.
+      </p>
+
+<h2>What you get</h2>
+
+<p>
+        You are in the browser on a page, menu → &quot;Add to Home screen&quot;. A compact sqTile dialog appears over it: the page's icon, its name, one sentence saying it will land at the end of the desktop, and <strong>Add</strong> / <strong>Cancel</strong>. After Add you are back in the browser exactly where you were, and the tile is waiting on the desktop.
+      </p>
+
+<p>
+        No toast afterwards — the dialog just said what it would do, which is precisely why the sentence about where it lands has to be <em>in</em> the dialog rather than after it. And no size picker: you are halfway through another task, and you will fix the size in edit mode when you are actually looking at it.
+      </p>
+
+<h2>This is not a &quot;PWA&quot; feature</h2>
+
+<p>
+        The branch was called <code>feature/pwa</code> and that is what people reach for it with. There is not one word about PWAs in the code, and there will not be.
+      </p>
+
+<p>
+        <strong>Android does not tell a launcher &quot;this is a PWA&quot;.</strong> &quot;Add to Home screen&quot; is a pin-shortcut request, and what the launcher receives is identical for a Firefox bookmark, a contact, a Spotify playlist or a shortcut to a settings page. There is nothing in that request that says &quot;web&quot;.
+      </p>
+
+<p>
+        <strong>And an installable PWA usually is not a shortcut at all.</strong> On a device with Google services, Chrome mints a <strong>WebAPK</strong> — a real package, which sqTile's app list already sees like any other app. The pin-shortcut path is what <em>non</em>-installable pages get, and devices without Play services. Confirmed on the phone, and Samsung Internet behaves the same way: installing a page from either browser produced a new package and <strong>no pin request at all</strong>.
+      </p>
+
+<h2>The hole that finding that out opened</h2>
+
+<p>
+        Chrome 152 calls the menu item <strong>&quot;Install and create shortcut&quot;</strong>. For an installable page it does the first half — installs the WebAPK — and expects the launcher to put the icon on the home screen itself. One UI and Pixel do that, because they place every newly installed app.
+      </p>
+
+<p>
+        sqTile did not. A new package refreshed the app list and that was all.
+      </p>
+
+<p>
+        So: you install a web app, the browser says it will create a shortcut, and the desktop is empty. That reads as a broken feature, <strong>and it is exactly the case most people mean when they say &quot;PWA&quot;</strong>. Pinned shortcuts do not fix it, because in that case there is no pin.
+      </p>
+
+<h3>Web apps land by themselves; nothing else does</h3>
+
+<p>
+        The fix is a rule, not a workaround: <strong>installing a WebAPK is the only kind of install that is itself a request for an icon on the home screen.</strong> The user was standing in a browser and pressed a button that promised a shortcut. Installing from Play carries no such intent, and neither does an update.
+      </p>
+
+<p>
+        Both alternatives are worse. Doing nothing leaves the most common case broken. Placing <em>every</em> newly installed app turns the desktop into a dump on Play installs, updates and system apps — which is the behaviour people leave OEM launchers to get away from.
+      </p>
+
+<p>
+        Detection is <strong>by metadata, not by package name</strong>. A WebAPK declares its start URL, confirmed by reading the manifest of an installed shell on the phone. The package-name prefix stays as a fallback for a shell without readable metadata. The metadata says what the package <strong>is</strong> — a shell around a start URL — while the prefix only says what it is <strong>called</strong>.
+      </p>
+
+<p>
+        Duplicate protection is a requirement rather than caution here: the package-added callback also fires on a package <strong>replacement</strong>, so without it every update to a web app would add another tile. Matching is by package rather than by exact component, because a shell that renames its activity between versions is still, to the person looking at it, the same app.
+      </p>
+
+<h2>The permission that undercuts the whole thing</h2>
+
+<p>
+        Launching a pinned shortcut works <strong>only while sqTile is the default launcher</strong>. Without that role it throws, and there is no way around it: the shortcut's intent is not readable by anyone but its publisher, so we cannot fall back to starting it ourselves.
+      </p>
+
+<p>
+        That runs straight into the fact that sqTile ships a &quot;set as default&quot; tile — which is to say it explicitly assumes users who have not made it their default.
+      </p>
+
+<p>
+        Three states, and they are not the same shape:
+      </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>state</th>
+      <th>permanence</th>
+      <th>what happens</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>publisher uninstalled</td>
+      <td>permanent — reinstalling does not restore the pin</td>
+      <td>the tile is deleted, like an app's</td>
+    </tr>
+    <tr>
+      <td>no default-launcher role</td>
+      <td>temporary</td>
+      <td>the tile stays; tapping explains</td>
+    </tr>
+    <tr>
+      <td>shortcut gone after a device transfer</td>
+      <td>permanent, but undetectable</td>
+      <td>the tile stays; tapping offers to remove it</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+        Those last two need <strong>two different dialog texts, not one</strong>. One is repairable and leads to the default-launcher settings; the other is not, and the honest offer is to delete the tile. A single text for both is a lie in one of them.
+      </p>
+
+<p>
+        Chrome softens the first case on its own, as it turns out: it asks whether the current default launcher can accept a pin at all, and <strong>hides the menu item</strong> when it cannot. So until sqTile is your default, you do not see &quot;Add to Home screen&quot; in the first place — a gentler failure than a tile that does nothing. For testing it means the debug build has to be set as default or the feature cannot even be invoked, which looks like a broken browser.
+      </p>
+
+<h3>A decision that changed while I was writing the code</h3>
+
+<p>
+        In the design session I wrote that the launcher never deletes tiles by itself, citing the install check that only runs on import. That was wrong. The application class had been listening for removed packages and deleting their tiles for a long time — a tile for an uninstalled app disappears immediately, and always has.
+      </p>
+
+<p>
+        So the rule in the table above is the real one, and it came from re-reading the code rather than from the design note. Deleting a shortcut tile when its publisher is uninstalled is one line; reversing that decision later is deleting the same line.
+      </p>
+
+<p>
+        Pruning on import follows the same principle from the other side. We ask the system whether the shortcut is still pinned and <strong>remove the tile only on a definite no</strong>. When we cannot ask — because we are not the default launcher — we keep it. Importing a backup on a fresh install <em>before</em> setting sqTile as default is a likely order of operations, and pruning on uncertainty would delete every shortcut tile from a backup the same phone had written. <strong>Deleting because &quot;I do not know&quot; is a worse failure than a dead tile.</strong>
+      </p>
+
+<h2>The icon is a snapshot, deliberately</h2>
+
+<p>
+        It is rendered once, at the moment of pinning, and stored keyed by tile id.
+      </p>
+
+<p>
+        Everywhere else in the launcher, an icon is re-derived on demand and cached in scratch space that the system may reclaim. A shortcut's icon <strong>cannot be re-derived</strong> in the states this tile lives in — not while we lack the launcher role, not after the publisher revokes the shortcut, not after Chrome is uninstalled. That is exactly the split the icon cache already documents: derivable things go in the disposable cache, non-derivable things get kept.
+      </p>
+
+<p>
+        Icon packs do not apply, and the picker for them does not appear on this tile type. Pack mappings are indexed by component, and a shortcut has no component; an empty picker is worse than no picker. The per-tile override offers only the full image or a monogram — a themed or silhouetted favicon is a white blob, and the override exists so you have a way out of &quot;one colourful tile among white glyphs&quot; without pretending we can theme a favicon.
+      </p>
+
+<h2>Backup carries the icon but not the pin</h2>
+
+<p>
+        Worth knowing, because it produces a confusing result. The icon and the label travel in Android's auto-backup and in a device transfer. <strong>The pin on the system's side does not.</strong> So after moving to a new phone you get a tile that looks perfect and will not launch — which is the second dialog text above, earning its place.
+      </p>
+
+<p>
+        The manual backup file does not even carry the icon; it holds entities only, the same way contact photos have never travelled in it.
+      </p>
+
+<h2>Field evidence: a shortcut id can be a UUID</h2>
+
+<p>
+        Samsung Internet wrote its shortcut id as <code>7354df85-b807-…</code>, not as a URL.
+      </p>
+
+<p>
+        That is a small thing with a large consequence: every temptation to read the page's host out of that identifier — and there was one, for naming the tile — would break on it. The id stays opaque.
+      </p>
+
+<h2>Long-press stopped picking tiles up</h2>
+
+<p>
+        A user reported it plainly: on a full grid it is far too easy to move a tile.
+      </p>
+
+<p>
+        The cause was one gesture doing two jobs. A tile's long-press handler both entered edit mode <strong>and</strong> picked the tile up in the same callback. Entering edit mode scales the desktop down, so the tile ran out from under the finger by up to eight per cent of its distance from the centre of the scale — and the finger was already in a drag. On a full grid there is no empty space to hold, so the tile was the <strong>only</strong> way into edit mode: every single trip into editing began with an accidental tile move that then saved itself.
+      </p>
+
+<p>
+        Long-press now goes straight into edit mode, with the tile you pressed selected, and picks nothing up until edit mode is already open.
+      </p>
+
+<p>
+        There was a four-cell menu in between — long-press opened a menu instead, and nothing moved — and it was <strong>withdrawn before this release shipped</strong>. It earned its place when edit mode opened with no labels at all, but the edit bar now carries add, tidy up, settings and done itself, so two of the four cells were that bar's buttons written differently and the other two were doors the menu was standing in front of. The cost, named: the shortcut straight to wallpaper goes with it. Wallpaper is still under Settings → Appearance, but nothing jumps directly to that section any more.
+      </p>
+
+<h3>The frame that never happens</h3>
+
+<p>
+        Entering edit mode used to animate exactly one thing — the scale — with a spring, while everything the mode really changes happened in the switch frame: the rail appeared and <strong>narrowed every cell</strong>, the bar took its space, the grid jumped sideways. One animated movement out of four. It ignored the animation-speed multiplier too, so it sprang even at &quot;no animations&quot;.
+      </p>
+
+<p>
+        The resolution simplifies all of it: <strong>the cell size stopped depending on the mode.</strong> The rail is no longer subtracted from the cell width, so the grid never recalculates. There is no switch frame, so there is nothing to mask, and no jump either entering or leaving. Edit mode is one scale over a grid that was already laid out. It then runs in two stages — the desktop first, the rail and bar after — and leaving reverses the order by itself.
+      </p>
+
+<p>
+        The scale went from 0.92 to 0.85, and that is not taste: the margin the scale opens is now the <strong>only</strong> place the rail fits, and 0.92 left about 29 dp for a 44 dp rail.
+      </p>
+
+<p>
+        Three things that do not work, each tried on the phone first:
+      </p>
+
+<ul>
+  <li><strong>Animating the cell size.</strong> Tiles move relative to one another, and it looks like the grid is running away underneath them while they chase it. Worse than the jump it replaced.</li>
+  <li><strong>Hiding the recalculation frame under a fade.</strong> Reads as a blink.</li>
+  <li><strong>A compensating scale with a switch threshold.</strong> Plates cross over smoothly, but icons and labels have fixed sizes in dp — so <em>they</em> jump instead. The jump moves rather than disappearing.</li>
+</ul>
+
+<h2>Three bugs found on the way</h2>
+
+<ul>
+  <li><strong>A single-page tile swallowed desktop scrolling.</strong> The vertical gesture detector was installed unconditionally and checked how many pages there were only when the drag ended. Such a detector consumes from the first frame, so the gesture was eaten along its whole length before that check ever ran: a scroll begun on a todo tile with one page simply did nothing. It is now installed only when there is something to page through.</li>
+  <li><strong>A layout dropped an entire second row, silently.</strong> The flow layout places only as many lines as fit its height, and if the next line misses by a single pixel it is dropped whole — so three of the six types in one section of the add menu were <strong>not drawn at all</strong>, with no trace on screen. Rows are cut by hand now: the worst a bad measurement can do is clip a pixel.</li>
+  <li><strong>The held-row highlight had no visible effect.</strong> It was drawn with the helper grid, which puts it <strong>under</strong> the tiles, in the accent colour — the same colour the tiles are painted. With a free cell it glimmered through the gaps; on a full desktop it was covered completely. A marker has to differ from the thing it marks, and be on top of it.</li>
+</ul>
+
+<h2>Settings became five pages you swipe between</h2>
+
+<p>
+        Seven collapsible groups, with a rule that only one could be open at a time — because a stack of seven open ones is unreadable. That same rule made it impossible to compare two settings: you had to open them alternately. And the largest group was a wall inside a wall: eight sections, about sixteen controls with a system wallpaper set, longer when open than the rest of the screen put together.
+      </p>
+
+<p>
+        It is five pages now — look, tiles, content, apps, about — with boxes inside each instead of bare section headings. A box says where one subject ends and the next begins without collapsing anything. Nothing was dropped; the box was the unit of the move.
+      </p>
+
+<p>
+        The move was also the moment to fix things that had ended up wherever they happened to land:
+      </p>
+
+<ul>
+  <li><strong>The two wallpapers sit next to each other.</strong> The system wallpaper as a background and the tile wallpaper were five sections apart, told apart only by a sentence whose entire job was to say &quot;not the other one&quot;. Position tells them apart now.</li>
+  <li><strong>Animation speed got its own box.</strong> A multiplier applied to <strong>every</strong> animation in the app was the tail of a group about how tiles look.</li>
+  <li><strong>&quot;Rate sqTile&quot; moved out of the backup group</strong>, whose subtitle was one word: &quot;backup&quot;.</li>
+  <li><strong>Badges moved from content to tiles</strong>, because they describe how a tile looks, not what it contains.</li>
+</ul>
+
+<p>
+        Two rules hold it together. <strong>The accent frame is used exactly once</strong> — on the &quot;what's new&quot; box — because an accent frame is this app's way of saying &quot;look here&quot;, and five of them under one another would stop meaning anything. And <strong>the Pro marker sits on the control, not on the box</strong>, because boxes mix paid and free controls: a chip on the title of a box holding both would be untrue.
+      </p>
+
+<p>
+        &quot;What's new&quot; shows a marker on its box rather than a modal on launch. The launcher is the first thing you see after unlocking the phone and has no business putting anything on top of that.
+      </p>
+
+<p>
+        Generating those notes from the release documents was considered and rejected in favour of writing them by hand with a guard test that fails when the version code moves without them: parsing five language versions of a changelog block would be more code than the thing it protects.
+      </p>
+
+<h2>Your own background colour, and the trap that nearly shipped</h2>
+
+<p>
+        Black, white, wallpaper — and now a colour you pick.
+      </p>
+
+<p>
+        It is stored as <strong>two fields</strong>, not one nullable colour: whether a custom background is live, and which colour was chosen. One field is simpler and loses the colour every time you switch to black, so the picker would open from scratch instead of from the colour you were just working on. Separating &quot;what is on&quot; from &quot;what the user did&quot; is what lets one tap bring your colour back.
+      </p>
+
+<p>
+        Resolution runs in order: wallpaper, then custom, then black or white. Wallpaper winning first is why a custom colour under a wallpaper is dormant rather than erased.
+      </p>
+
+<p>
+        <strong>And that order is the trap.</strong> Because the resolver answers in sequence, the black chip has to <strong>clear the custom flag</strong> — otherwise the custom branch still wins and the chip <strong>does nothing at all</strong>. The same ordering breaks a write split across several steps: between &quot;wallpaper off&quot; and &quot;custom off&quot; there is an emission where the desktop paints the very colour the user is leaving. So each chip is one atomic write, not a sequence.
+      </p>
+
+<p>
+        Two smaller things worth recording. The chip is filled with the colour only when selected, and carries a hairline outline, because <strong>any colour can be exactly the colour of the screen</strong> — unlike the accent, which is always pushed to visibility. That is not hypothetical: my own saved colour is <code>#021A0C</code>, near enough the settings background that without the outline the chip would be invisible.
+      </p>
+
+<p>
+        And the gate order was corrected in flight: <strong>choosing a saved colour comes before the Pro check.</strong> The gate guards creating and changing a colour, not returning to your own. With the checks the other way round, someone whose Pro had lapsed could not even go back to their own background — which contradicts the rule that a lapse keeps what you have and only stops you changing it.
+      </p>
+
+<h2>Also in 1.4.9</h2>
+
+<ul>
+  <li><strong>The add-tile menu is grouped into sections you swipe through</strong> — apps, day, media, contacts, tools. It was a flat list of every type, 616 dp tall on a 360×800 screen, growing by 40 dp with each new type; it would have run out of screen before I ran out of ideas. Its height no longer depends on how many types there are, and each type's section, label and icon are declared together in one place, so a new type will not compile until it has answered all three.</li>
+  <li><strong>A toolchain trap that cost an hour</strong>, written down so it costs nobody else one: the incremental dexing cache produced a <code>classes.dex</code> whose checksum did not match its contents, and the app died at launch with a missing-class error pointing at something else entirely. The build says success, the JVM tests pass, the APK signs and installs. <code>clean</code> fixes it; a twenty-line script confirms it in half a minute. The dead ends, so nobody walks them twice: a notification-listener warning in the system log was a <em>consequence</em> of the crash loop, and the USB transfer was not corrupting anything.</li>
+  <li><strong>600 unit tests</strong>, no failures.</li>
+</ul>
+
+<h2>What's next</h2>
+
+<p>
+        The todo and clock tiles still compute their layout in whole cells, so on the new 3×3 size they can look the way they do at 2×2. That is the next thing to fix, and it is open work rather than a hidden fallback.
+      </p>
+
+<p>
+        Beyond that: more languages, and then a proper weather screen behind the weather tile. If you have an opinion about which of those matters more, I would rather hear it before it ships than after — <a href="../contact.html">get in touch</a>.
+      </p>
+
+<hr>
+
+<p>
+        sqTile is on <a href="https://play.google.com/store/apps/details?id=dev.gradomski.sqtilelauncher">Google Play</a>, in English, Polish, German, Italian and Ukrainian. Free, with a single one-time Pro unlock and no subscription. No ads, no analytics SDK, no account.
+      </p>
+    </div>
+
+    <nav class="post-nav" aria-label="Post">
+      <a href="../blog.html">← All posts</a>
+      <a href="../index.html#newsletter">Get these by email →</a>
+    </nav>
+  </article>
+  <div style="height:var(--section-y)"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div>© 2026 Grzegorz Radomski TECH. Built and shipped from Poland.</div>
+    <div class="footer-links">
+      <a href="../blog.html">Blog</a>
+      <a href="../contact.html">About</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="mailto:contact@gradomski.dev">contact@gradomski.dev</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+</body>
+</html>
