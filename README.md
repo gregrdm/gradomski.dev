@@ -18,11 +18,14 @@ posts/
   <slug>.md             the same post as Markdown — what llms.txt links to
 assets/
   css/style.css         all styling + theme tokens
+  css/policy.css        the app privacy policies' own small stylesheet
   js/site.js            SITE config, theme toggle, mobile nav, newsletter form
   img/screens/          landing-page shots, copied from sqTile/docs/store-screenshots/
   img/blog/             post covers
   img/                  favicon, og cover, avatar
-sqTile/privacy-policy.html
+sqTile/privacy-policy.html          sqTile app privacy policy
+kaucja-rush/privacy-policy.html     Kaucja Rush privacy policy (EN)
+kaucja-rush/privacy-policy-pl.html  the same in Polish — keep the two in step
 ```
 
 ## Local preview

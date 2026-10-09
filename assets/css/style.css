@@ -796,6 +796,7 @@ section[id] { scroll-margin-top: 90px; }
 
 .post-nav {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 1rem;
   margin: 3.5rem 0 0;

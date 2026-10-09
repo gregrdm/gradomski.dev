@@ -1,0 +1,55 @@
+/* Shared stylesheet for the app privacy policies (sqTile/, kaucja-rush/, ...).
+   Deliberately separate from style.css: these URLs are handed to Google Play,
+   AdMob and in-app settings screens, so they stay plain documents with no
+   header, nav, theme toggle or script. They follow the system theme only.
+
+   Colours are tokens so dark mode is one override block. Do not set colours
+   on elements directly below — the dark block would lose to a later rule of
+   the same specificity, which is how the "In short" box once went
+   white-on-white in dark mode. */
+
+:root {
+  color-scheme: light dark;
+  --text: #1a1a1a;
+  --bg: #fff;
+  --muted: #6b6b6b;
+  --link: #0b66d0;
+  --code-bg: #f2f2f2;
+  --box-bg: #f6f8fa;
+  --box-border: #e2e2e2;
+  --rule: rgba(128, 128, 128, .25);
+  --cell-border: rgba(128, 128, 128, .3);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #e6e6e6;
+    --bg: #141414;
+    --muted: #9a9a9a;
+    --link: #7db6ff;
+    --code-bg: #2a2a2a;
+    --box-bg: #1e1e1e;
+    --box-border: #333;
+  }
+}
+
+body {
+  max-width: 760px; margin: 0 auto; padding: 2rem 1rem 4rem;
+  font: 16px/1.65 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text); background: var(--bg);
+  overflow-wrap: break-word;
+}
+h1 { font-size: 1.9rem; line-height: 1.25; margin-bottom: .25rem; }
+h2 { font-size: 1.25rem; margin-top: 2.25rem; border-bottom: 1px solid var(--rule); padding-bottom: .3rem; }
+h3 { font-size: 1.05rem; margin-top: 1.5rem; }
+.meta { color: var(--muted); font-size: .9rem; margin-bottom: 1.5rem; }
+.lang { font-size: .9rem; margin: 0 0 1rem; }
+a { color: var(--link); }
+code { background: var(--code-bg); padding: .1em .35em; border-radius: 4px; font-size: .9em; }
+ul { padding-left: 1.25rem; }
+li { margin: .35rem 0; }
+.tldr { background: var(--box-bg); border: 1px solid var(--box-border); border-radius: 10px; padding: 1rem 1.25rem; margin: 1.5rem 0; }
+.table-wrap { overflow-x: auto; margin: .75rem 0; }
+table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+th, td { border: 1px solid var(--cell-border); padding: .5rem .6rem; text-align: left; vertical-align: top; }
+footer { margin-top: 3rem; color: var(--muted); font-size: .85rem; }

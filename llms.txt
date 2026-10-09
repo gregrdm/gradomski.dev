@@ -44,3 +44,4 @@ German, Italian and Ukrainian. Current version at the time of writing: 1.4.9.
 - [Everything on this site as one file](https://www.gradomski.dev/llms-full.txt): the pages and posts above concatenated in full, for when an index is not enough
 - [Site and newsletter privacy notice](https://www.gradomski.dev/privacy.html): what the website and the mailing list do with data
 - [sqTile app privacy policy](https://www.gradomski.dev/sqTile/privacy-policy.html): what the Android app processes, on device and off it
+- [Kaucja Rush game privacy policy](https://www.gradomski.dev/kaucja-rush/privacy-policy.html): what the Android game processes — progress on device; ads, crash reports, analytics and the optional purchase via Google ([Polish version](https://www.gradomski.dev/kaucja-rush/privacy-policy-pl.html))
