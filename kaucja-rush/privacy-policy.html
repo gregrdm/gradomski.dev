@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kaucja Rush — Privacy Policy</title>
-<meta name="description" content="How Kaucja Rush handles your data: progress stays on your device, no accounts or servers. Ads by Google AdMob, crash reports and analytics by Google Firebase, an optional purchase via Google Play.">
+<meta name="description" content="How Kaucja Rush handles your data: progress stays on your device, no accounts or servers. Ads by Google AdMob, crash reports by Google Firebase and Sentry, analytics by Google Firebase, an optional purchase via Google Play.">
 <meta name="author" content="Grzegorz Radomski">
 <meta property="og:title" content="Kaucja Rush — Privacy Policy">
-<meta property="og:description" content="How Kaucja Rush handles your data: progress stays on your device, no accounts or servers. Ads by Google AdMob, crash reports and analytics by Google Firebase, an optional purchase via Google Play.">
+<meta property="og:description" content="How Kaucja Rush handles your data: progress stays on your device, no accounts or servers. Ads by Google AdMob, crash reports by Google Firebase and Sentry, analytics by Google Firebase, an optional purchase via Google Play.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.gradomski.dev/kaucja-rush/privacy-policy.html">
 <meta property="og:site_name" content="gradomski.dev">
@@ -40,8 +40,9 @@
   is stored <strong>only on your device</strong>. We run no servers and have no
   accounts. The game shows ads from Google AdMob, which processes device data on
   its own terms — in the EEA, UK and Switzerland only after you make a choice in
-  the consent message. Crash reports and, with your consent, usage statistics go
-  to Google Firebase so we can fix bugs and improve the game. An optional
+  the consent message. Crash and error reports (Google Firebase, Sentry) and,
+  with your consent, usage statistics (Google Firebase) help us fix bugs and
+  improve the game. An optional
   one-time “Remove ads” purchase is handled by Google Play.
 </div>
 
@@ -110,6 +111,12 @@
     <td><a href="https://firebase.google.com/support/privacy" rel="noopener">firebase.google.com/support/privacy</a></td>
   </tr>
   <tr>
+    <td><strong>Error monitoring</strong></td>
+    <td>Technical details of errors in the Game: error message and stack trace, app version, device model, OS version. No personal data — no name, contact details, advertising ID or IP address. Stored on Sentry’s servers in the EU.</td>
+    <td>Sentry (Functional Software, Inc.)</td>
+    <td><a href="https://sentry.io/privacy/" rel="noopener">sentry.io/privacy</a></td>
+  </tr>
+  <tr>
     <td><strong>Usage analytics</strong> (with your consent in the EEA, UK and Switzerland)</td>
     <td>How the Game is used (e.g. sessions, screens viewed, in-game events), an app-instance identifier, the advertising ID, device and app information, approximate location (country/region).</td>
     <td>Google Analytics for Firebase</td>
@@ -136,12 +143,12 @@
 <ul>
   <li><strong>Your consent</strong> (Art. 6(1)(a)) — personalized ads and usage analytics.</li>
   <li><strong>Performance of a contract</strong> (Art. 6(1)(b)) — processing the “Remove ads” purchase and restoring it.</li>
-  <li><strong>Our legitimate interest</strong> (Art. 6(1)(f)) — showing limited or non-personalized ads, which keep the Game free, and crash reporting, which keeps it working.</li>
+  <li><strong>Our legitimate interest</strong> (Art. 6(1)(f)) — showing limited or non-personalized ads, which keep the Game free, and crash reporting and error monitoring (Firebase Crashlytics, Sentry), which keep it working.</li>
 </ul>
 
 <h2>5. Permissions and reasons</h2>
 <ul>
-  <li><strong>Internet / network state</strong> — to load ads, verify the “Remove ads” purchase, and send crash reports and analytics.</li>
+  <li><strong>Internet / network state</strong> — to load ads, verify the “Remove ads” purchase, and send crash reports, error reports and analytics.</li>
   <li><strong>Advertising ID (<code>AD_ID</code>)</strong> — used by AdMob for ads and by Google Analytics, subject to your consent where required.</li>
   <li><strong>Billing</strong> — lets Google Play process the optional “Remove ads” purchase.</li>
 </ul>
@@ -151,7 +158,8 @@
   Data on your device stays until you delete the Game’s data or uninstall the
   Game. Data processed by Google for ads, consent and purchases is retained
   according to Google’s own retention policies. Crash reports are kept by
-  Firebase Crashlytics for up to 90 days. Analytics data is kept for the period
+  Firebase Crashlytics for up to 90 days. Error reports are deleted from Sentry
+  after 90 days. Analytics data is kept for the period
   set in our Google Analytics settings, no longer than 14 months. Your “Remove
   ads” purchase is linked to your Google account and can be restored after
   reinstalling.
