@@ -13,6 +13,7 @@ robots.txt              open to every crawler; points at the sitemap
 sitemap.xml             the five indexable URLs
 llms.txt                plain-text index of the site, for AI readers
 llms-full.txt           the whole site as one plain-text document
+app-ads.txt             AdMob seller declaration — one line, must stay at the root
 posts/
   <slug>.html           the post as a page
   <slug>.md             the same post as Markdown — what llms.txt links to
