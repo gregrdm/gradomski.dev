@@ -178,6 +178,23 @@ slow it down or feed it your own numbers, and follow the Kotlin or Python line
 by line as it runs. Episodes open in Polish, with an English switch. The pages
 render in JavaScript; what follows is their text content.
 
+## Episode 3 — Quicksort
+
+Source: https://www.gradomski.dev/algolearn/quicksort.html
+
+Lomuto partition with the last element in the range as the pivot. Index j walks
+the range and weighs every element against the pivot; anything lighter is swapped
+to position i, which then moves one step right, so left of i there are only
+elements smaller than the pivot. Finally the pivot swaps into position i: that is
+its final place. Then the same is done to each half, and every call is one frame
+on the call stack.
+
+On average quicksort makes about 1.39 · n log₂ n comparisons: 14 for 8 weights
+(bubble sort on the same order: 28) and about 25 million for a million. On
+already sorted input the last-element pivot is always the largest:
+n(n − 1)/2 comparisons and a call stack n deep, so a sorted million throws
+StackOverflowError on the JVM with the default 1 MB thread stack.
+
 ## Episode 2 — Bubble sort
 
 Source: https://www.gradomski.dev/algolearn/bubble-sort.html

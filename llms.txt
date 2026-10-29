@@ -45,6 +45,7 @@ They open in Polish with an English switch, and render in JavaScript — the
 descriptions below are the text content.
 
 - [AlgoLearn](https://www.gradomski.dev/algolearn/): index of episodes
+- [Quicksort](https://www.gradomski.dev/algolearn/quicksort.html) (episode 3, 29 October 2026): Lomuto partition with the last element as pivot — every element is weighed against the pivot, smaller ones go left, the pivot lands in its final place, then each half is sorted the same way; on average about 1.39 · n log₂ n comparisons (14 for 8 elements where bubble sort needs 28, about 25 million for a million), but already sorted input makes the pivot always the largest: n(n − 1)/2 comparisons and a call stack n deep, so a sorted million throws StackOverflowError on the JVM
 - [Bubble sort](https://www.gradomski.dev/algolearn/bubble-sort.html) (episode 2, 29 October 2026): without the swapped flag bubble sort always makes n(n − 1)/2 comparisons — 28 for 8 elements, about 500 billion for a million; the flag stops early when a pass made no swap, but the worst case stays O(n²)
 - [Binary search](https://www.gradomski.dev/algolearn/binary-search.html) (episode 1, 29 October 2026): every comparison discards half the range, so n elements need at most ⌈log₂(n + 1)⌉ comparisons — 4 for 15 elements, 20 for a million
 
