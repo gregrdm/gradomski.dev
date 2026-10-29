@@ -5,10 +5,12 @@
 > Android home screen built around square tiles, with no accounts, no ads and no
 > analytics SDK.
 
-Two things live here: the product page and backlog for sqTile Launcher, and a
+Three things live here: the product page and backlog for sqTile Launcher, a
 changelog where each release is written up in full — what users asked for, what
-shipped, and what was measured. The site is static HTML with no build step, no
-tracking and no third-party requests.
+shipped, and what was measured — and AlgoLearn, a series of interactive
+algorithm visualisations. The site is static HTML with no build step; apart from
+a cookieless visit counter on the AlgoLearn pages, there is no tracking and no
+third-party request.
 
 Posts are linked below as Markdown (`.md`) as well as HTML. The Markdown is the
 same text without the page furniture; prefer it.
@@ -35,6 +37,17 @@ German, Italian and Ukrainian. Current version at the time of writing: 1.4.9.
 - [Icon packs, a dock you can finally edit, and a grid that behaves](https://www.gradomski.dev/posts/icon-packs-and-a-grid-that-behaves.md) (13 August 2026): 1.4.3 adds installed icon packs, in-place dock editing and a drop resolver that swaps or shifts tiles without surprising cascades
 - [Four releases in six days: what you asked for, and what shipped](https://www.gradomski.dev/posts/four-releases-what-you-asked-for.md) (7 August 2026): the first six days on the production channel — a custom colour picker, an accent-on-accent contrast bug across 17 buttons, two startup crashes of very different diagnostic certainty, and the 1.4.0 onboarding release that answered "great launcher, now what?"
 
+## AlgoLearn
+
+Interactive pages: each one builds an algorithm as an isometric workshop machine
+that can be stepped through, with Kotlin and Python code highlighted as it runs.
+They open in Polish with an English switch, and render in JavaScript — the
+descriptions below are the text content.
+
+- [AlgoLearn](https://www.gradomski.dev/algolearn/): index of episodes
+- [Bubble sort](https://www.gradomski.dev/algolearn/bubble-sort.html) (episode 2, 29 October 2026): without the swapped flag bubble sort always makes n(n − 1)/2 comparisons — 28 for 8 elements, about 500 billion for a million; the flag stops early when a pass made no swap, but the worst case stays O(n²)
+- [Binary search](https://www.gradomski.dev/algolearn/binary-search.html) (episode 1, 29 October 2026): every comparison discards half the range, so n elements need at most ⌈log₂(n + 1)⌉ comparisons — 4 for 15 elements, 20 for a million
+
 ## About
 
 - [About & contact](https://www.gradomski.dev/contact.html): background, career timeline, and where to find me — GitHub [@gregrdm](https://github.com/gregrdm), [LinkedIn](https://www.linkedin.com/in/grzegorz-radomski/), contact@gradomski.dev
@@ -42,6 +55,6 @@ German, Italian and Ukrainian. Current version at the time of writing: 1.4.9.
 ## Optional
 
 - [Everything on this site as one file](https://www.gradomski.dev/llms-full.txt): the pages and posts above concatenated in full, for when an index is not enough
-- [Site and newsletter privacy notice](https://www.gradomski.dev/privacy.html): what the website and the mailing list do with data
+- [Site and newsletter privacy notice](https://www.gradomski.dev/privacy.html): what the website, its AlgoLearn visit counter and the mailing list do with data
 - [sqTile app privacy policy](https://www.gradomski.dev/sqTile/privacy-policy.html): what the Android app processes, on device and off it
 - [Kaucja Rush game privacy policy](https://www.gradomski.dev/kaucja-rush/privacy-policy.html): what the Android game processes — progress on device; ads, crash reports, analytics and the optional purchase via Google ([Polish version](https://www.gradomski.dev/kaucja-rush/privacy-policy-pl.html))

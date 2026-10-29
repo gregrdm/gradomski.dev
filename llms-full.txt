@@ -1,14 +1,14 @@
 # gradomski.dev — full text
 
 > Everything on this site as one plain-text document: the landing page, the
-> about page, and every changelog post in full. The linked index is at
-> https://www.gradomski.dev/llms.txt
+> about page, the AlgoLearn episodes, and every changelog post in full. The
+> linked index is at https://www.gradomski.dev/llms.txt
 
 Site: https://www.gradomski.dev/
 Author: Grzegorz Radomski — Android engineer, Senior Software Engineer at Allegro
 Publisher: Grzegorz Radomski TECH, ul. Pawia 10B/1, 08-825 Adamowizna, Poland
 Contact: contact@gradomski.dev
-Last assembled: 7 September 2026
+Last assembled: 29 October 2026
 
 ---
 
@@ -166,6 +166,32 @@ me.
 - GitHub: https://github.com/gregrdm (@gregrdm)
 - LinkedIn: https://www.linkedin.com/in/grzegorz-radomski/
 - Email: contact@gradomski.dev
+
+---
+
+# AlgoLearn
+
+Source: https://www.gradomski.dev/algolearn/
+
+Each episode builds one algorithm as a small workshop machine: step through it,
+slow it down or feed it your own numbers, and follow the Kotlin or Python line
+by line as it runs. Episodes open in Polish, with an English switch. The pages
+render in JavaScript; what follows is their text content.
+
+## Episode 2 — Bubble sort
+
+Source: https://www.gradomski.dev/algolearn/bubble-sort.html
+
+Without the flag, bubble sort always makes n(n − 1)/2 comparisons: 28 for 8
+elements and about 500 billion for a million. The swapped flag stops early when
+a pass made no swap, but the worst case is still O(n²).
+
+## Episode 1 — Binary search
+
+Source: https://www.gradomski.dev/algolearn/binary-search.html
+
+Every comparison throws away half of the range, so n elements need at most
+⌈log₂(n + 1)⌉ comparisons: 4 for 15 elements and 20 for a million.
 
 ---
 

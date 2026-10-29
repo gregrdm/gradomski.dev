@@ -6,6 +6,9 @@ default branch and it's live.
 ```
 index.html              landing page (sqTile)
 blog.html               post list — written by hand, newest first
+algolearn/
+  index.html            AlgoLearn episode list — by hand, newest first
+  <slug>.html           one episode, as exported, plus a few added lines
 post.html               redirect shim for old ?slug= links; not indexed
 contact.html            about, timeline, socials
 privacy.html            site + newsletter privacy notice
@@ -21,6 +24,7 @@ assets/
   css/style.css         all styling + theme tokens
   css/policy.css        the app privacy policies' own small stylesheet
   js/site.js            SITE config, theme toggle, mobile nav, newsletter form
+  js/analytics.js       GoatCounter loader — AlgoLearn pages only
   img/screens/          landing-page shots, copied from sqTile/docs/store-screenshots/
   img/blog/             post covers
   img/                  favicon, og cover, avatar
@@ -60,9 +64,11 @@ So:
   `BlogPosting` on a post.
 - **`llms.txt` links to the `.md` of each post, not the `.html`.** That is the point of the
   format: send the reader to clean text. It is why the Markdown sources are still here.
-- **No third-party requests.** The Markdown renderer and syntax highlighter that used to
-  load from jsDelivr are gone with the client-side post rendering. `privacy.html` says so;
-  if you ever add an embed or a web font, that section stops being true.
+- **No third-party requests — except on AlgoLearn.** The Markdown renderer and syntax
+  highlighter that used to load from jsDelivr are gone with the client-side post
+  rendering. The one exception is the visit counter on the AlgoLearn pages (below).
+  `privacy.html` says exactly that; if you ever add an embed, a web font, or the counter
+  to another page, update it.
 
 ## The social preview image
 
@@ -129,11 +135,51 @@ script that generates `posts/*.html`, the `blog.html` cards, `sitemap.xml` and
 `llms-full.txt` from the Markdown on push. Worth doing then; not worth a build step and a
 CI workflow for one post a fortnight.
 
+## Adding an AlgoLearn episode
+
+An episode is a self-contained `.html` file (everything inline, nothing loaded from
+anywhere) that draws itself with JavaScript. It goes in as exported, plus a few lines.
+
+1. **Copy it to `algolearn/<slug>.html`** — English slug, e.g. `quicksort.html`.
+2. **Add three tags just before `</head>`**, all on the end of the line the export
+   puts them on:
+   ```html
+   <link rel="canonical" href="https://www.gradomski.dev/algolearn/<slug>.html"><link rel="icon" href="../assets/img/favicon.svg"><script src="../assets/js/analytics.js" defer></script>
+   ```
+   The canonical matters for the counter too: GoatCounter records that path, so
+   `/algolearn/quicksort` and `/algolearn/quicksort.html` count as one page.
+3. **Add the back bar right after `<body>`** — copy the `<!-- gradomski.dev … -->`
+   comment, `<style>`, `<nav class="gd-back">` and `<noscript>` block from
+   `algolearn/bubble-sort.html`, and put the new episode's description in the
+   `<noscript>`. The bar takes its font and colours from the episode's own CSS
+   variables and hides itself in video mode (`body[data-video]`).
+4. **Add a card to `algolearn/index.html`**, newest first, and an entry in its
+   `hasPart` JSON-LD.
+5. **Register the URL** in `sitemap.xml`, in the `## AlgoLearn` section of `llms.txt`,
+   and in the `# AlgoLearn` section of `llms-full.txt`. The episode itself is
+   invisible to a crawler that runs no JavaScript, so those descriptions are all an AI
+   reader gets — write them as the actual takeaway, not a teaser.
+
+## Visit counter (AlgoLearn)
+
+[GoatCounter](https://www.goatcounter.com) — no cookies, no profile, so no consent
+banner. It is loaded by `assets/js/analytics.js`, which only the AlgoLearn pages
+include. To switch it on:
+
+1. Sign up at goatcounter.com and pick a site code — the `xxx` in `xxx.goatcounter.com`.
+2. Put that code in `GOATCOUNTER_CODE` at the top of `assets/js/analytics.js` and push.
+3. Open <https://xxx.goatcounter.com> for the dashboard: views per page, referrers,
+   browsers, countries.
+
+While the code is empty nothing loads. `count.js` ignores `localhost` and `file://`, so
+local previews never count.
+
 ## Editing the site
 
 - **Store URL, email, newsletter endpoint** — the `SITE` object at the top of
   `assets/js/site.js`, and the copies in each page's markup.
-- **Nav items** — the `<nav class="nav-links">` block in each of the six pages.
+- **Nav items** — the `<nav class="nav-links">` block in every page that has one: the
+  four at the root, each post in `posts/`, and `algolearn/index.html`.
 - **Colours, spacing, type** — the token blocks at the top of `assets/css/style.css`
   (`:root[data-theme="dark"]` and `:root[data-theme="light"]`).
 - **Backlog** — the `.releases` block in `index.html`. It is one vertical line, newest
