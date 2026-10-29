@@ -17,7 +17,7 @@
    one row in the dashboard.
    ============================================================ */
 
-const GOATCOUNTER_CODE = "";
+const GOATCOUNTER_CODE = "gradomski";
 
 if (GOATCOUNTER_CODE) {
   const s = document.createElement("script");
